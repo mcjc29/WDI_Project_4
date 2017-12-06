@@ -12,9 +12,10 @@ class Register extends React.Component {
       email: '',
       image: '',
       description: '',
-      charitableInterests: '',
       address: '',
       linkedIn: '',
+      skills: [],
+      nonprofits: [],
       password: '',
       passwordConfirmation: ''
     }

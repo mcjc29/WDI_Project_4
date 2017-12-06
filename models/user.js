@@ -8,10 +8,19 @@ const userSchema = new mongoose.Schema({
   email: { type: String, unique: true, required: 'This field is required.' },
   image: String,
   description: String,
-  charitableInterests: Array,
   address: { type: String, required: true },
   linkedIn: String,
-  password: { type: String, required: 'This field is required.' }
+  password: { type: String, required: 'This field is required.' },
+  skills: [{ type: mongoose.Schema.ObjectId, ref: 'Skill' }],
+  nonprofits: [{ type: mongoose.Schema.ObjectId, ref: 'Nonprofit' }]
+  // ratings: [
+  //   {
+  //     skill: { type: mongoose.Schema.ObjectId, ref: 'Skill' },
+  //     rating: { type: Number },
+  //     createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
+  //     comment: { type: String, trim: true }
+  //   }
+  // ]
 },
 {
   timestamps: true
