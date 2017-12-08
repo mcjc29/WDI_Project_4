@@ -1,10 +1,11 @@
 import React from 'react';
-import Select from 'react-select';
+// import Select from 'react-select';
+import DragDrop from '../utility/DragDrop';
 
 import BackButton from '../utility/BackButton';
-// import MultiSelect from '../utility/MultiSelectField';
+import MultiSelect from '../utility/MultiSelectField';
 
-function NonprofitsForm({ handleSubmit, handleChange, nonprofit }) {
+function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonprofit, skills, removeSelected, value }) {
   return (
     <div className="row">
       <div className="page-banner col-md-12">
@@ -22,7 +23,7 @@ function NonprofitsForm({ handleSubmit, handleChange, nonprofit }) {
             onChange={handleChange}
           />
         </div>
-        <div className="form-group">
+        {/* <div className="form-group">
           <label htmlFor="image">Image</label>
           <input
             type="text"
@@ -31,6 +32,13 @@ function NonprofitsForm({ handleSubmit, handleChange, nonprofit }) {
             name="image"
             value={nonprofit.image}
             onChange={handleChange}
+          />
+        </div> */}
+        <div className="form-group">
+          <label htmlFor="image">Image</label>
+          <DragDrop
+            onChange={handleChange}
+            value={nonprofit.base64 || nonprofit.imageSRC}
           />
         </div>
         <div className="form-group">
@@ -66,44 +74,12 @@ function NonprofitsForm({ handleSubmit, handleChange, nonprofit }) {
             onChange={handleChange}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="lat">lat</label>
-          <input
-            type="text"
-            className="form-control"
-            id="lat"
-            name="lat"
-            value={nonprofit.lat}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="lng">lng</label>
-          <input
-            type="text"
-            className="form-control"
-            id="lng"
-            name="lng"
-            value={nonprofit.lng}
-            onChange={handleChange}
-          />
-        </div>
-        {/* <MultiSelect
-          nonprofitSkills={nonprofit.skills}
-          handleChange={handleChange}
+        <MultiSelect
+          handleSelectChange={handleSelectChange}
           removeSelected={removeSelected}
-        /> */}
-        <div className="form-group">
-          <label htmlFor="supporters">supporters</label>
-          <input
-            type="text"
-            className="form-control"
-            id="supporters"
-            name="supporters"
-            value={nonprofit.supporters}
-            onChange={handleChange}
-          />
-        </div>
+          options={skills}
+          value={value}
+        />
         <div>
           <button className="save-button">Save</button>
         </div>

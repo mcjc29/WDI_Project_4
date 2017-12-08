@@ -4,9 +4,12 @@ const authentications = require('../controllers/authentications');
 const users = require('../controllers/users');
 const nonprofits = require('../controllers/nonprofits');
 const skills = require('../controllers/skills');
+// const imageUpload = require('../lib/imageUpload');
+
 
 router.route('/register')
   .post(authentications.register);
+// .post(imageUpload, authentications.register);
 
 router.route('/login')
   .post(authentications.login);
@@ -33,5 +36,6 @@ router.route('nonprofits/:id/support')
   .delete(nonprofits.unsupport);
 
 router.route('/skills')
-    .get(skills.index)
+  .get(skills.index);
+
 module.exports = router;

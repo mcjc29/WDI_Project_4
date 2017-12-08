@@ -17,13 +17,21 @@ class NonprofitsNew extends React.Component {
       skills: [],
       supporters: []
     },
-    removeSelected: true
+    removeSelected: true,
+    skills: [],
+    value: []
   };
 
   componentDidMount() {
     Axios
       .get('/api/skills')
-      .then(res => console.log(res.data));
+      .then(res => {
+        const skills = res.data.map(skill => {
+          return { label: skill.name, value: skill.name, id: skill.id };
+        });
+        this.setState({skills});
+      })
+      .catch(err => console.log(err));
   }
 
   handleChange = ({ target: { name, value } }) => {
@@ -31,8 +39,15 @@ class NonprofitsNew extends React.Component {
     this.setState({ nonprofit });
   }
 
+  handleSelectChange = (value) => {
+    this.setState({ value });
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
+    const userSkills = this.state.value.map(skill => skill.id);
+    const nonprofit = Object.assign({}, this.state.nonprofit, { skills: userSkills });
+    this.setState({ nonprofit });
 
     Axios
       .post('/api/nonprofits', this.state.nonprofit, {
@@ -47,8 +62,11 @@ class NonprofitsNew extends React.Component {
       <NonprofitsForm
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
-        nonprofit={this.state.nonprofit}
-        removeSelected={this.state.removeSelected}
+        handleSelectChange={this.handleSelectChange}
+        // nonprofit={this.state.nonprofit}
+        // options={this.state.skills}
+        {...this.state}
+        // removeSelected={this.state.removeSelected}
       />
     );
   }

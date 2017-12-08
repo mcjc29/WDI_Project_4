@@ -1,28 +1,20 @@
-// import React from 'react';
-// import Select from 'react-select';
-//
-// const MultiSelect = ({nonprofitSkills, handleChange, removeSelected}) => {
-//   // state: {
-//   //   selectedSkill: ''
-//   // }
-//   //
-//   // handleChange = (selectedSkill) => {
-//   //   this.setState({ selectedSkill });
-//   //   console.log(`Selected: ${selectedSkill.label}`);
-//   // }
-//
-//   // render () {
-//     return (
-//       <Select
-//         name="form-field-name"
-//         value={nonprofitSkills.name}
-//         placeholder="Select your favourite(s)"
-//         removeSelected={removeSelected}
-//         onChange={handleChange}
-//         options={nonprofitSkills.name}
-//       />
-//     );
-//   // }
-// };
-//
-// export default MultiSelect;
+import React from 'react';
+import Select from 'react-select';
+
+const MultiSelect = ({options, handleSelectChange, removeSelected, value}) => {
+
+  return (
+    <Select
+      name="form-field-name"
+      placeholder="Select your favourite(s)"
+      removeSelected={removeSelected}
+      onChange={handleSelectChange}
+      options={options}
+      value={value}
+      multi
+      matchPos="start"
+    />
+  );
+};
+
+export default MultiSelect;

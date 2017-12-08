@@ -3,11 +3,13 @@ const { secret } = require('../config/environment');
 const User = require('../models/user');
 
 function register(req, res, next) {
+  // if(req.file) req.body.image = req.file.filename;
+
   User
     .create(req.body)
     .then(user => {
       const token = jwt.sign({ userId: user.id }, secret, { expiresIn: '1hr' });
-      
+
       return res.json({ message: `Welcome ${user.username}`, token });
     })
     .catch(next);

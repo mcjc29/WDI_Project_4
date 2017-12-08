@@ -1,4 +1,5 @@
 import React from 'react';
+// import DragDrop from '../utility/DragDrop';
 
 const RegisterForm = ({ handleChange, handleSubmit, user }) => {
   return (
@@ -43,16 +44,14 @@ const RegisterForm = ({ handleChange, handleSubmit, user }) => {
           className="form-control"
         />
       </div>
-      <div className="form-group">
-        <input
-          type="text"
-          name="image"
-          placeholder="Image"
+
+      {/* <div className="form-group">
+        <label htmlFor="image">Image</label>
+        <DragDrop
           onChange={handleChange}
-          value={user.image}
-          className="form-control"
+          value={user.base64 || user.imageSRC}
         />
-      </div>
+      </div> */}
       <div className="form-group">
         <input
           type="Textarea"

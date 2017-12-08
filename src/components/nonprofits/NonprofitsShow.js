@@ -31,7 +31,7 @@ class NonprofitsShow extends React.Component {
     return (
       <div className="row">
         <div className="image-tile col-md-6">
-          <img src={this.state.nonprofit.image} className="img-responsive" />
+          <img src={this.state.nonprofit.image || this.state.nonprofit.imageSRC} className="img-responsive" />
         </div>
         <div className="col-md-6">
           <h3>{this.state.nonprofit.name}</h3>

@@ -32,7 +32,7 @@ class NonprofitsIndex extends React.Component {
                 <Link to={`/nonprofits/${nonprofit.id}`}>
                   <h3>{nonprofit.name}</h3>
                 </Link>
-                <img src={nonprofit.image} className="img-responsive" />
+                <img src={nonprofit.imageSRC} className="img-responsive" />
                 {nonprofit.skills.map(skill => <h4 key={skill.id}>{skill.name}</h4>)}
               </div>
             );

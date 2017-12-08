@@ -12,7 +12,8 @@ function nonprofitsIndex(req, res, next) {
 }
 
 function nonprofitsCreate(req, res, next) {
-  if (req.file) req.body.nonprofitNotes = req.file;
+  // if (req.file) req.body.nonprofitNotes = req.file;
+  if(req.file) req.body.image = req.file.filename;
 
   Nonprofit
     .create(req.body)
@@ -34,6 +35,7 @@ function nonprofitsShow(req, res, next) {
 }
 
 function nonprofitsUpdate(req, res, next) {
+  if(req.file) req.body.image = req.file.filename;
 
   Nonprofit
     .findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })

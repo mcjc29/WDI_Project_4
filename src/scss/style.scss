@@ -1,0 +1,24 @@
+div.drag-drop {
+  input[type=file] {
+    display: none;
+  }
+
+  div.dropzone {
+    height: 200px;
+    width: 200px;
+    background-color: #fafafa;
+    background-size: contain;
+  }
+}
+
+.image-tile {
+  margin-bottom: 30px;
+  position: relative;
+
+  img {
+    width: 100%;
+    border-radius: 2px;
+    padding: 4px;
+    background: #fafafa;
+  }
+}
