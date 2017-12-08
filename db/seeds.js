@@ -216,10 +216,37 @@ Skill.create([
         passwordConfirmation: 'password',
         skills: [skills[0], skills[2], skills[5]]
       }
-    ]);
-  })
-  .then(users => {
-    console.log(`${users.length} users created!`);
+    ])
+      .then(users => {
+        console.log(`${users.length} users created!`);
+        return Nonprofit.create([
+          {
+            name: 'Shelter',
+            image: 'wfwe',
+            description: 'Homeless charity',
+            registration: '123355',
+            createdBy: users[0],
+            address: 'efwfrfg',
+            lat: 22,
+            lng: 34,
+            skills: [skills[0], skills[2], skills[5]]
+          } ,     {
+            name: 'blah',
+            image: 'fewf',
+            description: ' charity',
+            registration: '342423',
+            createdBy: users[0],
+            address: 'sc',
+            lat: 3,
+            lng: 5,
+            skills: [skills[6], skills[10], skills[9]],
+            supporters: [users[0]]
+          }
+        ]);
+      })
+      .then(nonprofits => {
+        console.log(`${nonprofits.length} nonprofits created!`);
+      });
   })
   .catch(err => console.log(err))
   .finally(() => mongoose.connection.close());

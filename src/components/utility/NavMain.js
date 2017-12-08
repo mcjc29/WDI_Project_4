@@ -19,11 +19,9 @@ const NavMain = ({history}) => {
         { !Auth.isAuthenticated() && <LinkContainer to="/login">
           <NavItem className="nav-link">Login</NavItem>
         </LinkContainer>}
-        {' '}
-        { !Auth.isAuthenticated() && <LinkContainer to="/register"><NavItem>Register</NavItem>
+        { !Auth.isAuthenticated() && <LinkContainer to="/register"><NavItem className="nav-link">Register</NavItem>
         </LinkContainer>}
-        {' '}
-        { Auth.isAuthenticated() && <LinkContainer to="#"><NavItem onClick={logout}>Logout</NavItem>
+        { Auth.isAuthenticated() && <LinkContainer to="#"><NavItem className="nav-link" onClick={logout}>Logout</NavItem>
         </LinkContainer>}
       </Nav>
 

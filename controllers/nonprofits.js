@@ -1,8 +1,11 @@
 const Nonprofit = require('../models/nonprofit');
+require('../models/skill');
+require('../models/user');
 
 function nonprofitsIndex(req, res, next) {
   Nonprofit
     .find()
+    .populate('skills')
     .exec()
     .then((nonprofit) => res.status(200).json(nonprofit))
     .catch(next);
@@ -21,6 +24,7 @@ function nonprofitsShow(req, res, next) {
 
   Nonprofit
     .findById(req.params.id)
+    .populate('skills supporters')
     .exec()
     .then((nonprofit) => {
       if(!nonprofit) return res.notFound();

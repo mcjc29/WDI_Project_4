@@ -55,7 +55,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user }) => {
       </div>
       <div className="form-group">
         <input
-          type="text"
+          type="Textarea"
           name="description"
           placeholder="Tell us about yourself..."
           onChange={handleChange}

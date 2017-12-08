@@ -3,6 +3,7 @@ const router  = express.Router();
 const authentications = require('../controllers/authentications');
 const users = require('../controllers/users');
 const nonprofits = require('../controllers/nonprofits');
+const skills = require('../controllers/skills');
 
 router.route('/register')
   .post(authentications.register);
@@ -31,4 +32,6 @@ router.route('nonprofits/:id/support')
   .post(nonprofits.support)
   .delete(nonprofits.unsupport);
 
+router.route('/skills')
+    .get(skills.index)
 module.exports = router;
