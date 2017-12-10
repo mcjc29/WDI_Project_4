@@ -6,50 +6,69 @@ import Auth from '../../lib/Auth';
 
 class UsersEdit extends React.Component {
   state = {
-    nonprofit: {
-      name: '',
+    user: {
+      username: '',
+      firstName: '',
+      lastName: '',
+      email: '',
       image: '',
       description: '',
-      registration: '',
-      createdBy: '',
       address: '',
-      lat: '',
-      lng: '',
+      linkedIn: '',
       skills: [],
-      supporters: []
+      nonprofits: [],
+      password: '',
+      passwordConfirmation: ''
     }
   };
 
+  // componentDidMount() {
+  //   Axios
+  //     .get(`/api/users/${this.props.match.params.id}`)
+  //     .then(res => this.setState({ user: res.data }))
+  //     .catch(err => console.log(err));
+  // }
+
   componentDidMount() {
+    const { userId } = Auth.getPayload();
     Axios
-      .get(`/api/nonprofits/${this.props.match.params.id}`)
-      .then(res => this.setState({ nonprofit: res.data }))
-      .catch(err => console.log(err));
+      .get(`/api/users/${userId}`)
+      .then(res => this.setState({ user: res.data }))
+      .catch(err => console.error(err));
   }
 
   handleChange = ({ target: { name, value } }) => {
-    const nonprofit = Object.assign({}, this.state.nonprofit, { [name]: value });
-    this.setState({ nonprofit });
+    const user = Object.assign({}, this.state.user, { [name]: value });
+    this.setState({ user });
   }
 
+  // handleSubmit = (e) => {
+  //   e.preventDefault();
+  //
+  //   Axios
+  //     .put(`/api/users/${this.props.match.params.id}`, this.state.user, {
+  //       headers: { 'Authorisation': `Bearer ${Auth.getToken()}`}
+  //     })
+  //     .then(res => this.props.history.push(`/users/${res.data.id}`))
+  //     .catch(err => console.log(err));
+  // }
   handleSubmit = (e) => {
     e.preventDefault();
 
     Axios
-      .put(`/api/nonprofits/${this.props.match.params.id}`, this.state.nonprofit, {
-        headers: { 'Authorisation': `Bearer ${Auth.getToken()}`}
+      .put(`/api/users/${this.state.user.id}`, this.state.user)
+      .then(() => {
+        this.props.history.push('/');
       })
-      .then(res => this.props.history.push(`/nonprofits/${res.data.id}`))
-      .catch(err => console.log(err));
+      .catch(err => this.setState({ errors: err.response.data.errors }));
   }
-
   render() {
     return (
       <UsersForm
         history={this.props.history}
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
-        nonprofit={this.state.nonprofit}
+        user={this.state.user}
       />
     );
   }

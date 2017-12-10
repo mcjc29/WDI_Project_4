@@ -19,8 +19,9 @@ class NonprofitsNew extends React.Component {
     },
     removeSelected: true,
     skills: [],
-    value: []
-  };
+    value: [],
+    errors: {}
+  }
 
   componentDidMount() {
     Axios
@@ -36,8 +37,10 @@ class NonprofitsNew extends React.Component {
 
   handleChange = ({ target: { name, value } }) => {
     const nonprofit = Object.assign({}, this.state.nonprofit, { [name]: value });
-    this.setState({ nonprofit });
+    const errors = Object.assign({}, this.state.errors, { [name]: '' });
+    this.setState({ nonprofit, errors });
   }
+
 
   handleSelectChange = (value) => {
     this.setState({ value });
@@ -54,7 +57,8 @@ class NonprofitsNew extends React.Component {
         headers: { 'Authorisation': `Bearer ${Auth.getToken()}`}
       })
       .then(() => this.props.history.push('/'))
-      .catch(err => console.log(err));
+      .catch(err => this.setState({ errors: err.response.data.errors }));
+      
   }
 
   render() {
@@ -63,6 +67,7 @@ class NonprofitsNew extends React.Component {
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}
         handleSelectChange={this.handleSelectChange}
+        errors={this.state.errors}
         // nonprofit={this.state.nonprofit}
         // options={this.state.skills}
         {...this.state}

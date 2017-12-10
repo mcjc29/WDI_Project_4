@@ -28,6 +28,7 @@ class NonprofitsShow extends React.Component {
 
   render() {
     if (!this.state.nonprofit) return null;
+
     return (
       <div className="row">
         <div className="image-tile col-md-6">

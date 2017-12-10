@@ -4,6 +4,7 @@ import Axios    from 'axios';
 
 import Auth       from '../../lib/Auth';
 import BackButton from '../utility/BackButton';
+// import UsersForm from './UsersForm';
 
 class UsersShow extends React.Component {
   state = {
@@ -16,6 +17,7 @@ class UsersShow extends React.Component {
       .then(res => this.setState({ user: res.data }))
       .catch(err => console.log(err));
   }
+
 
   deleteUser = () => {
     Axios

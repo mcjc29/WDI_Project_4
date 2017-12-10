@@ -4,8 +4,11 @@ import DragDrop from '../utility/DragDrop';
 
 import BackButton from '../utility/BackButton';
 import MultiSelect from '../utility/MultiSelectField';
+import { FormGroup, FormControl, Form, Col, ControlLabel, Button } from 'react-bootstrap';
 
-function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonprofit, skills, removeSelected, value }) {
+function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonprofit, skills, removeSelected, value, errors }) {
+  const formInvalid = Object.keys(errors).some(key => errors[key]);
+
   return (
     <div className="row">
       <div className="page-banner col-md-12">
@@ -14,7 +17,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
       <form onSubmit={handleSubmit} className="col-md-6">
         <div className="form-group">
           <label htmlFor="name">Name</label>
-          <input
+          <FormControl
             type="text"
             className="form-control"
             id="name"
@@ -25,7 +28,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
         </div>
         {/* <div className="form-group">
           <label htmlFor="image">Image</label>
-          <input
+          <FormControl
             type="text"
             className="form-control"
             id="image"
@@ -43,7 +46,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
         </div>
         <div className="form-group">
           <label htmlFor="description">description</label>
-          <input
+          <FormControl
             type="text"
             className="form-control"
             id="description"
@@ -54,7 +57,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
         </div>
         <div className="form-group">
           <label htmlFor="registration">registration</label>
-          <input
+          <FormControl
             type="text"
             className="form-control"
             id="registration"
@@ -65,12 +68,36 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
         </div>
         <div className="form-group">
           <label htmlFor="address">address</label>
-          <input
+          <FormControl
             type="text"
             className="form-control"
             id="address"
             name="address"
             value={nonprofit.address}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="website">website</label>
+          <FormControl
+            type="text"
+            className="form-control"
+            id="website"
+            name="website"
+            value={nonprofit.website}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="form-group">
+          <label htmlFor="email">email</label>
+          <FormControl
+            type="text"
+            className="form-control"
+            id="email"
+            name="email"
+            value={nonprofit.email}
             onChange={handleChange}
           />
         </div>
@@ -81,7 +108,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
           value={value}
         />
         <div>
-          <button className="save-button">Save</button>
+          <button className="save-button" disabled={formInvalid}>Save</button>
         </div>
       </form>
     </div>

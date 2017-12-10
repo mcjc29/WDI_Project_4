@@ -19,8 +19,12 @@ const NavMain = ({history}) => {
         { (Auth.isAuthenticated() || !Auth.isAuthenticated()) && <LinkContainer to="/nonprofits">
           <NavItem className="nav-link">Charities</NavItem>
         </LinkContainer>}
+
         { (Auth.isAuthenticated() || !Auth.isAuthenticated()) && <LinkContainer to="/users">
           <NavItem className="nav-link">Volunteers</NavItem>
+        </LinkContainer>}
+        { Auth.isAuthenticated() && <LinkContainer exact to="/nonprofits/new">
+          <NavItem href="#">Create Charity</NavItem>
         </LinkContainer>}
         { !Auth.isAuthenticated() && <LinkContainer to="/login">
           <NavItem className="nav-link">Login</NavItem>
