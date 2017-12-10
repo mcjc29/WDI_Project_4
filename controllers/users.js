@@ -8,7 +8,8 @@ function usersIndex(req, res, next) {
 }
 
 function usersShow(req, res, next) {
-  User.fetchByIdWithRatings(req, res)
+  User
+    .findById(req.params.id)
     .then(user => res.status(200).json(user))
     .catch(next);
 }

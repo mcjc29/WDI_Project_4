@@ -8,6 +8,8 @@ const nonprofitSchema = mongoose.Schema({
   registration: { type: String, required: true },
   // createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
   address: { type: String, required: true },
+  website: { type: String, required: true },
+  email: String,
   lat: Number,
   lng: Number,
   skills: [{ type: mongoose.Schema.ObjectId, ref: 'Skill' }],

@@ -38,7 +38,7 @@ class UsersShow extends React.Component {
           <h3>{this.state.user.firstName}</h3>
           <h4>{this.state.user.lastName}</h4>
           <h4>{this.state.user.description}</h4>
-          <h4>{this.state.user.linkedIn}</h4>
+          <a href={this.state.user.linkedIn}>{this.state.user.linkedIn}</a>
           {this.state.user.skills.map(skill => <h4 key={skill.id}>{skill.name}</h4>)}
           {this.state.user.nonprofits.map(nonprofit => <h4 key={nonprofit.id}>{nonprofit.name}</h4>)}
 

@@ -1,7 +1,8 @@
 import React from 'react';
 // import DragDrop from '../utility/DragDrop';
+import MultiSelect from '../utility/MultiSelectField';
 
-const RegisterForm = ({ handleChange, handleSubmit, user }) => {
+const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, skills, removeSelected, value  }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="form-group">
@@ -62,16 +63,12 @@ const RegisterForm = ({ handleChange, handleSubmit, user }) => {
           className="form-control"
         />
       </div>
-      <div className="form-group">
-        <input
-          type="text"
-          name="charitableInterests"
-          placeholder="Tell us about yourself..."
-          onChange={handleChange}
-          value={user.charitableInterests}
-          className="form-control"
-        />
-      </div>
+      <MultiSelect
+        handleSelectChange={handleSelectChange}
+        removeSelected={removeSelected}
+        options={skills}
+        value={value}
+      />
       <div className="form-group">
         <input
           type="text"

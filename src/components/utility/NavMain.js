@@ -16,6 +16,12 @@ const NavMain = ({history}) => {
   return(
     <Navbar inverse collapseOnSelect>
       <Nav pullRight>
+        { (Auth.isAuthenticated() || !Auth.isAuthenticated()) && <LinkContainer to="/nonprofits">
+          <NavItem className="nav-link">Charities</NavItem>
+        </LinkContainer>}
+        { (Auth.isAuthenticated() || !Auth.isAuthenticated()) && <LinkContainer to="/users">
+          <NavItem className="nav-link">Volunteers</NavItem>
+        </LinkContainer>}
         { !Auth.isAuthenticated() && <LinkContainer to="/login">
           <NavItem className="nav-link">Login</NavItem>
         </LinkContainer>}
@@ -24,7 +30,6 @@ const NavMain = ({history}) => {
         { Auth.isAuthenticated() && <LinkContainer to="#"><NavItem className="nav-link" onClick={logout}>Logout</NavItem>
         </LinkContainer>}
       </Nav>
-
     </Navbar>
   );
 };

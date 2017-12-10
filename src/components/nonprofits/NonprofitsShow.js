@@ -37,6 +37,7 @@ class NonprofitsShow extends React.Component {
           <h3>{this.state.nonprofit.name}</h3>
           <h4>{this.state.nonprofit.description}</h4>
           <h4>{this.state.nonprofit.registration}</h4>
+          <a href={this.state.nonprofit.website}>{this.state.nonprofit.website}</a>
           {this.state.nonprofit.skills.map(skill => <h4 key={skill.id}>{skill.name}</h4>)}
           {this.state.nonprofit.supporters.map(supporter => <h4 key={supporter.id}>{supporter.firstName}</h4>)}
 
