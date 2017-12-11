@@ -3,21 +3,52 @@ import Axios    from 'axios';
 import { Link } from 'react-router-dom';
 
 import Auth     from '../../lib/Auth';
+import MultiSelect from '../utility/MultiSelectField';
+
+import Promise from 'bluebird';
 
 class NonprofitsIndex extends React.Component {
   state = {
-    nonprofits: []
+    nonprofits: [],
+    skills: [],
+    value: [],
+    errors: {}
   }
 
-  componentWillMount() {
-    Axios
-      .get('/api/nonprofits')
-      // .then(res => console.log({ nonprofits: res.data }))
-      .then(res => this.setState({ nonprofits: res.data }))
-      .catch(err => console.log(err));
+  componentDidMount() {
+    const promises = {
+      skills: Axios.get('/api/skills').then(res => res.data),
+      nonprofits: Axios.get('/api/nonprofits').then(res => res.data)
+    };
+
+    Promise.props(promises)
+      .then(data => {
+        const skillList = data.skills.map(skill => {
+          return { label: skill.name, value: skill.id, id: skill.id };
+        });
+
+        this.setState({ skills: skillList, nonprofits: data.nonprofits });
+      })
+      .catch(err => this.setState({ errors: err.response.data.errors }));
+  }
+
+  handleSelectChange = (value) => {
+    this.setState({ value });
+  }
+
+  runFilter() {
+    if (!this.state.value.length) return this.state.nonprofits;
+
+    return this.state.nonprofits.filter(nonprofit => {
+      return nonprofit.skills.filter(skill => {
+        return this.state.value.map(value => value.id).indexOf(skill.id) >= 0;
+      }).length;
+    });
   }
 
   render() {
+    const nonprofits = this.runFilter();
+
     return (
       <div>
         <div className="row">
@@ -26,7 +57,12 @@ class NonprofitsIndex extends React.Component {
               <i className="fa fa-plus" aria-hidden="true"></i>Add Nonprofit
             </Link>}
           </div>
-          {this.state.nonprofits.map(nonprofit => {
+          <MultiSelect
+            value={this.state.value}
+            options={this.state.skills}
+            handleSelectChange={this.handleSelectChange}
+          />
+          {nonprofits.map(nonprofit => {
             return(
               <div key={nonprofit.id} className="image-tile col-md-4 col-sm-6 col-xs-12">
                 <Link to={`/nonprofits/${nonprofit.id}`}>

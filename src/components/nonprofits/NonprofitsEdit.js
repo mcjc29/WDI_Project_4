@@ -38,10 +38,10 @@ class NonprofitsEdit extends React.Component {
     Promise.props(promises)
       .then(data => {
         const skillList = data.skills.map(skill => {
-          return { label: skill.name, value: skill.name, id: skill.id };
+          return { label: skill.name, value: skill.id, id: skill.id };
         });
         const ownedSkills = data.nonprofit.skills.map(skill => {
-          return { label: skill.name, value: skill.name, id: skill.id };
+          return { label: skill.name, value: skill.id, id: skill.id };
         });
 
         console.log(ownedSkills);
