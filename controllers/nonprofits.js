@@ -14,7 +14,6 @@ function nonprofitsIndex(req, res, next) {
 function nonprofitsCreate(req, res, next) {
   // if (req.file) req.body.nonprofitNotes = req.file;
   if(req.file) req.body.image = req.file.filename;
-
   Nonprofit
     .create(req.body)
     .then((nonprofit) => res.status(201).json(nonprofit))

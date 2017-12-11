@@ -13,7 +13,7 @@ class UsersIndex extends React.Component {
       .get('/api/users')
       // .then(res => console.log({ users: res.data }))
       .then(res => this.setState({ users: res.data }))
-      .catch(err => console.log(err));
+      .catch(err => console.log(err.response.data.errors));
   }
 
   render() {

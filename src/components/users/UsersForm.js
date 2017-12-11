@@ -21,7 +21,7 @@ function UsersForm({ handleSubmit, handleChange, user }) {
             className="form-control"
             id="name"
             name="name"
-            value={user.name}
+            value={user.firstName}
             onChange={handleChange}
           />
         </FormGroup>
@@ -69,7 +69,7 @@ function UsersForm({ handleSubmit, handleChange, user }) {
             onChange={handleChange}
           />
         </FormGroup>
-        <FormGroup>
+        {/* <FormGroup>
           <label htmlFor="lat">lat</label>
           <input
             type="text"
@@ -90,7 +90,7 @@ function UsersForm({ handleSubmit, handleChange, user }) {
             value={user.lng}
             onChange={handleChange}
           />
-        </FormGroup>
+        </FormGroup> */}
         {/* <MultiSelect
           userSkills={user.skills}
           handleChange={handleChange}
@@ -107,14 +107,15 @@ function UsersForm({ handleSubmit, handleChange, user }) {
             onChange={handleChange}
           />
         </FormGroup>
-        <PasswordEdit
+        {/* <PasswordEdit
           user={this.state.user}
           errors={this.state.errors}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
-        />
+        /> */}
         <Button type="submit">
-          <button className="save-button">Save</button>
+          Save
+          
         </Button>
       </form>
     </div>

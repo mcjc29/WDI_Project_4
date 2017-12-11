@@ -12,8 +12,10 @@ class NonprofitsNew extends React.Component {
       description: '',
       registration: '',
       address: '',
-      lat: '',
-      lng: '',
+      location: {
+        lat: '',
+        lng: ''
+      },
       skills: [],
       supporters: []
     },
@@ -46,19 +48,27 @@ class NonprofitsNew extends React.Component {
     this.setState({ value });
   }
 
+  handleLocationChange = (name, address, location, website) => {
+    console.log('location changed!', 'NAME==>', name, 'ADDRESS==>', address, 'LOCATION==>', location, 'WEBSITE==>', website);
+    const nonprofit = Object.assign({}, this.state.nonprofit, { name, address, location, website });
+    this.setState({ nonprofit }, () => {
+      console.log(this.state);
+    });
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const userSkills = this.state.value.map(skill => skill.id);
     const nonprofit = Object.assign({}, this.state.nonprofit, { skills: userSkills });
-    this.setState({ nonprofit });
-
-    Axios
-      .post('/api/nonprofits', this.state.nonprofit, {
-        headers: { 'Authorisation': `Bearer ${Auth.getToken()}`}
-      })
-      .then(() => this.props.history.push('/'))
-      .catch(err => this.setState({ errors: err.response.data.errors }));
-      
+    console.log(nonprofit);
+    this.setState({ nonprofit }, () => {
+      Axios
+        .post('/api/nonprofits', this.state.nonprofit, {
+          headers: { 'Authorisation': `Bearer ${Auth.getToken()}`}
+        })
+        .then(() => this.props.history.push('/'))
+        .catch(err => this.setState({ errors: err.response.data.errors }));
+    });
   }
 
   render() {
@@ -68,10 +78,8 @@ class NonprofitsNew extends React.Component {
         handleChange={this.handleChange}
         handleSelectChange={this.handleSelectChange}
         errors={this.state.errors}
-        // nonprofit={this.state.nonprofit}
-        // options={this.state.skills}
+        handleLocationChange={this.handleLocationChange}
         {...this.state}
-        // removeSelected={this.state.removeSelected}
       />
     );
   }

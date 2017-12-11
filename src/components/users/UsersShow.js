@@ -45,13 +45,18 @@ class UsersShow extends React.Component {
           {this.state.user.nonprofits.map(nonprofit => <h4 key={nonprofit.id}>{nonprofit.name}</h4>)}
 
           <BackButton />
-          {Auth.isAuthenticated() && <Link to={`/users/${this.state.user.id}/edit`} className="standard-button">
-            <i className="fa fa-pencil" aria-hidden="true"></i>Edit
-          </Link>}
-          {' '}
-          {Auth.isAuthenticated() && <button className="main-button" onClick={this.deleteUser}>
-            <i className="fa fa-trash" aria-hidden="true"></i>Delete
-          </button>}
+          {Auth.isAuthenticated() &&
+            <div>
+              <Link to={`/users/${this.state.user.id}/edit`} className="standard-button">
+                <i className="fa fa-pencil" aria-hidden="true"></i>Edit
+              </Link>
+              <span>{' '}</span>
+              <button className="main-button" onClick={this.deleteUser}>
+                <i className="fa fa-trash" aria-hidden="true"></i>Delete
+              </button>
+            </div>
+          }
+
         </div>
       </div>
     );

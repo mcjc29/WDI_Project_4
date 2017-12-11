@@ -4,6 +4,7 @@ import Axios    from 'axios';
 
 import Auth       from '../../lib/Auth';
 import BackButton from '../utility/BackButton';
+import GoogleMap from '../utility/GoogleMap';
 
 class NonprofitsShow extends React.Component {
   state = {
@@ -28,6 +29,7 @@ class NonprofitsShow extends React.Component {
 
   render() {
     if (!this.state.nonprofit) return null;
+    // console.log(this.state.nonprofit.location, 'location init');
 
     return (
       <div className="row">
@@ -50,6 +52,7 @@ class NonprofitsShow extends React.Component {
           {Auth.isAuthenticated() && <button className="main-button" onClick={this.deleteNonprofit}>
             <i className="fa fa-trash" aria-hidden="true"></i>Delete
           </button>}
+          {this.state.nonprofit.location && <GoogleMap center={this.state.nonprofit.location} />}
         </div>
       </div>
     );

@@ -3,6 +3,7 @@ require('../models/skill');
 require('../models/nonprofit');
 
 function usersIndex(req, res, next) {
+  console.log('users index hit');
   User
     .find()
     .populate('skills')

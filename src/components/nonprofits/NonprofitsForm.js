@@ -1,14 +1,14 @@
 import React from 'react';
 // import Select from 'react-select';
 import DragDrop from '../utility/DragDrop';
+import AutoComplete from '../utility/AutoComplete';
 
 import BackButton from '../utility/BackButton';
 import MultiSelect from '../utility/MultiSelectField';
 import { FormGroup, FormControl, Form, Col, ControlLabel, Button } from 'react-bootstrap';
 
-function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonprofit, skills, removeSelected, value, errors }) {
+function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonprofit, skills, removeSelected, value, errors, handleLocationChange }) {
   const formInvalid = Object.keys(errors).some(key => errors[key]);
-
   return (
     <div className="row">
       <div className="page-banner col-md-12">
@@ -26,17 +26,22 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             onChange={handleChange}
           />
         </div>
-        {/* <div className="form-group">
-          <label htmlFor="image">Image</label>
+        <label>Find Address</label>
+        <AutoComplete
+          findLocation={handleLocationChange}
+        />
+
+        <div className="form-group">
+          <label htmlFor="address">Address</label>
           <FormControl
             type="text"
             className="form-control"
-            id="image"
-            name="image"
-            value={nonprofit.image}
+            id="address"
+            name="address"
+            value={nonprofit.address}
             onChange={handleChange}
           />
-        </div> */}
+        </div>
         <div className="form-group">
           <label htmlFor="image">Image</label>
           <DragDrop
@@ -66,18 +71,6 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             onChange={handleChange}
           />
         </div>
-        <div className="form-group">
-          <label htmlFor="address">address</label>
-          <FormControl
-            type="text"
-            className="form-control"
-            id="address"
-            name="address"
-            value={nonprofit.address}
-            onChange={handleChange}
-          />
-        </div>
-
         <div className="form-group">
           <label htmlFor="website">website</label>
           <FormControl

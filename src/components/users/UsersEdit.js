@@ -30,10 +30,10 @@ class UsersEdit extends React.Component {
   // }
 
   componentDidMount() {
-    const { userId } = Auth.getPayload();
     Axios
-      .get(`/api/users/${userId}`)
-      .then(res => this.setState({ user: res.data }))
+      .get(`/api/users/${this.props.match.params.id}`)
+      .then(res => console.log(res.data))
+      // .then(res => this.setState({ user: res.data }))
       .catch(err => console.error(err));
   }
 
@@ -63,6 +63,7 @@ class UsersEdit extends React.Component {
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
   render() {
+    if (!this.state.user) return null;
     return (
       <UsersForm
         history={this.props.history}

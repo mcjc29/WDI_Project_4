@@ -10,8 +10,7 @@ const nonprofitSchema = mongoose.Schema({
   address: { type: String, required: true },
   website: { type: String, required: true },
   email: String,
-  lat: Number,
-  lng: Number,
+  location: { lat: Number, lng: Number },
   skills: [{ type: mongoose.Schema.ObjectId, ref: 'Skill' }],
   supporters: [{ type: mongoose.Schema.ObjectId, ref: 'User' }]
 },
