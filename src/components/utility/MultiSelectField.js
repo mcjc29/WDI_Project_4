@@ -6,7 +6,6 @@ const MultiSelect = ({options, handleSelectChange, removeSelected, value}) => {
   return (
     <Select
       name="form-field-name"
-      placeholder="Select your favourite(s)"
       removeSelected={removeSelected}
       onChange={handleSelectChange}
       options={options}

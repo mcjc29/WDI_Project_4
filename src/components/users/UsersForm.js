@@ -2,12 +2,12 @@ import React from 'react';
 // import Select from 'react-select';
 
 import BackButton from '../utility/BackButton';
-import PasswordEdit from '../Users/PasswordEdit';
-// import MultiSelect from '../utility/MultiSelectField';
+// import PasswordEdit from '../Users/PasswordEdit';
+import MultiSelect from '../utility/MultiSelectField';
 import { FormGroup, FormControl, Form, Col, ControlLabel, Button } from 'react-bootstrap';
 
-function UsersForm({ handleSubmit, handleChange, user }) {
-
+function UsersForm({ handleSubmit, handleChange, user, handleSelectChange, removeSelected, value, skills, errors }) {
+  const formInvalid = Object.keys(errors).some(key => errors[key]);
   return (
     <div className="row">
       <div className="page-banner col-md-12">
@@ -47,17 +47,7 @@ function UsersForm({ handleSubmit, handleChange, user }) {
             onChange={handleChange}
           />
         </FormGroup>
-        <FormGroup>
-          <label htmlFor="registration">registration</label>
-          <input
-            type="text"
-            className="form-control"
-            id="registration"
-            name="registration"
-            value={user.registration}
-            onChange={handleChange}
-          />
-        </FormGroup>
+
         <FormGroup>
           <label htmlFor="address">address</label>
           <input
@@ -69,35 +59,14 @@ function UsersForm({ handleSubmit, handleChange, user }) {
             onChange={handleChange}
           />
         </FormGroup>
-        {/* <FormGroup>
-          <label htmlFor="lat">lat</label>
-          <input
-            type="text"
-            className="form-control"
-            id="lat"
-            name="lat"
-            value={user.lat}
-            onChange={handleChange}
-          />
-        </FormGroup>
-        <FormGroup>
-          <label htmlFor="lng">lng</label>
-          <input
-            type="text"
-            className="form-control"
-            id="lng"
-            name="lng"
-            value={user.lng}
-            onChange={handleChange}
-          />
-        </FormGroup> */}
-        {/* <MultiSelect
-          userSkills={user.skills}
-          handleChange={handleChange}
+        <MultiSelect
+          handleSelectChange={handleSelectChange}
           removeSelected={removeSelected}
-        /> */}
+          options={skills}
+          value={value}
+        />
         <FormGroup>
-          <label htmlFor="supporters">supporters</label>
+          <label htmlFor="supporters">Charities I support</label>
           <input
             type="text"
             className="form-control"
@@ -113,9 +82,8 @@ function UsersForm({ handleSubmit, handleChange, user }) {
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
         /> */}
-        <Button type="submit">
+        <Button type="submit" disabled={formInvalid}>
           Save
-          
         </Button>
       </form>
     </div>

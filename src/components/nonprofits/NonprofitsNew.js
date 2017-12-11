@@ -34,7 +34,7 @@ class NonprofitsNew extends React.Component {
         });
         this.setState({skills});
       })
-      .catch(err => console.log(err));
+      .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
   handleChange = ({ target: { name, value } }) => {
@@ -64,9 +64,10 @@ class NonprofitsNew extends React.Component {
     this.setState({ nonprofit }, () => {
       Axios
         .post('/api/nonprofits', this.state.nonprofit, {
-          headers: { 'Authorisation': `Bearer ${Auth.getToken()}`}
+          headers: { 'authorization': `Bearer ${Auth.getToken()}`}
         })
-        .then(() => this.props.history.push('/'))
+        // .then(() => this.props.history.push('/'))
+        .then(res => this.props.history.push(`/nonprofits/${res.data.id}`))
         .catch(err => this.setState({ errors: err.response.data.errors }));
     });
   }

@@ -21,7 +21,7 @@ class NonprofitsShow extends React.Component {
   deleteNonprofit = () => {
     Axios
       .delete(`/api/nonprofits/${this.props.match.params.id}`, {
-        headers: { 'Authorisation': `Bearer ${Auth.getToken()}`}
+        headers: { 'authorization': `Bearer ${Auth.getToken()}`}
       })
       .then(() => this.props.history.push('/'))
       .catch(err => console.log(err));
@@ -34,7 +34,7 @@ class NonprofitsShow extends React.Component {
     return (
       <div className="row">
         <div className="image-tile col-md-6">
-          <img src={this.state.nonprofit.image || this.state.nonprofit.imageSRC} className="img-responsive" />
+          <img src={this.state.nonprofit.imageSRC} className="img-responsive" />
         </div>
         <div className="col-md-6">
           <h3>{this.state.nonprofit.name}</h3>

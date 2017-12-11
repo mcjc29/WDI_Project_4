@@ -15,6 +15,10 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
         <BackButton history={history} />
       </div>
       <form onSubmit={handleSubmit} className="col-md-6">
+        <label>Search for your Charity</label>
+        <AutoComplete
+          findLocation={handleLocationChange}
+        />
         <div className="form-group">
           <label htmlFor="name">Name</label>
           <FormControl
@@ -26,10 +30,6 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             onChange={handleChange}
           />
         </div>
-        <label>Find Address</label>
-        <AutoComplete
-          findLocation={handleLocationChange}
-        />
 
         <div className="form-group">
           <label htmlFor="address">Address</label>

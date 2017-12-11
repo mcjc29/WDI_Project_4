@@ -1,8 +1,11 @@
 import React from 'react';
 // import DragDrop from '../utility/DragDrop';
 import MultiSelect from '../utility/MultiSelectField';
+import AutoComplete from '../utility/AutoComplete';
 
-const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, skills, removeSelected, value  }) => {
+const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, skills, removeSelected, value, handleLocationChange, errors  }) => {
+  const formInvalid = Object.keys(errors).some(key => errors[key]);
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="form-group">
@@ -69,6 +72,10 @@ const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, sk
         options={skills}
         value={value}
       />
+      <label>Search for your address</label>
+      <AutoComplete
+        findLocation={handleLocationChange}
+      />
       <div className="form-group">
         <input
           type="text"
@@ -110,7 +117,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, sk
         />
       </div>
 
-      <button className="btn btn-primary">Login</button>
+      <button className="btn btn-primary" disabled={formInvalid}>Login</button>
     </form>
   );
 };

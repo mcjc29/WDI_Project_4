@@ -4,12 +4,11 @@ const authentications = require('../controllers/authentications');
 const users = require('../controllers/users');
 const nonprofits = require('../controllers/nonprofits');
 const skills = require('../controllers/skills');
-// const imageUpload = require('../lib/imageUpload');
+const imageUpload = require('../lib/imageUpload');
 
 
 router.route('/register')
-  .post(authentications.register);
-// .post(imageUpload, authentications.register);
+  .post(imageUpload, authentications.register);
 
 router.route('/login')
   .post(authentications.login);
@@ -24,11 +23,11 @@ router.route('/users/:id')
 
 router.route('/nonprofits')
   .get(nonprofits.index)
-  .post(nonprofits.create);
+  .post(imageUpload, nonprofits.create);
 
 router.route('/nonprofits/:id')
   .get(nonprofits.show)
-  .put(nonprofits.update)
+  .put(imageUpload, nonprofits.update)
   .delete(nonprofits.delete);
 
 router.route('nonprofits/:id/support')

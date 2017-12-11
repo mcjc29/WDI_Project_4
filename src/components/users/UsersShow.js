@@ -22,7 +22,7 @@ class UsersShow extends React.Component {
   deleteUser = () => {
     Axios
       .delete(`/api/users/${this.props.match.params.id}`, {
-        headers: { 'Authorisation': `Bearer ${Auth.getToken()}`}
+        headers: { 'authorization': `Bearer ${Auth.getToken()}`}
       })
       .then(() => this.props.history.push('/'))
       .catch(err => console.log(err));

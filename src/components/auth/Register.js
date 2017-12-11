@@ -13,6 +13,10 @@ class Register extends React.Component {
       image: '',
       description: '',
       address: '',
+      location: {
+        lat: '',
+        lng: ''
+      },
       linkedIn: '',
       skills: [],
       nonprofits: [],
@@ -21,7 +25,9 @@ class Register extends React.Component {
     },
     removeSelected: true,
     skills: [],
-    value: []
+    value: [],
+    errors: {}
+
   };
 
   componentDidMount() {
@@ -33,7 +39,7 @@ class Register extends React.Component {
         });
         this.setState({skills});
       })
-      .catch(err => console.log(err));
+      .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
   handleChange = ({ target: { name, value }}) => {
@@ -42,6 +48,14 @@ class Register extends React.Component {
   }
   handleSelectChange = (value) => {
     this.setState({ value });
+  }
+
+  handleLocationChange = (address, location) => {
+    console.log('location changed!', 'ADDRESS==>', address, 'LOCATION==>', location);
+    const user = Object.assign({}, this.state.user, { address, location});
+    this.setState({ user }, () => {
+      console.log(this.state);
+    });
   }
 
   handleSubmit = (e) => {
@@ -56,7 +70,7 @@ class Register extends React.Component {
         Auth.setToken(res.data.token);
         this.props.history.push('/');
       })
-      .catch(err => console.log(err));
+      .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
   render() {
@@ -66,6 +80,8 @@ class Register extends React.Component {
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
         handleSelectChange={this.handleSelectChange}
+        handleLocationChange={this.handleLocationChange}
+        errors={this.state.errors}
 
         {...this.state}
 

@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
   image: String,
   description: String,
   address: { type: String, required: true },
+  location: { lat: Number, lng: Number },
   linkedIn: String,
   password: { type: String, required: 'This field is required.' },
   skills: [{ type: mongoose.Schema.ObjectId, ref: 'Skill' }],

@@ -4,6 +4,8 @@ import Axios from 'axios';
 import NonprofitsForm from './NonprofitsForm';
 import Auth from '../../lib/Auth';
 
+import Promise from 'bluebird';
+
 class NonprofitsEdit extends React.Component {
   state = {
     nonprofit: {
@@ -17,7 +19,9 @@ class NonprofitsEdit extends React.Component {
         lng: ''
       },
       skills: [],
-      supporters: []
+      supporters: [],
+      website: '',
+      email: ''
     },
     removeSelected: true,
     skills: [],
@@ -26,21 +30,23 @@ class NonprofitsEdit extends React.Component {
   };
 
   componentDidMount() {
-    Axios
-      .all([
-        Axios.get('/api/skills'),
-        Axios.get(`/api/nonprofits/${this.props.match.params.id}`)
-      ])
-      .then(Axios.spread((skills, nonprofit) => {
-        console.log(nonprofit.data);
-        const skillList = skills.data.map(skill => {
+    const promises = {
+      skills: Axios.get('/api/skills').then(res => res.data),
+      nonprofit: Axios.get(`/api/nonprofits/${this.props.match.params.id}`).then(res => res.data)
+    };
+
+    Promise.props(promises)
+      .then(data => {
+        const skillList = data.skills.map(skill => {
           return { label: skill.name, value: skill.name, id: skill.id };
         });
-        const ownedSkills = nonprofit.data.skills.map(skill => {
+        const ownedSkills = data.nonprofit.skills.map(skill => {
           return { label: skill.name, value: skill.name, id: skill.id };
         });
-        this.setState({skills: skillList, nonprofit: nonprofit.data, value: ownedSkills});
-      }))
+
+        console.log(ownedSkills);
+        this.setState({ skills: skillList, nonprofit: data.nonprofit, value: ownedSkills });
+      })
       .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
@@ -70,7 +76,7 @@ class NonprofitsEdit extends React.Component {
     this.setState({ nonprofit }, () => {
       Axios
         .put(`/api/nonprofits/${this.props.match.params.id}`, this.state.nonprofit, {
-          headers: { 'Authorisation': `Bearer ${Auth.getToken()}`}
+          headers: { 'authorization': `Bearer ${Auth.getToken()}`}
         })
         .then(res => this.props.history.push(`/nonprofits/${res.data.id}`))
         .catch(err => this.setState({ errors: err.response.data.errors }));
