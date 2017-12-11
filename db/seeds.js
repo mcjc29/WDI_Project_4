@@ -205,17 +205,6 @@ Skill.create([
     console.log(`${skills.length} skilz created!`);
     return User.create([
       {
-        username: 'Person',
-        firstName: 'Person',
-        lastName: 'Person',
-        email: 'person@person.com',
-        image: '...',
-        description: 'do gooder',
-        address: 'road street',
-        password: 'password',
-        passwordConfirmation: 'password',
-        skills: [skills[0], skills[2], skills[5]]
-      } , {
         username: 'CamDaMAn',
         firstName: 'Cameron',
         lastName: 'Jones',

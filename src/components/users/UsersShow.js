@@ -45,7 +45,7 @@ class UsersShow extends React.Component {
           {this.state.user.nonprofits.map(nonprofit => <h4 key={nonprofit.id}>{nonprofit.name}</h4>)}
 
           <BackButton />
-          {Auth.isAuthenticated() &&
+          {Auth.isAuthenticated() && Auth.getPayload().userId === this.props.match.params.id &&
             <div>
               <Link to={`/users/${this.state.user.id}/edit`} className="standard-button">
                 <i className="fa fa-pencil" aria-hidden="true"></i>Edit

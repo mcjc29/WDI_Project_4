@@ -27,7 +27,19 @@ class NonprofitsShow extends React.Component {
       .catch(err => console.log(err));
   }
 
+  nonprofitsSupport = () => {
+    Axios
+      .post(`/api/nonprofits/${this.props.match.params.id}/support`, this.state.nonprofit, {
+        headers: { 'authorization': `Bearer ${Auth.getToken()}`}
+      })
+      .then(() => {
+        this.props.history.push(`/api/nonprofits/${this.props.match.params.id}`);
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
+    console.log(this.state.nonprofit);
     if (!this.state.nonprofit) return null;
     // console.log(this.state.nonprofit.location, 'location init');
 
@@ -45,12 +57,16 @@ class NonprofitsShow extends React.Component {
           {this.state.nonprofit.supporters.map(supporter => <h4 key={supporter.id}>{supporter.firstName}</h4>)}
 
           <BackButton />
-          {Auth.isAuthenticated() && <Link to={`/nonprofits/${this.state.nonprofit.id}/edit`} className="standard-button">
+          {Auth.isAuthenticated() && Auth.getPayload().userId === this.props.match.params.id && <Link to={`/nonprofits/${this.state.nonprofit.id}/edit`} className="standard-button">
             <i className="fa fa-pencil" aria-hidden="true"></i>Edit
           </Link>}
           {' '}
-          {Auth.isAuthenticated() && <button className="main-button" onClick={this.deleteNonprofit}>
+          {Auth.isAuthenticated() && Auth.getPayload().userId === this.props.match.params.id && <button className="main-button" onClick={this.deleteNonprofit}>
             <i className="fa fa-trash" aria-hidden="true"></i>Delete
+          </button>}
+          {' '}
+          {Auth.isAuthenticated() && Auth.getPayload().userId === this.props.match.params.id && <button className="main-button" onClick={this.nonprofitsSupport} aria-hidden="true">
+            Support {this.state.nonprofit.name}
           </button>}
           {this.state.nonprofit.location && <GoogleMap center={this.state.nonprofit.location} />}
         </div>

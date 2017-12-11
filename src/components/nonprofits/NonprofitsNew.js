@@ -66,7 +66,6 @@ class NonprofitsNew extends React.Component {
         .post('/api/nonprofits', this.state.nonprofit, {
           headers: { 'authorization': `Bearer ${Auth.getToken()}`}
         })
-        // .then(() => this.props.history.push('/'))
         .then(res => this.props.history.push(`/nonprofits/${res.data.id}`))
         .catch(err => this.setState({ errors: err.response.data.errors }));
     });

@@ -8,6 +8,10 @@ import 'bootstrap-css-only';
 import 'react-select/dist/react-select.css';
 import NavMain from './components/utility/NavMain';
 import Routes from './components/utility/Routes';
+import SearchBar from './components/utility/SearchBar';
+
+import NonprofitsIndex from './components/nonprofits/NonprofitsIndex';
+import UsersIndex from './components/users/UsersIndex';
 
 class App extends React.Component {
 
@@ -19,7 +23,7 @@ class App extends React.Component {
             <NavMain />
           </header>
           <div className="container">
-            <h1><Link to="/">Home</Link></h1>
+            <SearchBar NonprofitsIndex={NonprofitsIndex} UsersIndex={UsersIndex}/>
             <main>
               <Routes />
             </main>

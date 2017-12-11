@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
+const skillSchema = new mongoose.Schema({
+  skill: { type: mongoose.Schema.ObjectId, ref: 'Skill' },
+  ratings: [{ type: mongoose.Schema.ObjectId, ref: 'Rating' }]
+});
+
 const userSchema = new mongoose.Schema({
   username: { type: String, required: 'This field is required.' },
   firstName: { type: String, required: 'This field is required.' },
@@ -12,7 +17,8 @@ const userSchema = new mongoose.Schema({
   location: { lat: Number, lng: Number },
   linkedIn: String,
   password: { type: String, required: 'This field is required.' },
-  skills: [{ type: mongoose.Schema.ObjectId, ref: 'Skill' }],
+  // skills: [{ type: mongoose.Schema.ObjectId, ref: 'Skill' }],
+  skills: [ skillSchema ],
   nonprofits: [{ type: mongoose.Schema.ObjectId, ref: 'Nonprofit' }]
   // ratings: [
   //   {
@@ -51,4 +57,12 @@ userSchema.methods.validatePassword = function validatePassword(password) {
   return bcrypt.compareSync(password, this.password);
 };
 
+userSchema
+  .virtual('averageRatings')
+  .get(calculateAvg);
+
 module.exports = mongoose.model('User', userSchema);
+
+function calculateAvg() {
+  console.log(this.skills);
+}
