@@ -79,7 +79,7 @@ function nonprofitsUnsupport(req, res, next) {
     })
     .then(nonprofit => {
       req.currentUser.nonprofits.pull(nonprofit._id);
-      return req.user.save()
+      return req.currentUser.save()
         .then(() => res.json(nonprofit));
     })
     .catch(next);

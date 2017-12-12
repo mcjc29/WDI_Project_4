@@ -38,6 +38,17 @@ class NonprofitsShow extends React.Component {
       .catch(err => console.log(err));
   }
 
+  nonprofitsUnsupport = () => {
+    Axios
+      .delete(`/api/nonprofits/${this.props.match.params.id}/support`, {
+        headers: { 'authorization': `Bearer ${Auth.getToken()}`}
+      })
+      .then(() => {
+        this.props.history.push(`/api/nonprofits/${this.props.match.params.id}`);
+      })
+      .catch(err => console.log(err));
+  }
+
   render() {
     console.log(this.state.nonprofit);
     if (!this.state.nonprofit) return null;
@@ -55,8 +66,9 @@ class NonprofitsShow extends React.Component {
           <h4>{this.state.nonprofit.registration}</h4>
           <a href={this.state.nonprofit.website}>{this.state.nonprofit.website}</a>
           {this.state.nonprofit.skills.map(skill => <h4 key={skill.id}>{skill.name}</h4>)}
-          {this.state.nonprofit.supporters.map(supporter => <h4 key={supporter.id}>{supporter.firstName}</h4>)}
-
+          <div>Supporters of {this.state.nonprofit.name}
+            {this.state.nonprofit.supporters.map(supporter => <h4 key={supporter.id}>{supporter.firstName} {supporter.lastName}<img src={supporter.image} className="img-responsive" /></h4>)}
+          </div>
           <BackButton />
           {Auth.isAuthenticated() && userId === this.state.nonprofit.createdBy && <Link to={`/nonprofits/${this.state.nonprofit.id}/edit`} className="standard-button">
             <i className="fa fa-pencil" aria-hidden="true"></i>Edit
@@ -68,6 +80,9 @@ class NonprofitsShow extends React.Component {
           {' '}
           {Auth.isAuthenticated() && <button className="main-button" onClick={this.nonprofitsSupport} aria-hidden="true">
             Support {this.state.nonprofit.name}
+          </button>}
+          {Auth.isAuthenticated() && <button className="main-button" onClick={this.nonprofitsUnsupport} aria-hidden="true">
+            Unsupport {this.state.nonprofit.name}
           </button>}
           {this.state.nonprofit.location && <GoogleMap center={this.state.nonprofit.location} />}
         </div>

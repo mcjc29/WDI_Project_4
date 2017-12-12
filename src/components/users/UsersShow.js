@@ -56,6 +56,7 @@ class UsersShow extends React.Component {
           <h4>{this.state.user.lastName}</h4>
           <h4>{this.state.user.description}</h4>
           <a href={this.state.user.linkedIn}>{this.state.user.linkedIn}</a>
+          
           {this.state.user.skills.map(skill =>
             <div key={skill.skill.id}>
               <h4 >{skill.skill.name}</h4>
@@ -77,11 +78,29 @@ class UsersShow extends React.Component {
                     onChange={() => this.handleChange(4)}
                   />
                   <label className="star-rating__ico fa fa-star-o fa-lg" htmlFor="star-rating-4" title="4 out of 5 stars"></label>
-                  <input className="star-rating__input" id="star-rating-3" type="radio" name="rating" value="3" />
+                  <input className="star-rating__input"
+                    id="star-rating-3"
+                    type="radio"
+                    name="rating"
+                    value="3"
+                    onChange={() => this.handleChange(3)}
+                  />
                   <label className="star-rating__ico fa fa-star-o fa-lg" htmlFor="star-rating-3" title="3 out of 5 stars"></label>
-                  <input className="star-rating__input" id="star-rating-2" type="radio" name="rating" value="2" />
+                  <input className="star-rating__input"
+                    id="star-rating-2"
+                    type="radio"
+                    name="rating"
+                    value="2"
+                    onChange={() => this.handleChange(2)}
+                  />
                   <label className="star-rating__ico fa fa-star-o fa-lg" htmlFor="star-rating-2" title="2 out of 5 stars"></label>
-                  <input className="star-rating__input" id="star-rating-1" type="radio" name="rating" value="1" />
+                  <input className="star-rating__input"
+                    id="star-rating-1"
+                    type="radio"
+                    name="rating"
+                    value="1"
+                    onChange={() => this.handleChange(1)}
+                  />
                   <label className="star-rating__ico fa fa-star-o fa-lg" htmlFor="star-rating-1" title="1 out of 5 stars"></label>
                 </div>
               </div>
