@@ -5,11 +5,13 @@ import AutoComplete from '../utility/AutoComplete';
 
 import BackButton from '../utility/BackButton';
 import MultiSelect from '../utility/MultiSelectField';
-import { FormGroup, FormControl, Form, Col, ControlLabel, Button } from 'react-bootstrap';
+import { FormGroup, FormControl, Form, Col, ControlLabel, Button, Label } from 'react-bootstrap';
 
 function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonprofit, skills, removeSelected, value, errors, handleLocationChange }) {
 
   const formInvalid = Object.keys(errors).some(key => errors[key]);
+
+
 
   return (
     <div className="row">
@@ -21,7 +23,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
         <AutoComplete
           findLocation={handleLocationChange}
         />
-        <div className="form-group">
+        <FormGroup validationState={errors.name ? "error" : "success" }>
           <label htmlFor="name">Name</label>
           <FormControl
             type="text"
@@ -31,10 +33,11 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             value={nonprofit.name}
             onChange={handleChange}
           />
-          {errors.name && <small>{errors.name}</small>}
-        </div>
+          <Label bsStyle="danger">{errors.name}</Label>
+        </FormGroup>
 
-        <div className="form-group">
+        <FormGroup validationState={errors.name ? "error" : "success" }>
+
           <label htmlFor="address">Address</label>
           <FormControl
             type="text"
@@ -44,19 +47,22 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             value={nonprofit.address}
             onChange={handleChange}
           />
-          {errors.address && <small>{errors.address}</small>}
+          {errors.address && <Label bsStyle="danger">{errors.address}</Label>}
+        </FormGroup>
 
-        </div>
-        <div className="form-group">
+        <FormGroup validationState={errors.name ? "error" : "success" }>
+
           <label htmlFor="image">Image</label>
           <DragDrop
             onChange={handleChange}
             value={nonprofit.base64 || nonprofit.imageSRC}
           />
-          {errors.image && <small>{errors.image}</small>}
+          {errors.image && <Label bsStyle="danger">{errors.image}</Label>}
 
-        </div>
-        <div className="form-group">
+        </FormGroup>
+
+        <FormGroup validationState={errors.name ? "error" : "success" }>
+
           <label htmlFor="description">description</label>
           <FormControl
             type="text"
@@ -66,9 +72,9 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             value={nonprofit.description}
             onChange={handleChange}
           />
-          {errors.description && <small>{errors.description}</small>}
+          {errors.description && <Label bsStyle="danger">{errors.description}</Label>}
 
-        </div>
+        </FormGroup>
         <div className="form-group">
           <label htmlFor="registration">registration</label>
           <FormControl
@@ -79,7 +85,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             value={nonprofit.registration}
             onChange={handleChange}
           />
-          {errors.registration && <small>{errors.registration}</small>}
+          {errors.registration && <Label bsStyle="danger">{errors.registration}</Label>}
 
         </div>
         <div className="form-group">
@@ -92,7 +98,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             value={nonprofit.website}
             onChange={handleChange}
           />
-          {errors.website && <small>{errors.website}</small>}
+          {errors.website && <Label bsStyle="danger">{errors.website}</Label>}
 
         </div>
 
@@ -106,7 +112,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             value={nonprofit.email}
             onChange={handleChange}
           />
-          {errors.email && <small>{errors.email}</small>}
+          {errors.email && <Label bsStyle="danger">{errors.email}</Label>}
 
         </div>
         Select the skills your charity is looking for

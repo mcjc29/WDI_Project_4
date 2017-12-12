@@ -45,6 +45,7 @@ class UsersShow extends React.Component {
 
   render() {
     if (!this.state.user) return null;
+    console.log(this.state.user);
     return (
       <div className="row">
         <div className="image-tile col-md-6">
@@ -60,7 +61,7 @@ class UsersShow extends React.Component {
           {this.state.user.skills.map(skill =>
             <div key={skill.skill.id}>
               <h4 >{skill.skill.name}</h4>
-              Average Rating: {this.state.rating}
+              Average Rating: {skill.averageRatings}
               <div className="star-rating">
                 <div className="star-rating__wrap">
                   <input className="star-rating__input"

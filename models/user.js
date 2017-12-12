@@ -60,19 +60,5 @@ userSchema.methods.validatePassword = function validatePassword(password) {
   return bcrypt.compareSync(password, this.password);
 };
 
-// userSchema
-//   .virtual('averageRatings')
-//   .get(calculateAverageofAvg);
 
 module.exports = mongoose.model('User', userSchema);
-
-// function calculateAverageofAvg() {
-//   // let sum = 0;
-//   // const allSkillRatings = this.skills.map(ratings => {
-//   //   sum += ratings.rating;
-//   //   ratings.rating;
-//
-//   });
-//   console.log(this.skills);
-//
-// }
