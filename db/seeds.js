@@ -212,7 +212,7 @@ Skill.create([
         image:
         'https://user-images.githubusercontent.com/28314323/32336420-37401b96-bfe7-11e7-82ce-f7a9a94798c4.jpg',
         description: 'do gooder',
-        skills: [skills[30], skills[6], skills[50]],
+        skills: [{skill: skills[30]}, {skill: skills[6]}, {skill: skills[50]}],
         address: 'road street',
         linkedIn: 'https://uk.linkedin.com',
         password: 'password',
@@ -226,54 +226,55 @@ Skill.create([
         image:
         'https://user-images.githubusercontent.com/28314323/32336469-55698e72-bfe7-11e7-9d02-fdabd2a2d95d.jpg',
         description: 'do gooder',
-        skills: [skills[38], skills[69], skills[59]],
-        address: 'road street',
-        linkedIn: 'https://uk.linkedin.com',
-        password: 'password',
-        passwordConfirmation: 'password'
-      },
-      {
-        username: 'SiPot',
-        firstName: 'Siobhan',
-        lastName: 'Potter',
-        email: 'siobhan@siobhan.com',
-        image:
-        'https://user-images.githubusercontent.com/28314323/32336467-5211c230-bfe7-11e7-9af5-286502b8fca1.jpg',
-        description: 'do gooder',
-        skills: [skills[38], skills[69], skills[59]],
-        address: 'road street',
-        linkedIn: 'https://uk.linkedin.com',
-        password: 'password',
-        passwordConfirmation: 'password'
-      },
-      {
-        username: 'S.O',
-        firstName: 'Sandra',
-        lastName: 'Okoli',
-        email: 'sandra@sandra.com',
-        image:
-        'https://user-images.githubusercontent.com/28314323/32336479-57410a40-bfe7-11e7-87b9-18688869fa4a.jpg',
-        description: 'do gooder',
-        skills: [skills[34], skills[69], skills[59]],
-        address: 'road street',
-        linkedIn: 'https://uk.linkedin.com',
-        password: 'password',
-        passwordConfirmation: 'password'
-      },
-      {
-        username: 'SayPay',
-        firstName: 'Sarah',
-        lastName: 'Alpay',
-        email: 'sarah@sarah.com',
-        image:
-        'https://user-images.githubusercontent.com/28314323/32336488-598e339a-bfe7-11e7-938c-77b2abcf6af0.jpg',
-        description: 'do gooder',
-        skills: [skills[30], skills[6], skills[50]],
+        skills: [{skill: skills[30]}, {skill: skills[6]}, {skill: skills[50]}],
         address: 'road street',
         linkedIn: 'https://uk.linkedin.com',
         password: 'password',
         passwordConfirmation: 'password'
       }
+
+      // {
+      //   username: 'SiPot',
+      //   firstName: 'Siobhan',
+      //   lastName: 'Potter',
+      //   email: 'siobhan@siobhan.com',
+      //   image:
+      //   'https://user-images.githubusercontent.com/28314323/32336467-5211c230-bfe7-11e7-9af5-286502b8fca1.jpg',
+      //   description: 'do gooder',
+      //   skills: [skills[38], skills[69], skills[59]],
+      //   address: 'road street',
+      //   linkedIn: 'https://uk.linkedin.com',
+      //   password: 'password',
+      //   passwordConfirmation: 'password'
+      // },
+      // {
+      //   username: 'S.O',
+      //   firstName: 'Sandra',
+      //   lastName: 'Okoli',
+      //   email: 'sandra@sandra.com',
+      //   image:
+      //   'https://user-images.githubusercontent.com/28314323/32336479-57410a40-bfe7-11e7-87b9-18688869fa4a.jpg',
+      //   description: 'do gooder',
+      //   skills: [skills[34], skills[69], skills[59]],
+      //   address: 'road street',
+      //   linkedIn: 'https://uk.linkedin.com',
+      //   password: 'password',
+      //   passwordConfirmation: 'password'
+      // },
+      // {
+      //   username: 'SayPay',
+      //   firstName: 'Sarah',
+      //   lastName: 'Alpay',
+      //   email: 'sarah@sarah.com',
+      //   image:
+      //   'https://user-images.githubusercontent.com/28314323/32336488-598e339a-bfe7-11e7-938c-77b2abcf6af0.jpg',
+      //   description: 'do gooder',
+      //   skills: [skills[30], skills[6], skills[50]],
+      //   address: 'road street',
+      //   linkedIn: 'https://uk.linkedin.com',
+      //   password: 'password',
+      //   passwordConfirmation: 'password'
+      // }
     ])
       .then(users => {
         console.log(`${users.length} users created!`);
@@ -322,7 +323,7 @@ Skill.create([
               lng: 5
             },
             skills: [skills[6], skills[10], skills[9]],
-            supporters: [users[1]]
+            supporters: [users[0]]
           } ,     {
             name: 'Luna',
             image: 'http://lunachildren.org.uk/wp-content/themes/blankslate/images/luna-childrens-charity-logo-orange.jpg',
@@ -337,7 +338,7 @@ Skill.create([
               lng: 5
             },
             skills: [skills[68], skills[17], skills[69]],
-            supporters: [users[3]]
+            supporters: [users[0]]
           } , {
             name: 'Migrants Resource Center',
             image: 'https://www.migrantsresourcecentre.org.uk/wp-content/uploads/2017/03/MRC-full-words-logo-150h.png',
@@ -352,7 +353,7 @@ Skill.create([
               lng: 5
             },
             skills: [skills[68], skills[17], skills[69]],
-            supporters: [users[3]]
+            supporters: [users[0]]
           }
         ]);
       })

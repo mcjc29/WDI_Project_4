@@ -58,30 +58,24 @@ class UsersIndex extends React.Component {
 
     return (
       <div>
-        <div className="row">
+        <div className="Row">
           <MultiSelect
             value={this.state.value}
             options={this.state.skills}
-            handleSelectChange={this.handleSelectChange}
-          />
+            handleSelectChange={this.handleSelectChange}/>
+
           {users.map(user => {
             return(
-              <Grid key={user.id}>
-                <Row>
-                  <Col xs={6} md={4}>
-                    <Thumbnail src={user.image} alt="242x200">
-                      <h3>{user.firstName}</h3>
-                      <h4>  {user.skills.map(skill => {
-                        return(
-                          <div key={skill.id}>{skill.name}</div>);
-                      })}</h4>
-                      <Button bsStyle="default"><Link to={`/users/${user.id}`}>
-                        <h4>View Profile</h4>
-                      </Link></Button>
-                    </Thumbnail>
-                  </Col>
-                </Row>
-              </Grid>
+              <div key={user.id} className="image-tile col-md-4 col-sm-6 col-xs-12">
+                <Link to={`/users/${user.id}`}>
+                  <h3>{user.firstName}</h3>
+                </Link>
+                <img src={user.image} className="img-responsive" />
+                {user.skills.map(skill => {
+                  return(
+                    <h4 key={skill.id}>{skill.name}</h4>);
+                })}
+              </div>
             );
           })}
         </div>
@@ -89,5 +83,6 @@ class UsersIndex extends React.Component {
     );
   }
 }
+
 
 export default UsersIndex;

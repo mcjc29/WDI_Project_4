@@ -15,6 +15,8 @@ class UsersShow extends React.Component {
     Axios
       .get(`/api/users/${this.props.match.params.id}`)
       .then(res => this.setState({ user: res.data }))
+      // .then(res => console.log(res.data ))
+
       .catch(err => console.log(err));
   }
 
@@ -41,7 +43,7 @@ class UsersShow extends React.Component {
           <h4>{this.state.user.lastName}</h4>
           <h4>{this.state.user.description}</h4>
           <a href={this.state.user.linkedIn}>{this.state.user.linkedIn}</a>
-          {this.state.user.skills.map(skill => <h4 key={skill.id}>{skill.name}</h4>)}
+          {this.state.user.skills.map(skill => <h4 key={skill.skill.id}>{skill.skill.name}</h4>)}
           {this.state.user.nonprofits.map(nonprofit => <h4 key={nonprofit.id}>{nonprofit.name}</h4>)}
 
           <BackButton />

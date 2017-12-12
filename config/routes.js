@@ -4,6 +4,7 @@ const authentications = require('../controllers/authentications');
 const users = require('../controllers/users');
 const nonprofits = require('../controllers/nonprofits');
 const skills = require('../controllers/skills');
+const ratings = require('../controllers/ratings');
 const imageUpload = require('../lib/imageUpload');
 const secureRoute = require('../lib/secureRoute');
 
@@ -22,6 +23,9 @@ router.route('/users/:id')
   .put(secureRoute, users.update)
   .delete(secureRoute, users.delete);
 
+router.route('/users/:id/skills/:skillId/rating')
+  .post(secureRoute, ratings.create);
+
 router.route('/nonprofits')
   .get(nonprofits.index)
   .post(secureRoute, imageUpload, nonprofits.create);
@@ -37,5 +41,7 @@ router.route('nonprofits/:id/support')
 
 router.route('/skills')
   .get(skills.index);
+
+
 
 module.exports = router;

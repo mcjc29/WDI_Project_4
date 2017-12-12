@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const skillSchema = new mongoose.Schema({
+const skillUserSchema = new mongoose.Schema({
   skill: { type: mongoose.Schema.ObjectId, ref: 'Skill' },
   ratings: [{ type: mongoose.Schema.ObjectId, ref: 'Rating' }]
 });
+
+skillUserSchema
+  .virtual('averageRatings')
+  .get(calculateAvg);
 
 const userSchema = new mongoose.Schema({
   username: { type: String, required: 'This field is required.' },
@@ -17,17 +21,8 @@ const userSchema = new mongoose.Schema({
   location: { lat: Number, lng: Number },
   linkedIn: String,
   password: { type: String, required: 'This field is required.' },
-  // skills: [{ type: mongoose.Schema.ObjectId, ref: 'Skill' }],
-  skills: [ skillSchema ],
+  skills: [ skillUserSchema ],
   nonprofits: [{ type: mongoose.Schema.ObjectId, ref: 'Nonprofit' }]
-  // ratings: [
-  //   {
-  //     skill: { type: mongoose.Schema.ObjectId, ref: 'Skill' },
-  //     rating: { type: Number },
-  //     createdBy: { type: mongoose.Schema.ObjectId, ref: 'User' },
-  //     comment: { type: String, trim: true }
-  //   }
-  // ]
 },
 {
   timestamps: true
@@ -40,8 +35,10 @@ userSchema
   });
 
 userSchema.pre('validate', function checkPassword(next) {
-  if(!this._passwordConfirmation || this._passwordConfirmation !== this.password) {
-    this.invalidate('passwordConfirmation', 'Passwords do not match');
+  if(this.isNew) {
+    if(!this._passwordConfirmation || this._passwordConfirmation !== this.password) {
+      this.invalidate('passwordConfirmation', 'Passwords do not match');
+    }
   }
   next();
 });
@@ -59,10 +56,21 @@ userSchema.methods.validatePassword = function validatePassword(password) {
 
 userSchema
   .virtual('averageRatings')
-  .get(calculateAvg);
+  .get(calculateAverageofAvg);
 
 module.exports = mongoose.model('User', userSchema);
 
 function calculateAvg() {
-  console.log(this.skills);
+  let sum = 0;
+  const skillRatings = this.ratings.map(rating => {
+    sum += rating.rating;
+    rating.rating;
+  });
+  return sum / skillRatings.length;
 }
+// 
+// function calculateAverageofAvg() {
+//   let sum = 0;
+//   // const allRatings =
+//   console.log(ratings.rating);
+// }

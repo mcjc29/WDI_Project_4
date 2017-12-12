@@ -1,12 +1,11 @@
 const User = require('../models/user');
-require('../models/skill');
-require('../models/nonprofit');
+// require('../models/skill');
+// require('../models/nonprofit');
 
 function usersIndex(req, res, next) {
-  console.log('users index hit');
   User
     .find()
-    .populate('skills')
+    .populate('skills.skill skills.ratings nonprofits')
     .exec()
     .then(users => res.status(200).json(users))
     .catch(next);
@@ -15,7 +14,7 @@ function usersIndex(req, res, next) {
 function usersShow(req, res, next) {
   User
     .findById(req.params.id)
-    .populate('skills nonprofits')
+    .populate('skills.skill skills.ratings nonprofits')
     .then(user => res.status(200).json(user))
     .catch(next);
 }
