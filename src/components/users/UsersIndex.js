@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import MultiSelect from '../utility/MultiSelectField';
 
-import { Grid, Thumbnail, Row, Col, Button } from 'react-bootstrap';
+// import { Grid, Thumbnail, Row, Col, Button } from 'react-bootstrap';
 
 import Promise from 'bluebird';
 class UsersIndex extends React.Component {

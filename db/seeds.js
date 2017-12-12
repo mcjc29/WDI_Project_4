@@ -231,50 +231,50 @@ Skill.create([
         linkedIn: 'https://uk.linkedin.com',
         password: 'password',
         passwordConfirmation: 'password'
-      }
+      },
 
-      // {
-      //   username: 'SiPot',
-      //   firstName: 'Siobhan',
-      //   lastName: 'Potter',
-      //   email: 'siobhan@siobhan.com',
-      //   image:
-      //   'https://user-images.githubusercontent.com/28314323/32336467-5211c230-bfe7-11e7-9af5-286502b8fca1.jpg',
-      //   description: 'do gooder',
-      //   skills: [skills[38], skills[69], skills[59]],
-      //   address: 'road street',
-      //   linkedIn: 'https://uk.linkedin.com',
-      //   password: 'password',
-      //   passwordConfirmation: 'password'
-      // },
-      // {
-      //   username: 'S.O',
-      //   firstName: 'Sandra',
-      //   lastName: 'Okoli',
-      //   email: 'sandra@sandra.com',
-      //   image:
-      //   'https://user-images.githubusercontent.com/28314323/32336479-57410a40-bfe7-11e7-87b9-18688869fa4a.jpg',
-      //   description: 'do gooder',
-      //   skills: [skills[34], skills[69], skills[59]],
-      //   address: 'road street',
-      //   linkedIn: 'https://uk.linkedin.com',
-      //   password: 'password',
-      //   passwordConfirmation: 'password'
-      // },
-      // {
-      //   username: 'SayPay',
-      //   firstName: 'Sarah',
-      //   lastName: 'Alpay',
-      //   email: 'sarah@sarah.com',
-      //   image:
-      //   'https://user-images.githubusercontent.com/28314323/32336488-598e339a-bfe7-11e7-938c-77b2abcf6af0.jpg',
-      //   description: 'do gooder',
-      //   skills: [skills[30], skills[6], skills[50]],
-      //   address: 'road street',
-      //   linkedIn: 'https://uk.linkedin.com',
-      //   password: 'password',
-      //   passwordConfirmation: 'password'
-      // }
+      {
+        username: 'SiPot',
+        firstName: 'Siobhan',
+        lastName: 'Potter',
+        email: 'siobhan@siobhan.com',
+        image:
+        'https://user-images.githubusercontent.com/28314323/32336467-5211c230-bfe7-11e7-9af5-286502b8fca1.jpg',
+        description: 'do gooder',
+        skills: [{skill: skills[35]}, {skill: skills[64]}, {skill: skills[59]}],
+        address: 'road street',
+        linkedIn: 'https://uk.linkedin.com',
+        password: 'password',
+        passwordConfirmation: 'password'
+      },
+      {
+        username: 'S.O',
+        firstName: 'Sandra',
+        lastName: 'Okoli',
+        email: 'sandra@sandra.com',
+        image:
+        'https://user-images.githubusercontent.com/28314323/32336479-57410a40-bfe7-11e7-87b9-18688869fa4a.jpg',
+        description: 'do gooder',
+        skills: [{skill: skills[36]}, {skill: skills[86]}, {skill: skills[60]}],
+        address: 'road street',
+        linkedIn: 'https://uk.linkedin.com',
+        password: 'password',
+        passwordConfirmation: 'password'
+      },
+      {
+        username: 'SayPay',
+        firstName: 'Sarah',
+        lastName: 'Alpay',
+        email: 'sarah@sarah.com',
+        image:
+        'https://user-images.githubusercontent.com/28314323/32336488-598e339a-bfe7-11e7-938c-77b2abcf6af0.jpg',
+        description: 'do gooder',
+        skills: [{skill: skills[44]}, {skill: skills[63]}, {skill: skills[78]}],
+        address: 'road street',
+        linkedIn: 'https://uk.linkedin.com',
+        password: 'password',
+        passwordConfirmation: 'password'
+      }
     ])
       .then(users => {
         console.log(`${users.length} users created!`);

@@ -16,7 +16,6 @@ class UsersShow extends React.Component {
       .get(`/api/users/${this.props.match.params.id}`)
       .then(res => this.setState({ user: res.data }))
       // .then(res => console.log(res.data ))
-
       .catch(err => console.log(err));
   }
 
@@ -27,6 +26,16 @@ class UsersShow extends React.Component {
         headers: { 'authorization': `Bearer ${Auth.getToken()}`}
       })
       .then(() => this.props.history.push('/'))
+      .catch(err => console.log(err));
+  }
+
+  submitRating = (skill) => {
+    Axios
+      .post(`/api/users/${this.props.match.params.id}/skills/${skill.id}/rating`, this.state.skill)
+      .then(() => {
+        console.log(skill);
+        this.props.history.push(`/api/users/${this.props.match.params.id}`);
+      })
       .catch(err => console.log(err));
   }
 
@@ -43,7 +52,26 @@ class UsersShow extends React.Component {
           <h4>{this.state.user.lastName}</h4>
           <h4>{this.state.user.description}</h4>
           <a href={this.state.user.linkedIn}>{this.state.user.linkedIn}</a>
-          {this.state.user.skills.map(skill => <h4 key={skill.skill.id}>{skill.skill.name}</h4>)}
+          {this.state.user.skills.map(skill =>
+            <div key={skill.skill.id}>
+              <h4 >{skill.skill.name}</h4>
+              <div className="star-rating">
+                <div className="star-rating__wrap">
+                  <input className="star-rating__input" id="star-rating-5" type="radio" name="rating" value="5" />
+                  <label className="star-rating__ico fa fa-star-o fa-lg" htmlFor="star-rating-5" title="5 out of 5 stars"></label>
+                  <input className="star-rating__input" id="star-rating-4" type="radio" name="rating" value="4" />
+                  <label className="star-rating__ico fa fa-star-o fa-lg" htmlFor="star-rating-4" title="4 out of 5 stars"></label>
+                  <input className="star-rating__input" id="star-rating-3" type="radio" name="rating" value="3" />
+                  <label className="star-rating__ico fa fa-star-o fa-lg" htmlFor="star-rating-3" title="3 out of 5 stars"></label>
+                  <input className="star-rating__input" id="star-rating-2" type="radio" name="rating" value="2" />
+                  <label className="star-rating__ico fa fa-star-o fa-lg" htmlFor="star-rating-2" title="2 out of 5 stars"></label>
+                  <input className="star-rating__input" id="star-rating-1" type="radio" name="rating" value="1" />
+                  <label className="star-rating__ico fa fa-star-o fa-lg" htmlFor="star-rating-1" title="1 out of 5 stars"></label>
+                </div>
+              </div>
+              <button onClick={() => this.submitRating(skill)}>Rate ME</button>
+
+            </div>)}
           {this.state.user.nonprofits.map(nonprofit => <h4 key={nonprofit.id}>{nonprofit.name}</h4>)}
 
           <BackButton />

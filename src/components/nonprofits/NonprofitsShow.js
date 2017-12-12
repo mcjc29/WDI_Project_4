@@ -27,9 +27,9 @@ class NonprofitsShow extends React.Component {
       .catch(err => console.log(err));
   }
 
-  nonprofitsSupport = () => {
+  nonprofitsSupport = (supporters) => {
     Axios
-      .post(`/api/nonprofits/${this.props.match.params.id}/support`, this.state.nonprofit, {
+      .post(`/api/nonprofits/${this.props.match.params.id}/support`, this.state.supporters, {
         headers: { 'authorization': `Bearer ${Auth.getToken()}`}
       })
       .then(() => {
@@ -65,7 +65,7 @@ class NonprofitsShow extends React.Component {
             <i className="fa fa-trash" aria-hidden="true"></i>Delete
           </button>}
           {' '}
-          {Auth.isAuthenticated() && Auth.getPayload().userId === this.props.match.params.id && <button className="main-button" onClick={this.nonprofitsSupport} aria-hidden="true">
+          {Auth.isAuthenticated() && Auth.getPayload().userId === this.props.match.params.id && <button className="main-button" onClick={() => this.nonprofitsSupport(supporters)} aria-hidden="true">
             Support {this.state.nonprofit.name}
           </button>}
           {this.state.nonprofit.location && <GoogleMap center={this.state.nonprofit.location} />}
