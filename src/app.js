@@ -23,10 +23,30 @@ class App extends React.Component {
             <NavMain />
           </header>
           <div className="container">
-            <SearchBar NonprofitsIndex={NonprofitsIndex} UsersIndex={UsersIndex}/>
+            {/* <SearchBar NonprofitsIndex={NonprofitsIndex} UsersIndex={UsersIndex}/> */}
             <main>
+
+              <section className="jumbotron text-center">
+                <div className="container">
+                  <h1 className="jumbotron-heading">GAT SKILLZ?</h1>
+                  <p className="lead text-muted">GAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZ</p>
+                  <p>
+                    <a href="#" className="btn btn-primary">Search by opportunity </a>
+                    <a href="#" className="btn btn-secondary">Search by volunteer</a>
+                  </p>
+                </div>
+              </section>
               <Routes />
             </main>
+            <footer className="text-muted">
+              <div className="container">
+                <p className="float-right">
+                  <a href="#">Back to top</a>
+                </p>
+                <p>GAT SKILLZ? &copy; SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZ!</p>
+                <p>Skillz? <a href="/">Visit the homepage</a></p>
+              </div>
+            </footer>
           </div>
         </div>
       </Router>

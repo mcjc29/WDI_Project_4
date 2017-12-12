@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 import Auth     from '../../lib/Auth';
 import MultiSelect from '../utility/MultiSelectField';
+import { Grid, Thumbnail, Row, Col, Image, Button } from 'react-bootstrap';
 
 import Promise from 'bluebird';
 
@@ -64,12 +65,14 @@ class NonprofitsIndex extends React.Component {
           />
           {nonprofits.map(nonprofit => {
             return(
-              <div key={nonprofit.id} className="image-tile col-md-4 col-sm-6 col-xs-12">
-                <Link to={`/nonprofits/${nonprofit.id}`}>
+              <div key={nonprofit.id} className="col-md-4 col-sm-6 col-xs-12">
+                <div className="card">
+                  <div style={{backgroundImage: `url(${nonprofit.imageSRC})`}} className="picture"></div>
                   <h3>{nonprofit.name}</h3>
-                </Link>
-                <img src={nonprofit.imageSRC} className="img-responsive" />
-                {nonprofit.skills.map(skill => <h4 key={skill.id}>{skill.name}</h4>)}
+
+                  {nonprofit.skills.map(skill => <h4 key={skill.id}>{skill.name}</h4>)}
+                  <Link to={`/nonprofits/${nonprofit.id}`} className="btn btn-primary">View Profile</Link>
+                </div>
               </div>
             );
           })}

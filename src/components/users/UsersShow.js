@@ -56,10 +56,11 @@ class UsersShow extends React.Component {
           <h4>{this.state.user.lastName}</h4>
           <h4>{this.state.user.description}</h4>
           <a href={this.state.user.linkedIn}>{this.state.user.linkedIn}</a>
-          
+
           {this.state.user.skills.map(skill =>
             <div key={skill.skill.id}>
               <h4 >{skill.skill.name}</h4>
+              Average Rating: {this.state.rating}
               <div className="star-rating">
                 <div className="star-rating__wrap">
                   <input className="star-rating__input"

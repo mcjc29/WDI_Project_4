@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import MultiSelect from '../utility/MultiSelectField';
 
-// import { Grid, Thumbnail, Row, Col, Button } from 'react-bootstrap';
+import { Grid, Thumbnail, Row, Col, Image, Button } from 'react-bootstrap';
 
 import Promise from 'bluebird';
 class UsersIndex extends React.Component {
@@ -14,13 +14,6 @@ class UsersIndex extends React.Component {
     value: [],
     errors: {}
   }
-  // componentWillMount() {
-  //   Axios
-  //     .get('/api/users')
-  //     // .then(res => console.log({ users: res.data }))
-  //     .then(res => this.setState({ users: res.data }))
-  //     .catch(err => console.log(err.response.data.errors));
-  // }
 
   componentDidMount() {
     const promises = {
@@ -48,7 +41,7 @@ class UsersIndex extends React.Component {
 
     return this.state.users.filter(user => {
       return user.skills.filter(skill => {
-        return this.state.value.map(value => value.id).indexOf(skill.id) >= 0;
+        return this.state.value.map(value => value.id).indexOf(skill.skill.id) >= 0;
       }).length;
     });
   }
@@ -62,20 +55,19 @@ class UsersIndex extends React.Component {
           <MultiSelect
             value={this.state.value}
             options={this.state.skills}
-            handleSelectChange={this.handleSelectChange}/>
-
+            handleSelectChange={this.handleSelectChange}
+          />
           {users.map(user => {
             return(
-              <div key={user.id} className="image-tile col-md-4 col-sm-6 col-xs-12">
-                <Link to={`/users/${user.id}`}>
-                  <h3>{user.firstName}</h3>
+              <Thumbnail key={user.id} className="col-md-4 col-sm-6 col-xs-12">
+
+                <img src={user.image} />
+                <h3>{user.firstName}</h3>
+
+                {user.skills.map(skill => <p key={skill.skill.id}>{skill.skill.name}</p>)}
+                <Link to={`/users/${user.id}`}><Button>View Profile</Button>
                 </Link>
-                <img src={user.image} className="img-responsive" />
-                {user.skills.map(skill => {
-                  return(
-                    <h4 key={skill.id}>{skill.name}</h4>);
-                })}
-              </div>
+              </Thumbnail>
             );
           })}
         </div>

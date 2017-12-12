@@ -8,7 +8,9 @@ import MultiSelect from '../utility/MultiSelectField';
 import { FormGroup, FormControl, Form, Col, ControlLabel, Button } from 'react-bootstrap';
 
 function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonprofit, skills, removeSelected, value, errors, handleLocationChange }) {
+
   const formInvalid = Object.keys(errors).some(key => errors[key]);
+
   return (
     <div className="row">
       <div className="page-banner col-md-12">
@@ -29,6 +31,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             value={nonprofit.name}
             onChange={handleChange}
           />
+          {errors.name && <small>{errors.name}</small>}
         </div>
 
         <div className="form-group">
@@ -41,6 +44,8 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             value={nonprofit.address}
             onChange={handleChange}
           />
+          {errors.address && <small>{errors.address}</small>}
+
         </div>
         <div className="form-group">
           <label htmlFor="image">Image</label>
@@ -48,6 +53,8 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             onChange={handleChange}
             value={nonprofit.base64 || nonprofit.imageSRC}
           />
+          {errors.image && <small>{errors.image}</small>}
+
         </div>
         <div className="form-group">
           <label htmlFor="description">description</label>
@@ -59,6 +66,8 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             value={nonprofit.description}
             onChange={handleChange}
           />
+          {errors.description && <small>{errors.description}</small>}
+
         </div>
         <div className="form-group">
           <label htmlFor="registration">registration</label>
@@ -70,6 +79,8 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             value={nonprofit.registration}
             onChange={handleChange}
           />
+          {errors.registration && <small>{errors.registration}</small>}
+
         </div>
         <div className="form-group">
           <label htmlFor="website">website</label>
@@ -81,6 +92,8 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             value={nonprofit.website}
             onChange={handleChange}
           />
+          {errors.website && <small>{errors.website}</small>}
+
         </div>
 
         <div className="form-group">
@@ -93,7 +106,10 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             value={nonprofit.email}
             onChange={handleChange}
           />
+          {errors.email && <small>{errors.email}</small>}
+
         </div>
+        Select the skills your charity is looking for
         <MultiSelect
           handleSelectChange={handleSelectChange}
           removeSelected={removeSelected}

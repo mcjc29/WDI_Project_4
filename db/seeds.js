@@ -289,8 +289,8 @@ Skill.create([
             website: 'http://www.shelter.org.uk/',
             email: '',
             location: {
-              lat: 3,
-              lng: 5
+              lat: 51.52449499999999,
+              lng: -0.09443899999996574
             },
             skills: [skills[0], skills[2], skills[5]],
             supporters: [users[0]]
@@ -304,8 +304,8 @@ Skill.create([
             website: 'http://www.miraclesthecharity.org/',
             email: '',
             location: {
-              lat: 3,
-              lng: 5
+              lat: 51.4925145,
+              lng: -0.1422247000000425
             },
             skills: [skills[4], skills[8], skills[66]],
             supporters: [users[0]]
@@ -319,8 +319,8 @@ Skill.create([
             website: 'http://www.refugee-action.org.uk/',
             email: 'giving@refugee-action.org.uk',
             location: {
-              lat: 3,
-              lng: 5
+              lat: 51.4925145,
+              lng: -0.1422247000000425
             },
             skills: [skills[6], skills[10], skills[9]],
             supporters: [users[0]]
@@ -334,8 +334,8 @@ Skill.create([
             website: 'http://lunachildren.org.uk/',
             email: 'info@lunachildren.org.uk',
             location: {
-              lat: 3,
-              lng: 5
+              lat: 51.523199,
+              lng: -0.1721860000000106
             },
             skills: [skills[68], skills[17], skills[69]],
             supporters: [users[0]]
@@ -349,8 +349,8 @@ Skill.create([
             website: 'https://www.migrantsresourcecentre.org.uk/',
             email: 'info@migrants.org.uk',
             location: {
-              lat: 3,
-              lng: 5
+              lat: 51.523199,
+              lng: -0.1721860000000106
             },
             skills: [skills[68], skills[17], skills[69]],
             supporters: [users[0]]
