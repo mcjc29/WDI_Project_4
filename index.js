@@ -19,8 +19,8 @@ if('test' !== env) app.use(morgan('dev'));
 app.use(express.static(`${__dirname}/public`));
 app.use(bodyParser.json({ limit: '50mb' }));
 
-app.use('/api', routes);
 app.use(customResponses);
+app.use('/api', routes);
 
 app.get('/*', (req, res) => res.sendFile(`${__dirname}/public/index.html`));
 

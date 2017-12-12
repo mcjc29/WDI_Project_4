@@ -35,7 +35,7 @@ router.route('/nonprofits/:id')
   .put(secureRoute, imageUpload, nonprofits.update)
   .delete(secureRoute, nonprofits.delete);
 
-router.route('nonprofits/:id/support')
+router.route('/nonprofits/:id/support')
   .post(secureRoute, nonprofits.support)
   .delete(secureRoute, nonprofits.unsupport);
 

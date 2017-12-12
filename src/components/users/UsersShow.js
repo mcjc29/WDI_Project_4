@@ -8,7 +8,8 @@ import BackButton from '../utility/BackButton';
 
 class UsersShow extends React.Component {
   state = {
-    user: null
+    user: null,
+    rating: 0
   }
 
   componentWillMount() {
@@ -23,7 +24,7 @@ class UsersShow extends React.Component {
   deleteUser = () => {
     Axios
       .delete(`/api/users/${this.props.match.params.id}`, {
-        headers: { 'authorization': `Bearer ${Auth.getToken()}`}
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
       })
       .then(() => this.props.history.push('/'))
       .catch(err => console.log(err));
@@ -31,13 +32,16 @@ class UsersShow extends React.Component {
 
   submitRating = (skill) => {
     Axios
-      .post(`/api/users/${this.props.match.params.id}/skills/${skill.id}/rating`, this.state.skill)
+      .post(`/api/users/${this.props.match.params.id}/skills/${skill.id}/rating`, { rating: this.state.rating }, {
+        headers: { Authorization: `Bearer ${Auth.getToken()}` }
+      })
       .then(() => {
-        console.log(skill);
         this.props.history.push(`/api/users/${this.props.match.params.id}`);
       })
       .catch(err => console.log(err));
   }
+
+  handleChange = rating => this.setState({ rating });
 
   render() {
     if (!this.state.user) return null;
@@ -57,9 +61,21 @@ class UsersShow extends React.Component {
               <h4 >{skill.skill.name}</h4>
               <div className="star-rating">
                 <div className="star-rating__wrap">
-                  <input className="star-rating__input" id="star-rating-5" type="radio" name="rating" value="5" />
+                  <input className="star-rating__input"
+                    id="star-rating-5"
+                    type="radio"
+                    name="rating"
+                    value="5"
+                    onChange={() => this.handleChange(5)}
+                  />
                   <label className="star-rating__ico fa fa-star-o fa-lg" htmlFor="star-rating-5" title="5 out of 5 stars"></label>
-                  <input className="star-rating__input" id="star-rating-4" type="radio" name="rating" value="4" />
+                  <input className="star-rating__input"
+                    id="star-rating-4"
+                    type="radio"
+                    name="rating"
+                    value="4"
+                    onChange={() => this.handleChange(4)}
+                  />
                   <label className="star-rating__ico fa fa-star-o fa-lg" htmlFor="star-rating-4" title="4 out of 5 stars"></label>
                   <input className="star-rating__input" id="star-rating-3" type="radio" name="rating" value="3" />
                   <label className="star-rating__ico fa fa-star-o fa-lg" htmlFor="star-rating-3" title="3 out of 5 stars"></label>

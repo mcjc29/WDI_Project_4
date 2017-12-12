@@ -57,15 +57,14 @@ function nonprofitsSupport(req, res, next) {
     .findById(req.params.id)
     .exec()
     .then(nonprofit => {
-      nonprofit.supporters.addToSet(req.user._id);
+      nonprofit.supporters.addToSet(req.currentUser._id);
       return nonprofit.save();
     })
     .then(nonprofit => {
-      req.nonprofit = nonprofit;
-      req.user.nonprofits.addToSet(nonprofit._id);
-      return req.user.save();
+      req.currentUser.nonprofits.addToSet(nonprofit._id);
+      return req.currentUser.save()
+        .then(() => res.json(nonprofit));
     })
-    .then(() => res.status(200).json(req.nonprofit))
     .catch(next);
 }
 
@@ -75,15 +74,14 @@ function nonprofitsUnsupport(req, res, next) {
     .findById(req.params.id)
     .exec()
     .then(nonprofit => {
-      nonprofit.supporters.pull(req.user._id);
+      nonprofit.supporters.pull(req.currentUser._id);
       return nonprofit.save();
     })
     .then(nonprofit => {
-      req.nonprofit = nonprofit;
-      req.user.nonprofits.pull(nonprofit._id);
-      return req.user.save();
+      req.currentUser.nonprofits.pull(nonprofit._id);
+      return req.user.save()
+        .then(() => res.json(nonprofit));
     })
-    .then(() => res.status(200).json(req.nonprofit))
     .catch(next);
 }
 

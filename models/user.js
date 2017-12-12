@@ -3,12 +3,19 @@ const bcrypt = require('bcrypt');
 
 const skillUserSchema = new mongoose.Schema({
   skill: { type: mongoose.Schema.ObjectId, ref: 'Skill' },
-  ratings: [{ type: mongoose.Schema.ObjectId, ref: 'Rating' }]
+  ratings: [{
+    createdBy: { type: mongoose.Schema.ObjectId, ref: 'User', required: true },
+    rating: Number,
+    comment: String
+  }]
 });
 
 skillUserSchema
   .virtual('averageRatings')
-  .get(calculateAvg);
+  .get(function calculateAvg() {
+    const sum = this.ratings.reduce((sum, rating) => sum + rating.rating, 0);
+    return Number((sum / this.ratings.length).toFixed(1));
+  });
 
 const userSchema = new mongoose.Schema({
   username: { type: String, required: 'This field is required.' },
@@ -23,8 +30,7 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: 'This field is required.' },
   skills: [ skillUserSchema ],
   nonprofits: [{ type: mongoose.Schema.ObjectId, ref: 'Nonprofit' }]
-},
-{
+}, {
   timestamps: true
 });
 
@@ -59,16 +65,6 @@ userSchema.methods.validatePassword = function validatePassword(password) {
 //   .get(calculateAverageofAvg);
 
 module.exports = mongoose.model('User', userSchema);
-
-function calculateAvg() {
-  let sum = 0;
-  const skillRatings = this.ratings.map(rating => {
-    sum += rating.rating;
-    rating.rating;
-  });
-  // console.log(this.ratings);
-  return sum / skillRatings.length;
-}
 
 // function calculateAverageofAvg() {
 //   // let sum = 0;
