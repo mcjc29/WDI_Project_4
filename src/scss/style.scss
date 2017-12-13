@@ -2,12 +2,14 @@
 @import 'jumbotron';
 @import 'dragndrop';
 @import 'google';
-@import 'stars';
 @import 'index';
 @import 'button';
 @import 'forms';
 
+body {
+  font-family: 'Noto Sans', sans-serif;
 
+}
 
 main {
   min-height: 75vh;

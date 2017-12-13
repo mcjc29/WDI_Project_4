@@ -1,14 +1,12 @@
-div.drag-drop {
-  input[type=file] {
-    display: none;
+.btn {
+  background: #212529;
+  color: white;
+  
+  &:hover {
+    color: white;
   }
+}
 
-  div.dropzone {
-    height: 200px;
-    width: 200px;
-    background-color: #fafafa;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
+a:hover {
+  color: white;
 }

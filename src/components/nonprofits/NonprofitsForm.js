@@ -62,7 +62,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
           </FormGroup>
 
           <FormGroup validationState={errors.name ? 'error' : 'success' }>
-            <label htmlFor="registration">registration</label>
+            <label htmlFor="registration">Registration No.</label>
             <FormControl
               type="text"
               className="form-control"
@@ -75,7 +75,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
           </FormGroup>
 
           <FormGroup validationState={errors.name ? 'error' : 'success' }>
-            <label htmlFor="website">website</label>
+            <label htmlFor="website">Website</label>
             <FormControl
               type="text"
               className="form-control"
@@ -88,7 +88,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
           </FormGroup>
 
           <FormGroup>
-            <label htmlFor="email">email</label>
+            <label htmlFor="email">Email</label>
             <FormControl
               type="text"
               className="form-control"
@@ -102,7 +102,8 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
         </Col>
       </Row>
       <Col xs={12} md={8} mdOffset={2} className="no-pad-col">
-        Select the skills your charity is looking for
+        <label htmlFor="MultiSelect">Select the skills that your charity is looking for</label>
+
         <MultiSelect
           handleSelectChange={handleSelectChange}
           removeSelected={removeSelected}
@@ -110,7 +111,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
           value={value}
         />
         <FormGroup>
-          <label htmlFor="description">description</label>
+          <label htmlFor="description">Describe the work your charity does</label>
           <FormControl
             type="text"
             className="form-control"

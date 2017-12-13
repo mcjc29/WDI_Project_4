@@ -63,12 +63,14 @@ class NonprofitsIndex extends React.Component {
             {nonprofits.map(nonprofit => {
               return(
                 <div key={nonprofit.id} className="col-md-4 col-sm-6 col-xs-12">
-                  <div className="card">
+                  <div className="bob">
                     <div style={{backgroundImage: `url(${nonprofit.imageSRC})`}} className="picture"></div>
                     <h3>{nonprofit.name}</h3>
 
                     {nonprofit.skills.map(skill => <p key={skill.id}>{skill.name}</p>)}
-                    <Link to={`/nonprofits/${nonprofit.id}`} className="btn btn-primary">View Profile</Link>
+
+                    <Link to={`/nonprofits/${nonprofit.id}`} className="bob-button btn button">View Profile</Link>
+
                   </div>
                 </div>
               );
@@ -76,15 +78,15 @@ class NonprofitsIndex extends React.Component {
           </Col>
 
           <div className="page-banner col-md-12">
-            {Auth.isAuthenticated() && <Link to="/nonprofits/new" className="main-button">
-            <i className="fa fa-plus" aria-hidden="true"></i>Add Nonprofit
-          </Link>}
+            {Auth.isAuthenticated() && <Link to="/nonprofits/new" className="button main-button">
+              <i className="fa fa-plus" aria-hidden="true"></i>Add Nonprofit
+            </Link>}
+          </div>
         </div>
-      </div>
 
-    </Row>
-  );
-}
+      </Row>
+    );
+  }
 }
 
 export default NonprofitsIndex;

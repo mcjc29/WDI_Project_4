@@ -34,7 +34,7 @@ const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
 
           </FormGroup>
           {/* <Button disabled={formInvalid}>Login</Button> */}
-          <button className="btn btn-primary" disabled={formInvalid}>Login</button>
+          <button className="btn" disabled={formInvalid}>Login</button>
 
           <Link to={'/register'} className="standard-button">Don't have an account? <br/> Click here to register. </Link>
         </Form>

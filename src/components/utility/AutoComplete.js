@@ -13,7 +13,6 @@ class AutoComplete extends React.Component {
       const place = this.autocomplete.getPlace();
       const { name, formatted_address: address, website } = place;
       const location = place.geometry.location.toJSON();
-      //loop over the photos to get url and push into an array, if no photos, go to an else statement with placeholders.
       this.props.findLocation(name, address, location, website);
     });
   }

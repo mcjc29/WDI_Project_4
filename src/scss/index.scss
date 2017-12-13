@@ -1,5 +1,5 @@
 
-.card {
+.bob {
   margin: 15px 0;
   padding: 15px;
   border: 1px solid #ccc;
@@ -14,4 +14,18 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.scrollskill {
+  overflow: auto;
+  height: 50px;
+}
+
+
+.bob-button{
+  text-align: center;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+
 }

@@ -22,14 +22,14 @@ class UsersIndex extends React.Component {
     };
 
     Promise.props(promises)
-      .then(data => {
-        const skillList = data.skills.map(skill => {
-          return { label: skill.name, value: skill.id, id: skill.id };
-        });
+    .then(data => {
+      const skillList = data.skills.map(skill => {
+        return { label: skill.name, value: skill.id, id: skill.id };
+      });
 
-        this.setState({ skills: skillList, users: data.users });
-      })
-      .catch(err => this.setState({ errors: err.response.data.errors }));
+      this.setState({ skills: skillList, users: data.users });
+    })
+    .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
   handleSelectChange = (value) => {
@@ -51,29 +51,30 @@ class UsersIndex extends React.Component {
 
     return (
       <Row>
-      <div className="container">
-        <Col>
-          <MultiSelect
-            value={this.state.value}
-            options={this.state.skills}
-            handleSelectChange={this.handleSelectChange}
-          />
-          {users.map(user => {
-            return(
-              <Thumbnail key={user.id} className="col-md-4 col-sm-6 col-xs-12">
+        <div className="container">
+          <Col>
+            <MultiSelect
+              value={this.state.value}
+              options={this.state.skills}
+              handleSelectChange={this.handleSelectChange}
+            />
+            {users.map(user => {
+              return(
+                <div key={user.id} className="col-md-4 col-sm-6 col-xs-12">
+                  <div className="bob">
+                    <div style={{backgroundImage: `url(${user.imageSRC})`}} className="picture"></div>
 
-                <img src={user.image} />
-                <h3>{user.firstName}</h3>
+                    <h3>{user.firstName} {user.lastName}</h3>
 
-                {user.skills.map(skill => <p key={skill.skill.id}>{skill.skill.name}</p>)}
-                <Link to={`/users/${user.id}`}><Button>View Profile</Button>
-                </Link>
-              </Thumbnail>
-            );
-          })}
-        </Col>
-      </div>
-    </Row>
+                    <div className="scrollskill">{user.skills.map(skill => <p key={skill.skill.id}>{skill.skill.name}</p>)}</div>
+                    <Link to={`/users/${user.id}`} className="bob-button btn buton">View Profile</Link>
+                  </div>
+                </div>
+              );
+            })}
+          </Col>
+        </div>
+      </Row>
     );
   }
 }

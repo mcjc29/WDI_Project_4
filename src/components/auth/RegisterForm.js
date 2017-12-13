@@ -117,7 +117,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, sk
         />
       </div>
 
-      <button className="btn btn-primary" disabled={formInvalid}>Login</button>
+      <button className="btn" disabled={formInvalid}>Login</button>
     </form>
   );
 };
