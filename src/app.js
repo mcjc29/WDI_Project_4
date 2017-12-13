@@ -8,8 +8,9 @@ import 'bootstrap-css-only';
 import 'react-select/dist/react-select.css';
 import NavMain from './components/utility/NavMain';
 import Routes from './components/utility/Routes';
-import SearchBar from './components/utility/SearchBar';
+// import SearchBar from './components/utility/SearchBar';
 import Jumbotron from './components/utility/Jumbotron';
+import SearchBar from './components/utility/SearchBar';
 
 import NonprofitsIndex from './components/nonprofits/NonprofitsIndex';
 import UsersIndex from './components/users/UsersIndex';
@@ -28,7 +29,7 @@ class App extends React.Component {
             <main>
 
               <Jumbotron />
-              
+              {/* <SearchBar NonprofitsIndex={NonprofitsIndex} UsersIndex={UsersIndex}/> */}
               <Routes />
             </main>
             <footer className="text-muted">

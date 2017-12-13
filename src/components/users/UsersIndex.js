@@ -50,8 +50,9 @@ class UsersIndex extends React.Component {
     const users = this.runFilter();
 
     return (
-      <div>
-        <div className="Row">
+      <Row>
+      <div className="container">
+        <Col>
           <MultiSelect
             value={this.state.value}
             options={this.state.skills}
@@ -70,8 +71,9 @@ class UsersIndex extends React.Component {
               </Thumbnail>
             );
           })}
-        </div>
+        </Col>
       </div>
+    </Row>
     );
   }
 }

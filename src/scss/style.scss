@@ -4,9 +4,12 @@
 @import 'google';
 @import 'stars';
 @import 'index';
+@import 'button';
+@import 'forms';
 
-
-
+body {
+  padding-bottom: 100px;
+}
 
 img {
     height: 300px;

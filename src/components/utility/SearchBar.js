@@ -6,8 +6,8 @@ const SearchBar = ({ NonprofitsIndex, UsersIndex }) => {
   return (
     <Tab.Container id="left-tabs-example" defaultActiveKey="first">
       <Row className="clearfix">
-        <Col sm={4}>
-          <Nav bsStyle="pills" stacked>
+        <Col >
+          <Nav bsStyle="pills">
             <NavItem eventKey="first">
               Search for a Charity
             </NavItem>
@@ -16,7 +16,7 @@ const SearchBar = ({ NonprofitsIndex, UsersIndex }) => {
             </NavItem>
           </Nav>
         </Col>
-        <Col sm={8}>
+        <Col >
           <Tab.Content animation>
             <Tab.Pane eventKey="first">
               <NonprofitsIndex />

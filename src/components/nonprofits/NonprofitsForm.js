@@ -5,62 +5,111 @@ import AutoComplete from '../utility/AutoComplete';
 
 import BackButton from '../utility/BackButton';
 import MultiSelect from '../utility/MultiSelectField';
-import { FormGroup, FormControl, Form, Col, ControlLabel, Button, Label } from 'react-bootstrap';
+import { FormGroup, FormControl, Form, Row, Col, ControlLabel, Button, Label } from 'react-bootstrap';
 
 function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonprofit, skills, removeSelected, value, errors, handleLocationChange }) {
 
   const formInvalid = Object.keys(errors).some(key => errors[key]);
 
   return (
-    <div className="row">
+    <Row onSubmit={handleSubmit}>
       <div className="page-banner col-md-12">
         <BackButton history={history} />
       </div>
-      <form onSubmit={handleSubmit} className="col-md-6">
-        <label>Search for your Charity</label>
-        <AutoComplete
-          findLocation={handleLocationChange}
+      <Row>
+        <Col xs={6} md={4} mdOffset={2}>
+          <FormGroup>
+            <label htmlFor="image">Image</label>
+            <DragDrop
+              onChange={handleChange}
+              value={nonprofit.base64 || nonprofit.imageSRC}
+            />
+            {errors.image && <Label bsStyle="danger">{errors.image}</Label>}
+          </FormGroup>
+
+        </Col>
+
+        <Col xs={6} md={4}>
+          <label>Search for your Charity</label>
+          <AutoComplete
+            findLocation={handleLocationChange}
+          />
+          <FormGroup validationState={errors.name ? 'error' : 'success' }>
+            <label htmlFor="name">Name</label>
+            <FormControl
+              type="text"
+              className="form-control"
+              id="name"
+              name="name"
+              value={nonprofit.name}
+              onChange={handleChange}
+            />
+            <Label bsStyle="danger">{errors.name}</Label>
+          </FormGroup>
+
+          <FormGroup validationState={errors.name ? 'error' : 'success' }>
+
+            <label htmlFor="address">Address</label>
+            <FormControl
+              type="text"
+              className="form-control"
+              id="address"
+              name="address"
+              value={nonprofit.address}
+              onChange={handleChange}
+            />
+            {errors.address && <Label bsStyle="danger">{errors.address}</Label>}
+          </FormGroup>
+
+          <FormGroup validationState={errors.name ? 'error' : 'success' }>
+            <label htmlFor="registration">registration</label>
+            <FormControl
+              type="text"
+              className="form-control"
+              id="registration"
+              name="registration"
+              value={nonprofit.registration}
+              onChange={handleChange}
+            />
+            {errors.registration && <Label bsStyle="danger">{errors.registration}</Label>}
+          </FormGroup>
+
+          <FormGroup validationState={errors.name ? 'error' : 'success' }>
+            <label htmlFor="website">website</label>
+            <FormControl
+              type="text"
+              className="form-control"
+              id="website"
+              name="website"
+              value={nonprofit.website}
+              onChange={handleChange}
+            />
+            {errors.website && <Label bsStyle="danger">{errors.website}</Label>}
+          </FormGroup>
+
+          <FormGroup>
+            <label htmlFor="email">email</label>
+            <FormControl
+              type="text"
+              className="form-control"
+              id="email"
+              name="email"
+              value={nonprofit.email}
+              onChange={handleChange}
+            />
+            {errors.email && <Label bsStyle="danger">{errors.email}</Label>}
+          </FormGroup>
+        </Col>
+      </Row>
+      <Col xs={12} md={8} mdOffset={2} className="no-pad-col">
+        Select the skills your charity is looking for
+        <MultiSelect
+          handleSelectChange={handleSelectChange}
+          removeSelected={removeSelected}
+          options={skills}
+          value={value}
         />
-        <FormGroup validationState={errors.name ? "error" : "success" }>
-          <label htmlFor="name">Name</label>
-          <FormControl
-            type="text"
-            className="form-control"
-            id="name"
-            name="name"
-            value={nonprofit.name}
-            onChange={handleChange}
-          />
-          <Label bsStyle="danger">{errors.name}</Label>
-        </FormGroup>
-
-        <FormGroup validationState={errors.name ? "error" : "success" }>
-
-          <label htmlFor="address">Address</label>
-          <FormControl
-            type="text"
-            className="form-control"
-            id="address"
-            name="address"
-            value={nonprofit.address}
-            onChange={handleChange}
-          />
-          {errors.address && <Label bsStyle="danger">{errors.address}</Label>}
-        </FormGroup>
-
-        <FormGroup validationState={errors.name ? "error" : "success" }>
-
-          <label htmlFor="image">Image</label>
-          <DragDrop
-            onChange={handleChange}
-            value={nonprofit.base64 || nonprofit.imageSRC}
-          />
-          {errors.image && <Label bsStyle="danger">{errors.image}</Label>}
-
-        </FormGroup>
-
-        <FormGroup validationState={errors.name ? "error" : "success" }>
-
+        <FormGroup>
           <label htmlFor="description">description</label>
           <FormControl
             type="text"
@@ -69,62 +118,17 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             name="description"
             value={nonprofit.description}
             onChange={handleChange}
+            componentClass="textarea"
+            placeholder="Add a description"
           />
           {errors.description && <Label bsStyle="danger">{errors.description}</Label>}
 
         </FormGroup>
-        <FormGroup validationState={errors.name ? "error" : "success" }>
-          <label htmlFor="registration">registration</label>
-          <FormControl
-            type="text"
-            className="form-control"
-            id="registration"
-            name="registration"
-            value={nonprofit.registration}
-            onChange={handleChange}
-          />
-          {errors.registration && <Label bsStyle="danger">{errors.registration}</Label>}
-
-        </FormGroup>
-        <FormGroup validationState={errors.name ? "error" : "success" }>
-          <label htmlFor="website">website</label>
-          <FormControl
-            type="text"
-            className="form-control"
-            id="website"
-            name="website"
-            value={nonprofit.website}
-            onChange={handleChange}
-          />
-          {errors.website && <Label bsStyle="danger">{errors.website}</Label>}
-
-        </FormGroup>
-
-        <FormGroup validationState={errors.name ? "error" : "success" }>
-          <label htmlFor="email">email</label>
-          <FormControl
-            type="text"
-            className="form-control"
-            id="email"
-            name="email"
-            value={nonprofit.email}
-            onChange={handleChange}
-          />
-          {errors.email && <Label bsStyle="danger">{errors.email}</Label>}
-
-        </FormGroup>
-        Select the skills your charity is looking for
-        <MultiSelect
-          handleSelectChange={handleSelectChange}
-          removeSelected={removeSelected}
-          options={skills}
-          value={value}
-        />
         <div>
-          <button className="save-button" disabled={formInvalid}>Save</button>
+          <Button disabled={formInvalid}>Save</Button>
         </div>
-      </form>
-    </div>
+      </Col>
+    </Row>
   );
 }
 
