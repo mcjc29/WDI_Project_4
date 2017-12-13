@@ -32,9 +32,11 @@ class NonprofitsShow extends React.Component {
       .post(`/api/nonprofits/${this.props.match.params.id}/support`, null, {
         headers: { 'authorization': `Bearer ${Auth.getToken()}`}
       })
-      .then(() => {
-        this.props.history.push(`/api/nonprofits/${this.props.match.params.id}`);
+      .then(res => {
+        const nonprofit = Object.assign({} , this.state.nonprofit, { supporters: this.state.nonprofit.supporters.concat(res.data)});
+        this.setState({nonprofit});
       })
+
       .catch(err => console.log(err));
   }
 
@@ -43,17 +45,16 @@ class NonprofitsShow extends React.Component {
       .delete(`/api/nonprofits/${this.props.match.params.id}/support`, {
         headers: { 'authorization': `Bearer ${Auth.getToken()}`}
       })
-      .then(() => {
-        this.props.history.push(`/api/nonprofits/${this.props.match.params.id}`);
+      .then(res => {
+        const nonprofit = Object.assign({} , this.state.nonprofit, { supporters: this.state.nonprofit.supporters.filter(user => user.id !== res.data.id )});
+        this.setState({nonprofit});
       })
       .catch(err => console.log(err));
   }
 
   render() {
-    console.log(this.state.nonprofit);
     if (!this.state.nonprofit) return null;
-    const { userId } = Auth.getPayload();
-    // console.log(this.state.nonprofit.location, 'location init');
+    const supporter = this.state.nonprofit.supporters.find(user => user.id === Auth.getPayload().userId) ? true : false;
 
     return (
       <div className="row">
@@ -70,18 +71,20 @@ class NonprofitsShow extends React.Component {
             {this.state.nonprofit.supporters.map(supporter => <h4 key={supporter.id}>{supporter.firstName} {supporter.lastName}<img src={supporter.image} className="img-responsive" /></h4>)}
           </div>
           <BackButton />
-          {Auth.isAuthenticated() && userId === this.state.nonprofit.createdBy && <Link to={`/nonprofits/${this.state.nonprofit.id}/edit`} className="standard-button">
+          {!Auth.isAuthenticated() && <Link to={'/login'} className="standard-button">Login to support {this.state.nonprofit.name}</Link>}
+
+          {Auth.isAuthenticated() && <Link to={`/nonprofits/${this.state.nonprofit.id}/edit`} className="standard-button">
             <i className="fa fa-pencil" aria-hidden="true"></i>Edit
           </Link>}
           {' '}
-          {Auth.isAuthenticated() && userId === this.state.nonprofit.createdBy && <button className="main-button" onClick={this.deleteNonprofit}>
+          {Auth.isAuthenticated() && <button className="main-button" onClick={this.deleteNonprofit}>
             <i className="fa fa-trash" aria-hidden="true"></i>Delete
           </button>}
           {' '}
-          {Auth.isAuthenticated() && <button className="main-button" onClick={this.nonprofitsSupport} aria-hidden="true">
+          {!supporter &&  Auth.isAuthenticated() && <button className="main-button" onClick={this.nonprofitsSupport} aria-hidden="true">
             Support {this.state.nonprofit.name}
           </button>}
-          {Auth.isAuthenticated() && <button className="main-button" onClick={this.nonprofitsUnsupport} aria-hidden="true">
+          {supporter &&  Auth.isAuthenticated() && <button className="main-button" onClick={this.nonprofitsUnsupport} aria-hidden="true">
             Unsupport {this.state.nonprofit.name}
           </button>}
           {this.state.nonprofit.location && <GoogleMap center={this.state.nonprofit.location} />}

@@ -62,8 +62,10 @@ function nonprofitsSupport(req, res, next) {
     })
     .then(nonprofit => {
       req.currentUser.nonprofits.addToSet(nonprofit._id);
-      return req.currentUser.save()
-        .then(() => res.json(nonprofit));
+      return req.currentUser.save();
+    })
+    .then(user => {
+      return res.status(200).json(user);
     })
     .catch(next);
 }
@@ -79,8 +81,10 @@ function nonprofitsUnsupport(req, res, next) {
     })
     .then(nonprofit => {
       req.currentUser.nonprofits.pull(nonprofit._id);
-      return req.currentUser.save()
-        .then(() => res.json(nonprofit));
+      return req.currentUser.save();
+    })
+    .then(user => {
+      return res.status(200).json(user);
     })
     .catch(next);
 }

@@ -23,14 +23,14 @@ class NonprofitsIndex extends React.Component {
     };
 
     Promise.props(promises)
-    .then(data => {
-      const skillList = data.skills.map(skill => {
-        return { label: skill.name, value: skill.id, id: skill.id };
-      });
+      .then(data => {
+        const skillList = data.skills.map(skill => {
+          return { label: skill.name, value: skill.id, id: skill.id };
+        });
 
-      this.setState({ skills: skillList, nonprofits: data.nonprofits });
-    })
-    .catch(err => this.setState({ errors: err.response.data.errors }));
+        this.setState({ skills: skillList, nonprofits: data.nonprofits });
+      })
+      .catch(err => this.setState({ errors: err.response.data.errors }));
   }
 
   handleSelectChange = (value) => {
@@ -51,8 +51,8 @@ class NonprofitsIndex extends React.Component {
     const nonprofits = this.runFilter();
 
     return (
-        <Row>
-          <div className="container">
+      <Row>
+        <div className="container">
 
           <Col>
             <MultiSelect
@@ -77,14 +77,14 @@ class NonprofitsIndex extends React.Component {
 
           <div className="page-banner col-md-12">
             {Auth.isAuthenticated() && <Link to="/nonprofits/new" className="main-button">
-              <i className="fa fa-plus" aria-hidden="true"></i>Add Nonprofit
-            </Link>}
-          </div>
+            <i className="fa fa-plus" aria-hidden="true"></i>Add Nonprofit
+          </Link>}
         </div>
+      </div>
 
-        </Row>
-    );
-  }
+    </Row>
+  );
+}
 }
 
 export default NonprofitsIndex;

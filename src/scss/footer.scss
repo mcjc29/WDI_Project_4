@@ -3,9 +3,13 @@ footer {
   padding-top: 3rem;
   padding-bottom: 3rem;
   bottom: 0px;
-  width: 100px;
+  width: 100%;
 }
-
 footer p {
   margin-bottom: .25rem;
+}
+
+footer a {
+  margin-bottom: .25rem;
+  float: right;
 }

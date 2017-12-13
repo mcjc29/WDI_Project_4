@@ -8,7 +8,8 @@ class Login extends React.Component {
     user: {
       email: '',
       password: ''
-    }
+    },
+    errors: {}
   };
 
   handleChange = ({ target: { name, value } }) => {
@@ -17,6 +18,7 @@ class Login extends React.Component {
   }
 
   handleSubmit = (e) => {
+    console.log(e, 'hit');
     e.preventDefault();
 
     Axios
@@ -25,7 +27,10 @@ class Login extends React.Component {
         Auth.setToken(res.data.token);
         this.props.history.push('/');
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        console.log(err);
+        this.setState({ errors: err.response.data });
+      });
   }
 
   render() {
@@ -34,6 +39,8 @@ class Login extends React.Component {
         user={this.state.user}
         handleChange={this.handleChange}
         handleSubmit={this.handleSubmit}
+        errors={this.state.errors}
+
       />
     );
   }

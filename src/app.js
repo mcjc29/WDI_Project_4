@@ -11,6 +11,7 @@ import Routes from './components/utility/Routes';
 // import SearchBar from './components/utility/SearchBar';
 import Jumbotron from './components/utility/Jumbotron';
 import SearchBar from './components/utility/SearchBar';
+import Footer from './components/utility/Footer';
 
 import NonprofitsIndex from './components/nonprofits/NonprofitsIndex';
 import UsersIndex from './components/users/UsersIndex';
@@ -32,15 +33,8 @@ class App extends React.Component {
               {/* <SearchBar NonprofitsIndex={NonprofitsIndex} UsersIndex={UsersIndex}/> */}
               <Routes />
             </main>
-            <footer className="text-muted">
-              <div className="container">
-                <p className="float-right">
-                  <a href="#">Back to top</a>
-                </p>
-                <p>GAT SKILLZ? &copy; SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZ!</p>
-                <p>Skillz? <a href="/">Visit the homepage</a></p>
-              </div>
-            </footer>
+            <Footer />
+
           </div>
         </div>
       </Router>

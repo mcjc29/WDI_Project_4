@@ -41,8 +41,8 @@ class UsersShow extends React.Component {
 
   render() {
     if (!this.state.user) return null;
-    const { userId } = Auth.getPayload();
-    const isCurrentUser = userId === this.state.user.id;
+    // const { userId } = Auth.getPayload();
+    // const isCurrentUser = userId === this.state.user.id;
     return (
       <div className="row">
         <div className="image-tile col-md-6">
@@ -64,7 +64,7 @@ class UsersShow extends React.Component {
                   <Rating
                     onChange={(rating) => this.handleChange(rating, skill)}
                     initialRate={skill.averageRatings}
-                    readonly={isCurrentUser}
+                    readonly={!Auth.getPayload() || Auth.getPayload() === this.state.user.id}
                   />
                 </div>
 
@@ -74,7 +74,8 @@ class UsersShow extends React.Component {
           {this.state.user.nonprofits.map(nonprofit => <h4 key={nonprofit.id}>{nonprofit.name}</h4>)}
 
           <BackButton />
-          {Auth.isAuthenticated() && userId === this.props.match.params.id &&
+          {!Auth.isAuthenticated() && <Link to={'/login'} className="standard-button">Login to rate this volunteer</Link>}
+          {Auth.isAuthenticated() && Auth.getPayload() === this.props.match.params.id &&
             <div>
               <Link to={`/users/${this.state.user.id}/edit`} className="standard-button">
                 <i className="fa fa-pencil" aria-hidden="true"></i>Edit
