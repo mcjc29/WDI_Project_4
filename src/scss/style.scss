@@ -1,32 +1,17 @@
+@import 'footer';
+@import 'jumbotron';
+@import 'dragndrop';
+@import 'google';
+@import 'stars';
+@import 'index';
 
-div.drag-drop {
-  input[type=file] {
-    display: none;
-  }
 
-  div.dropzone {
-    height: 200px;
-    width: 200px;
-    background-color: #fafafa;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-}
-.picture {
-  height: 200px;
-  overflow: hidden;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
 
-.card {
-  height: 450px;
-}
+
 img {
     height: 300px;
 }
+
 .image-tile {
   margin-bottom: 30px;
   position: relative;
@@ -37,95 +22,4 @@ img {
     padding: 4px;
     background: #fafafa;
   }
-}
-
-.card {
-  margin: 15px 0;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.google-map {
-  height: 300px;
-}
-
-.autocomplete-input {
-  width: 100%;
-}
-
-
-
-.star-rating{
-	font-size: 0;
-}
-.star-rating__wrap{
-	display: inline-block;
-	font-size: 1rem;
-}
-.star-rating__wrap:after{
-	content: "";
-	display: table;
-	clear: both;
-}
-.star-rating__ico{
-	float: right;
-	padding-left: 2px;
-	cursor: pointer;
-	color: #FFB300;
-}
-.star-rating__ico:last-child{
-	padding-left: 0;
-}
-.star-rating__input{
-	display: none;
-}
-.star-rating__ico:hover:before,
-.star-rating__ico:hover ~ .star-rating__ico:before,
-.star-rating__input:checked ~ .star-rating__ico:before
-{
-	content: "\f005";
-}
-
-
-
-
-
-
-
-
-
-.jumbotron {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
-  margin-bottom: 0;
-  background-color: #fff;
-}
-
-.jumbotron p:last-child {
-  margin-bottom: 0;
-}
-
-.jumbotron-heading {
-  font-weight: 300;
-}
-
-.jumbotron .container {
-  max-width: 40rem;
-}
-
-
-
-
-
-
-
-
-footer {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-footer p {
-  margin-bottom: .25rem;
 }

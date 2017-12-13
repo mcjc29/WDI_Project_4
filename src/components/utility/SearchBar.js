@@ -19,10 +19,10 @@ const SearchBar = ({ NonprofitsIndex, UsersIndex }) => {
         <Col sm={8}>
           <Tab.Content animation>
             <Tab.Pane eventKey="first">
-              {/* <NonprofitsIndex /> */}
+              <NonprofitsIndex />
             </Tab.Pane>
             <Tab.Pane eventKey="second">
-              {/* <UsersIndex /> */}
+              <UsersIndex />
             </Tab.Pane>
           </Tab.Content>
         </Col>

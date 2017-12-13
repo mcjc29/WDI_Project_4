@@ -9,6 +9,7 @@ import 'react-select/dist/react-select.css';
 import NavMain from './components/utility/NavMain';
 import Routes from './components/utility/Routes';
 import SearchBar from './components/utility/SearchBar';
+import Jumbotron from './components/utility/Jumbotron';
 
 import NonprofitsIndex from './components/nonprofits/NonprofitsIndex';
 import UsersIndex from './components/users/UsersIndex';
@@ -26,16 +27,8 @@ class App extends React.Component {
             {/* <SearchBar NonprofitsIndex={NonprofitsIndex} UsersIndex={UsersIndex}/> */}
             <main>
 
-              <section className="jumbotron text-center">
-                <div className="container">
-                  <h1 className="jumbotron-heading">GAT SKILLZ?</h1>
-                  <p className="lead text-muted">GAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZ</p>
-                  <p>
-                    <a href="#" className="btn btn-primary">Search by opportunity </a>
-                    <a href="#" className="btn btn-secondary">Search by volunteer</a>
-                  </p>
-                </div>
-              </section>
+              <Jumbotron />
+              
               <Routes />
             </main>
             <footer className="text-muted">

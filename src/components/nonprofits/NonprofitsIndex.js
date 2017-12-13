@@ -52,7 +52,7 @@ class NonprofitsIndex extends React.Component {
 
     return (
       <div>
-        <div className="row">
+        <Row>
           <div className="page-banner col-md-12">
             {Auth.isAuthenticated() && <Link to="/nonprofits/new" className="main-button">
               <i className="fa fa-plus" aria-hidden="true"></i>Add Nonprofit
@@ -70,13 +70,13 @@ class NonprofitsIndex extends React.Component {
                   <div style={{backgroundImage: `url(${nonprofit.imageSRC})`}} className="picture"></div>
                   <h3>{nonprofit.name}</h3>
 
-                  {nonprofit.skills.map(skill => <h4 key={skill.id}>{skill.name}</h4>)}
+                  {nonprofit.skills.map(skill => <p key={skill.id}>{skill.name}</p>)}
                   <Link to={`/nonprofits/${nonprofit.id}`} className="btn btn-primary">View Profile</Link>
                 </div>
               </div>
             );
           })}
-        </div>
+        </Row>
       </div>
     );
   }

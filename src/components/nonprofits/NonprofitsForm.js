@@ -11,8 +11,6 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
 
   const formInvalid = Object.keys(errors).some(key => errors[key]);
 
-
-
   return (
     <div className="row">
       <div className="page-banner col-md-12">
@@ -75,7 +73,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
           {errors.description && <Label bsStyle="danger">{errors.description}</Label>}
 
         </FormGroup>
-        <div className="form-group">
+        <FormGroup validationState={errors.name ? "error" : "success" }>
           <label htmlFor="registration">registration</label>
           <FormControl
             type="text"
@@ -87,8 +85,8 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
           />
           {errors.registration && <Label bsStyle="danger">{errors.registration}</Label>}
 
-        </div>
-        <div className="form-group">
+        </FormGroup>
+        <FormGroup validationState={errors.name ? "error" : "success" }>
           <label htmlFor="website">website</label>
           <FormControl
             type="text"
@@ -100,9 +98,9 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
           />
           {errors.website && <Label bsStyle="danger">{errors.website}</Label>}
 
-        </div>
+        </FormGroup>
 
-        <div className="form-group">
+        <FormGroup validationState={errors.name ? "error" : "success" }>
           <label htmlFor="email">email</label>
           <FormControl
             type="text"
@@ -114,7 +112,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
           />
           {errors.email && <Label bsStyle="danger">{errors.email}</Label>}
 
-        </div>
+        </FormGroup>
         Select the skills your charity is looking for
         <MultiSelect
           handleSelectChange={handleSelectChange}
