@@ -1,7 +1,7 @@
 import React from 'react';
 import MultiSelect from '../utility/MultiSelectField';
 import AutoComplete from '../utility/AutoComplete';
-import { FormGroup, Form, Row, Col, Label } from 'react-bootstrap';
+import { FormGroup, FormControl, Form, Row, Col, Label } from 'react-bootstrap';
 
 const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, skills, removeSelected, value, handleLocationChange, errors  }) => {
   const formInvalid = Object.keys(errors).some(key => errors[key]);
@@ -11,8 +11,9 @@ const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, sk
       <Col xs={6} md={4} mdOffset={4}>
         <form className="_form" onSubmit={handleSubmit}>
           <h2>Register</h2>
-          <div className="form-group">
-            <input
+          <FormGroup>
+
+            <FormControl
               type="text"
               name="username"
               placeholder="Username"
@@ -20,9 +21,9 @@ const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, sk
               value={user.username}
               className="form-control"
             />
-          </div>
-          <div className="form-group">
-            <input
+          </FormGroup>
+          <FormGroup>
+            <FormControl
               type="text"
               name="firstName"
               placeholder="First Name"
@@ -30,9 +31,9 @@ const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, sk
               value={user.firstName}
               className="form-control"
             />
-          </div>
-          <div className="form-group">
-            <input
+          </FormGroup>
+          <FormGroup>
+            <FormControl
               type="text"
               name="lastName"
               placeholder="Last Name"
@@ -40,9 +41,9 @@ const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, sk
               value={user.lastName}
               className="form-control"
             />
-          </div>
-          <div className="form-group">
-            <input
+          </FormGroup>
+          <FormGroup>
+            <FormControl
               type="text"
               name="email"
               placeholder="Email"
@@ -50,10 +51,10 @@ const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, sk
               value={user.email}
               className="form-control"
             />
-          </div>
+          </FormGroup>
 
-          <div className="form-group">
-            <input
+          <FormGroup>
+            <FormControl
               type="Textarea"
               name="description"
               placeholder="Tell us about yourself..."
@@ -61,7 +62,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, sk
               value={user.description}
               className="form-control"
             />
-          </div>
+          </FormGroup>
           <MultiSelect
             handleSelectChange={handleSelectChange}
             removeSelected={removeSelected}
@@ -73,8 +74,8 @@ const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, sk
           <AutoComplete
             findLocation={handleLocationChange}
           />
-          <div className="form-group">
-            <input
+          <FormGroup>
+            <FormControl
               type="text"
               name="address"
               placeholder="Address"
@@ -82,9 +83,9 @@ const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, sk
               value={user.address}
               className="form-control"
             />
-          </div>
-          <div className="form-group">
-            <input
+          </FormGroup>
+          <FormGroup>
+            <FormControl
               type="text"
               name="linkedIn"
               placeholder="linkedIn"
@@ -92,9 +93,9 @@ const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, sk
               value={user.linkedIn}
               className="form-control"
             />
-          </div>
-          <div className="form-group">
-            <input
+          </FormGroup>
+          <FormGroup>
+            <FormControl
               type="password"
               name="password"
               placeholder="Password"
@@ -102,9 +103,9 @@ const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, sk
               value={user.password}
               className="form-control"
             />
-          </div>
-          <div className="form-group">
-            <input
+          </FormGroup>
+          <FormGroup>
+            <FormControl
               type="password"
               name="passwordConfirmation"
               placeholder="Confirm Password"
@@ -112,7 +113,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, sk
               value={user.passwordConfirmation}
               className="form-control"
             />
-          </div>
+          </FormGroup>
 
           <button className="btn" disabled={formInvalid}>Login</button>
         </form>

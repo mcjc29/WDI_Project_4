@@ -135,7 +135,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             <Button disabled={formInvalid}>Save</Button>
           </div>
         </Col>
-      </Row> 
+      </Row>
     </div>
   );
 }

@@ -64,76 +64,76 @@ class NonprofitsShow extends React.Component {
     const supporter = this.state.nonprofit.supporters.find(user => user.id === Auth.getPayload().userId) ? true : false;
 
     return (
-<div className="container">
-      <Row>
-        <BackButton />
-        <Col>
-          <Row className="show-rows">
-            <div style={{backgroundImage: `url(${this.state.nonprofit.imageSRC})`}} className="show-picture"></div>
-          </Row>
-          <Row className="show-rows">
-            {/* <Col xs={12} md={8} mdOffset={2}> */}
+  <div className="container">
+        <Row>
+          <BackButton />
+          <Col>
+            <Row className="show-rows">
+              <div style={{backgroundImage: `url(${this.state.nonprofit.imageSRC})`}} className="show-picture"></div>
+            </Row>
+            <Row className="show-rows">
+              {/* <Col xs={12} md={8} mdOffset={2}> */}
               <h2>Who are {this.state.nonprofit.name} and what do we do?</h2>
               <p>{this.state.nonprofit.description}</p>
-            {/* </Col> */}
-          </Row>
-          <Row className="show-rows">
-            <h2>What skills are we currently seeking?</h2>
-            {this.state.nonprofit.skills.map(skill => <Col key={skill.id} xs={3} md={3}><h4 >{skill.name}</h4></Col>)}
-          </Row>
-          <Row className="show-rows">
-            <h2>Our supporters</h2>
-            {this.state.nonprofit.supporters.map(supporter =>
-              <Col key={supporter.id} xs={2} md={2}><div style={{backgroundImage: `url(${supporter.imageSRC})`}} className="picture supporter"></div></Col>)
-          }
+              {/* </Col> */}
+            </Row>
+            <Row className="show-rows">
+              <h2>What skills are we currently seeking?</h2>
+              {this.state.nonprofit.skills.map(skill => <Col key={skill.id} xs={3} md={3}><h4 >{skill.name}</h4></Col>)}
+            </Row>
+            <Row className="show-rows">
+              <h2>Our supporters</h2>
+              {this.state.nonprofit.supporters.map(supporter =>
+                <Col key={supporter.id} xs={2} md={2}><div style={{backgroundImage: `url(${supporter.imageSRC})`}} className="picture supporter"></div></Col>)
+              }
 
 
-            {!Auth.isAuthenticated() && <Link to={'/login'} className="btn button">Login to support {this.state.nonprofit.name}</Link>}
-            {!supporter &&  Auth.isAuthenticated() && <button className="btn button" onClick={this.nonprofitsSupport} aria-hidden="true">
-              Support {this.state.nonprofit.name}
+              {!Auth.isAuthenticated() && <Link to={'/login'} className="btn button">Login to support {this.state.nonprofit.name}</Link>}
+              {!supporter &&  Auth.isAuthenticated() && <button className="btn button" onClick={this.nonprofitsSupport} aria-hidden="true">
+                Support {this.state.nonprofit.name}
+              </button>}
+              {supporter &&  Auth.isAuthenticated() && <button className="btn button" onClick={this.nonprofitsUnsupport} aria-hidden="true">
+                Unsupport {this.state.nonprofit.name}
+              </button>}
+            </Row>
+            <Row className="show-rows">
+              <h2>Get in touch</h2>
+              <Col xs={6} md={4}>
+                <h3>Website</h3>
+                <Website/>
+                <a href={this.state.nonprofit.website}>{this.state.nonprofit.website}</a>
+              </Col>
+              <Col xs={6} md={4}>
+                <h3>Registered charity</h3>
+                <h4>{this.state.nonprofit.registration}</h4>
+              </Col>
+
+              <Col xs={6} md={4}>
+                <h3>Email</h3>
+                <h4>{this.state.nonprofit.email}</h4>
+              </Col>
+            </Row>
+            <Row className="show-rows">
+              <Col xs={6} md={4} mdOffset={2}>
+                <h3>Address</h3>
+                <Sign />
+                <h4>{this.state.nonprofit.address}</h4>
+              </Col>
+              <Col xs={6} md={4}>
+                {this.state.nonprofit.location && <GoogleMap center={this.state.nonprofit.location} />}
+              </Col>
+            </Row>
+            {Auth.isAuthenticated() && <Link to={`/nonprofits/${this.state.nonprofit.id}/edit`} className="btn button">
+              <i className="fa fa-pencil" aria-hidden="true"></i>Edit
+            </Link>}
+            {' '}
+            {Auth.isAuthenticated() && <button className="btn button" onClick={this.deleteNonprofit}>
+              <i className="fa fa-trash" aria-hidden="true"></i>Delete
             </button>}
-            {supporter &&  Auth.isAuthenticated() && <button className="btn button" onClick={this.nonprofitsUnsupport} aria-hidden="true">
-              Unsupport {this.state.nonprofit.name}
-            </button>}
-          </Row>
-          <Row className="show-rows">
-            <h2>Get in touch</h2>
-            <Col xs={6} md={4}>
-              <h3>Website</h3>
-              <Website/>
-              <a href={this.state.nonprofit.website}>{this.state.nonprofit.website}</a>
-            </Col>
-            <Col xs={6} md={4}>
-              <h3>Registered charity</h3>
-              <h4>{this.state.nonprofit.registration}</h4>
-            </Col>
+          </Col>
 
-            <Col xs={6} md={4}>
-              <h3>Email</h3>
-              <h4>{this.state.nonprofit.email}</h4>
-            </Col>
-          </Row>
-          <Row className="show-rows">
-            <Col xs={6} md={4} mdOffset={2}>
-              <h3>Address</h3>
-              <Sign />
-              <h4>{this.state.nonprofit.address}</h4>
-            </Col>
-            <Col xs={6} md={4}>
-              {this.state.nonprofit.location && <GoogleMap center={this.state.nonprofit.location} />}
-            </Col>
-          </Row>
-          {Auth.isAuthenticated() && <Link to={`/nonprofits/${this.state.nonprofit.id}/edit`} className="btn button">
-            <i className="fa fa-pencil" aria-hidden="true"></i>Edit
-          </Link>}
-          {' '}
-          {Auth.isAuthenticated() && <button className="btn button" onClick={this.deleteNonprofit}>
-            <i className="fa fa-trash" aria-hidden="true"></i>Delete
-          </button>}
-        </Col>
-
-      </Row>
-</div>
+        </Row>
+      </div>
     );
   }
 }
