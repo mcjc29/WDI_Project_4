@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FormGroup, FormControl, Form, Row, Col, ControlLabel, Button, Label } from 'react-bootstrap';
+import { FormGroup, Form, Row, Col, Label } from 'react-bootstrap';
 
 const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
   const formInvalid = Object.keys(errors).some(key => errors[key]);

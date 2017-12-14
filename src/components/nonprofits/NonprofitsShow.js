@@ -64,28 +64,29 @@ class NonprofitsShow extends React.Component {
     const supporter = this.state.nonprofit.supporters.find(user => user.id === Auth.getPayload().userId) ? true : false;
 
     return (
-
+<div className="container">
       <Row>
         <BackButton />
         <Col>
-          <h1>{this.state.nonprofit.name}</h1>
-
           <Row className="show-rows">
             <div style={{backgroundImage: `url(${this.state.nonprofit.imageSRC})`}} className="show-picture"></div>
           </Row>
           <Row className="show-rows">
-            <Col xs={12} md={8} mdOffset={2}>
-              <h2>Who are we and what do we do?</h2>
+            {/* <Col xs={12} md={8} mdOffset={2}> */}
+              <h2>Who are {this.state.nonprofit.name} and what do we do?</h2>
               <p>{this.state.nonprofit.description}</p>
-            </Col>
+            {/* </Col> */}
           </Row>
           <Row className="show-rows">
             <h2>What skills are we currently seeking?</h2>
-            {this.state.nonprofit.skills.map(skill => <Col key={skill.id} xs={6} md={4}><h4 >{skill.name}</h4></Col>)}
+            {this.state.nonprofit.skills.map(skill => <Col key={skill.id} xs={3} md={3}><h4 >{skill.name}</h4></Col>)}
           </Row>
           <Row className="show-rows">
-            <h2>Our supporters (grid tile - add box link 2 profile)</h2>
-            {this.state.nonprofit.supporters.map(supporter => <h4 key={supporter.id}>{supporter.firstName} {supporter.lastName}<div style={{backgroundImage: `url(${supporter.imageSRC})`}} className="picture supporter"></div></h4>)}
+            <h2>Our supporters</h2>
+            {this.state.nonprofit.supporters.map(supporter =>
+              <Col key={supporter.id} xs={2} md={2}><div style={{backgroundImage: `url(${supporter.imageSRC})`}} className="picture supporter"></div></Col>)
+          }
+
 
             {!Auth.isAuthenticated() && <Link to={'/login'} className="btn button">Login to support {this.state.nonprofit.name}</Link>}
             {!supporter &&  Auth.isAuthenticated() && <button className="btn button" onClick={this.nonprofitsSupport} aria-hidden="true">
@@ -132,6 +133,7 @@ class NonprofitsShow extends React.Component {
         </Col>
 
       </Row>
+</div>
     );
   }
 }

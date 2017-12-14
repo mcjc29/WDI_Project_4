@@ -61,7 +61,7 @@ class UsersIndex extends React.Component {
             {users.map(user => {
               return(
                 <div key={user.id} className="col-md-4 col-sm-6 col-xs-12">
-                  <Link to={`/users/${user.id}`}><div style={{backgroundImage: `url(${user.imageSRC})`}} className="picture bob"></div></Link>
+                  <Link to={`/users/${user.id}`}><div style={{backgroundImage: `url(${user.imageSRC})`}} className="picture bob2"></div></Link>
                 </div>
               );
             })}

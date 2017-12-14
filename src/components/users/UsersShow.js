@@ -46,20 +46,19 @@ class UsersShow extends React.Component {
     // const { userId } = Auth.getPayload();
     // const isCurrentUser = userId === this.state.user.id;
     return (
-      <div className="row">
-        <div className="image-tile col-md-6">
-          <img src={this.state.user.image} className="img-responsive" />
+
+      <div className="container">
+        <div className="image-tile col-md-6 ">
+          <img src={this.state.user.image} className="img-responsive " />
         </div>
         <div className="col-md-6">
           <h1>{this.state.user.firstName}{this.state.user.lastName}</h1>
           <h3>aka {this.state.user.username}</h3>
-          <h2>Who am I and what do I do?</h2>
+          <h3>Who am I and what do I do?</h3>
           <p>{this.state.user.description}</p>
-          <h2>I currently support (grid tile - add box link 2 profile)</h2>
-          {this.state.user.nonprofits.map(nonprofit => <h4 key={nonprofit.id}>{nonprofit.firstName} {nonprofit.lastName}<div style={{backgroundImage: `url(${nonprofit.imageSRC})`}} className="picture supporter"></div></h4>)}
 
           <a href={this.state.user.linkedIn}>{this.state.user.linkedIn}</a>
-
+          <h3>I am ready to volunteer my services in:</h3>
           {this.state.user.skills.map(skill => {
             return (
               <div key={skill.skill.id}>
@@ -76,8 +75,10 @@ class UsersShow extends React.Component {
               </div>
             );
           })}
-          {this.state.user.nonprofits.map(nonprofit => <h4 key={nonprofit.id}>{nonprofit.name}</h4>)}
-
+        </div>
+        <div className="col-md-12">
+          <h3>I currently support:</h3>
+          {this.state.user.nonprofits.map(nonprofit => <div key={nonprofit.id}style={{backgroundImage: `url(${nonprofit.imageSRC})`}} className="show-picture"></div>)}
           <BackButton />
           {!Auth.isAuthenticated() && <Link to={'/login'} className="btn button">Login to rate this volunteer</Link>}
           {Auth.isAuthenticated() && Auth.getPayload() === this.props.match.params.id &&

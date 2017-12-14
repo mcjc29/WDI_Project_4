@@ -1,7 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 
-import UsersForm from './UsersForm';
+import RegisterForm from '../Auth/RegisterForm';
 import Auth from '../../lib/Auth';
 
 class UsersEdit extends React.Component {
@@ -78,7 +78,7 @@ class UsersEdit extends React.Component {
   render() {
     if (!this.state.user) return null;
     return (
-      <UsersForm
+      <RegisterForm
         history={this.props.history}
         handleSubmit={this.handleSubmit}
         handleChange={this.handleChange}

@@ -18,9 +18,14 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
       </div>
       <Row className="_form" onSubmit={handleSubmit}>
         <Row>
+          <Col xs={12} md={8} mdOffset={2}>
+            <h2>Create a charity</h2>
+          </Col>
+
           <Col xs={6} md={4} mdOffset={2}>
+
             <FormGroup>
-              <label htmlFor="image">Image</label>
+              <label htmlFor="image">Upload a logo</label>
               <DragDrop
                 onChange={handleChange}
                 value={nonprofit.base64 || nonprofit.imageSRC}
@@ -35,7 +40,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             <AutoComplete
               findLocation={handleLocationChange}
             />
-            <FormGroup validationState={errors.name ? 'error' : 'success' }>
+            <FormGroup>
               <label htmlFor="name">Name</label>
               <FormControl
                 type="text"
@@ -48,7 +53,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
               <Label bsStyle="danger">{errors.name}</Label>
             </FormGroup>
 
-            <FormGroup validationState={errors.name ? 'error' : 'success' }>
+            <FormGroup>
 
               <label htmlFor="address">Address</label>
               <FormControl
@@ -62,7 +67,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
               {errors.address && <Label bsStyle="danger">{errors.address}</Label>}
             </FormGroup>
 
-            <FormGroup validationState={errors.name ? 'error' : 'success' }>
+            <FormGroup>
               <label htmlFor="registration">Registration No.</label>
               <FormControl
                 type="text"
@@ -75,7 +80,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
               {errors.registration && <Label bsStyle="danger">{errors.registration}</Label>}
             </FormGroup>
 
-            <FormGroup validationState={errors.name ? 'error' : 'success' }>
+            <FormGroup>
               <label htmlFor="website">Website</label>
               <FormControl
                 type="text"
@@ -130,7 +135,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
             <Button disabled={formInvalid}>Save</Button>
           </div>
         </Col>
-      </Row>
+      </Row> 
     </div>
   );
 }

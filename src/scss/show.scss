@@ -15,11 +15,16 @@
 //   padding: 20px;
 // }
 //
-// .show-picture {
-//   height: 200px;
-//   overflow: hidden;
-//   background-size: contain;
-//   background-repeat: no-repeat;
-//   background-position: center;
-//   margin: 10%;
-// }
+.show-picture {
+  height: 100px;
+  overflow: hidden;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 30px;
+}
+
+.supporters {
+    border: 1px solid #ccc;
+
+}

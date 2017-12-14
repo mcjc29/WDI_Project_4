@@ -21,7 +21,6 @@ Skill.create([
   { name: 'Banking' },
   { name: 'Barista' },
   { name: 'Bartender' },
-  { name: 'Beautician' },
   { name: 'Bookkeeping' },
   { name: 'Business Analyst' },
   { name: 'Business Development' },
@@ -61,10 +60,8 @@ Skill.create([
   { name: 'Nurse Practitioner' },
   { name: 'Nursing' },
   { name: 'Nursing Assistant' },
-  { name: 'Occupational Therapist' },
   { name: 'Office Assistant' },
   { name: 'Office Manager' },
-  { name: 'Optician' },
   { name: 'Painter' },
   { name: 'Paralegal / Legal Assistant' },
   { name: 'Personal Assistant' },
@@ -192,8 +189,8 @@ Skill.create([
               lat: 51.52449499999999,
               lng: -0.09443899999996574
             },
-            skills: [skills[0], skills[2], skills[5]],
-            supporters: [users[0]]
+            skills: [skills[0], skills[2], skills[5], skills[47], skills[7], skills[1]],
+            supporters: [users[0], users[1], users[2], users[4]]
           } , {
             name: 'Refugee Action',
             image: 'https://upload.wikimedia.org/wikipedia/commons/b/b1/Refugee_action_logo_with_white_background.jpg',
@@ -207,8 +204,8 @@ Skill.create([
               lat: 51.4925145,
               lng: -0.1422247000000425
             },
-            skills: [skills[66], skills[10], skills[9]],
-            supporters: [users[0]]
+            skills: [skills[66], skills[10], skills[9], skills[5], skills[67], skills[44]],
+            supporters: [users[0], users[1], users[2], users[4]]
           } ,     {
             name: 'Luna',
             image: 'http://lunachildren.org.uk/wp-content/themes/blankslate/images/luna-childrens-charity-logo-orange.jpg',
@@ -222,8 +219,8 @@ Skill.create([
               lat: 51.523199,
               lng: -0.1721860000000106
             },
-            skills: [skills[68], skills[17], skills[69]],
-            supporters: [users[0]]
+            skills: [skills[68], skills[17], skills[69], skills[37], skills[27], skills[84]],
+            supporters: [users[0], users[1], users[2], users[4]]
           } , {
             name: 'Migrants Resource Center',
             image: 'https://www.migrantsresourcecentre.org.uk/wp-content/uploads/2017/03/MRC-full-words-logo-150h.png',
@@ -237,8 +234,8 @@ Skill.create([
               lat: 51.523199,
               lng: -0.1721860000000106
             },
-            skills: [skills[68], skills[17], skills[69]],
-            supporters: [users[0]]
+            skills: [skills[68], skills[17], skills[69], skills[4], skills[7], skills[54]],
+            supporters: [users[0], users[1], users[2], users[4]]
           }, {
             name: 'Development Media International',
             image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSheOVO0JFXzCVBtXPBb_CkkaSOMQcZDjVLc1WCoElGZhqPyjJ60Q',
@@ -252,8 +249,8 @@ Skill.create([
               lat: 51.523199,
               lng: -0.1721860000000106
             },
-            skills: [skills[68], skills[77], skills[69]],
-            supporters: [users[0]]
+            skills: [skills[68], skills[77], skills[69], skills[76], skills[57], skills[82]],
+            supporters: [users[0], users[1], users[2], users[4]]
           }, {
             name: 'Evidence Action',
             image: 'https://static1.squarespace.com/static/546f9316e4b0ced8102e4c74/t/547117d3e4b031c87aee695f/1512742275649/?format=1500w',
@@ -267,8 +264,8 @@ Skill.create([
               lat: 51.523199,
               lng: -0.1721860000000106
             },
-            skills: [skills[28], skills[22], skills[55]],
-            supporters: [users[0]]
+            skills: [skills[28], skills[22], skills[55], skills[74], skills[67], skills[24]],
+            supporters: [users[0], users[1], users[2], users[4]]
           } , {
             name: 'Possible Health',
             image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOeJi16Z2AqlV0Fc-YgjjrqxWZZgDuL0vAAmw7d4laJlhCcAtncA',
@@ -282,8 +279,8 @@ Skill.create([
               lat: 51.523199,
               lng: -0.1721860000000106
             },
-            skills: [skills[77], skills[27], skills[84]],
-            supporters: [users[0]]
+            skills: [skills[77], skills[27], skills[84], skills[44], skills[33], skills[67]],
+            supporters: [users[0], users[1], users[2], users[4]]
           }
         ]);
       })
