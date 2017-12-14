@@ -7,13 +7,13 @@
 @import 'forms';
 @import 'show';
 
-body {
-  font-family: 'Noto Sans', sans-serif;
+* {
 
 }
 
 main {
   min-height: 75vh;
+
 }
 
 img {
@@ -30,4 +30,8 @@ img {
     padding: 4px;
     background: #fafafa;
   }
+}
+
+.icon {
+  width: 30px;
 }

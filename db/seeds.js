@@ -81,9 +81,6 @@ Skill.create([
   { name: 'Real Estate' },
   { name: 'Receptionist' },
   { name: 'Research Assistant' },
-  { name: 'Respiratory Therapist' },
-  { name: 'Retail' },
-  { name: 'Retail Sales' },
   { name: 'Restaurant and Food Service' },
   { name: 'Sales' },
   { name: 'Sales Associate' },
@@ -114,7 +111,7 @@ Skill.create([
         email: 'cameron@cameron.com',
         image:
         'https://user-images.githubusercontent.com/28314323/32336420-37401b96-bfe7-11e7-82ce-f7a9a94798c4.jpg',
-        description: 'do gooder',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         skills: [{skill: skills[30]}, {skill: skills[6]}, {skill: skills[50]}],
         address: 'road street',
         linkedIn: 'https://uk.linkedin.com',
@@ -128,8 +125,8 @@ Skill.create([
         email: 'rupesh@rupesh.com',
         image:
         'https://user-images.githubusercontent.com/28314323/32336469-55698e72-bfe7-11e7-9d02-fdabd2a2d95d.jpg',
-        description: 'do gooder',
-        skills: [{skill: skills[55]}, {skill: skills[68]}, {skill: skills[150]}],
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        skills: [{skill: skills[55]}, {skill: skills[68]}],
         address: 'road street',
         linkedIn: 'https://uk.linkedin.com',
         password: 'password',
@@ -143,7 +140,7 @@ Skill.create([
         email: 'siobhan@siobhan.com',
         image:
         'https://user-images.githubusercontent.com/28314323/32336467-5211c230-bfe7-11e7-9af5-286502b8fca1.jpg',
-        description: 'do gooder',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         skills: [{skill: skills[35]}, {skill: skills[64]}, {skill: skills[59]}],
         address: 'road street',
         linkedIn: 'https://uk.linkedin.com',
@@ -157,8 +154,8 @@ Skill.create([
         email: 'sandra@sandra.com',
         image:
         'https://user-images.githubusercontent.com/28314323/32336479-57410a40-bfe7-11e7-87b9-18688869fa4a.jpg',
-        description: 'do gooder',
-        skills: [{skill: skills[36]}, {skill: skills[86]}, {skill: skills[60]}],
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        skills: [{skill: skills[36]}, {skill: skills[82]}, {skill: skills[60]}],
         address: 'road street',
         linkedIn: 'https://uk.linkedin.com',
         password: 'password',
@@ -171,7 +168,7 @@ Skill.create([
         email: 'sarah@sarah.com',
         image:
         'https://user-images.githubusercontent.com/28314323/32336488-598e339a-bfe7-11e7-938c-77b2abcf6af0.jpg',
-        description: 'do gooder',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
         skills: [{skill: skills[44]}, {skill: skills[63]}, {skill: skills[78]}],
         address: 'road street',
         linkedIn: 'https://uk.linkedin.com',
@@ -244,7 +241,7 @@ Skill.create([
             supporters: [users[0]]
           }, {
             name: 'Development Media International',
-            image: 'http://www.developmentmedia.net/uploads/9/0/0/3/90035669/published/dmi-logo-hires-rgb.jpeg?1507209799',
+            image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSheOVO0JFXzCVBtXPBb_CkkaSOMQcZDjVLc1WCoElGZhqPyjJ60Q',
             description: 'Development Media International runs evidence-based radio, TV and mobile campaigns to change behaviours and save lives in developing countries. We ran the first scientific trial to show that radio can change behaviours. We design and run large-scale research studies to generate evidence that mass media campaigns can change behaviours in developing countries.  ',
             registration: '291789',
             createdBy: users[0],
@@ -285,7 +282,7 @@ Skill.create([
               lat: 51.523199,
               lng: -0.1721860000000106
             },
-            skills: [skills[77], skills[27], skills[88]],
+            skills: [skills[77], skills[27], skills[84]],
             supporters: [users[0]]
           }
         ]);

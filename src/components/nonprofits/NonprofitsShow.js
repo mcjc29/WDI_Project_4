@@ -4,8 +4,11 @@ import Axios    from 'axios';
 
 import Auth       from '../../lib/Auth';
 import BackButton from '../utility/BackButton';
+import Sign from '../icons/Sign';
+import Website from '../icons/Website';
+
 import GoogleMap from '../utility/GoogleMap';
-import { FormGroup, FormControl, Form, Row, Col, ControlLabel, Button, Label } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 class NonprofitsShow extends React.Component {
   state = {
@@ -14,46 +17,51 @@ class NonprofitsShow extends React.Component {
 
   componentWillMount() {
     Axios
-      .get(`/api/nonprofits/${this.props.match.params.id}`)
-      .then(res => this.setState({ nonprofit: res.data }))
-      .catch(err => console.log(err));
+    .get(`/api/nonprofits/${this.props.match.params.id}`)
+    .then(res => this.setState({ nonprofit: res.data }))
+    .catch(err => console.log(err));
   }
 
   deleteNonprofit = () => {
     Axios
-      .delete(`/api/nonprofits/${this.props.match.params.id}`, {
-        headers: { 'authorization': `Bearer ${Auth.getToken()}`}
-      })
-      .then(() => this.props.history.push('/'))
-      .catch(err => console.log(err));
+    .delete(`/api/nonprofits/${this.props.match.params.id}`, {
+      headers: { 'authorization': `Bearer ${Auth.getToken()}`}
+    })
+    .then(() => this.props.history.push('/'))
+    .catch(err => console.log(err));
   }
 
   nonprofitsSupport = () => {
     Axios
-      .post(`/api/nonprofits/${this.props.match.params.id}/support`, null, {
-        headers: { 'authorization': `Bearer ${Auth.getToken()}`}
-      })
-      .then(res => {
-        const nonprofit = Object.assign({} , this.state.nonprofit, { supporters: this.state.nonprofit.supporters.concat(res.data)});
-        this.setState({nonprofit});
-      })
+    .post(`/api/nonprofits/${this.props.match.params.id}/support`, null, {
+      headers: { 'authorization': `Bearer ${Auth.getToken()}`}
+    })
+    .then(res => {
+      const nonprofit = Object.assign({} , this.state.nonprofit, { supporters: this.state.nonprofit.supporters.concat(res.data)});
+      this.setState({nonprofit});
+      const user = Object.assign({} , this.state.user, { supporters: this.state.user.supporters.concat(res.data)});
+      this.setState({user});
+    })
 
-      .catch(err => console.log(err));
+    .catch(err => console.log(err));
   }
 
   nonprofitsUnsupport = () => {
     Axios
-      .delete(`/api/nonprofits/${this.props.match.params.id}/support`, {
-        headers: { 'authorization': `Bearer ${Auth.getToken()}`}
-      })
-      .then(res => {
-        const nonprofit = Object.assign({} , this.state.nonprofit, { supporters: this.state.nonprofit.supporters.filter(user => user.id !== res.data.id )});
-        this.setState({nonprofit});
-      })
-      .catch(err => console.log(err));
+    .delete(`/api/nonprofits/${this.props.match.params.id}/support`, {
+      headers: { 'authorization': `Bearer ${Auth.getToken()}`}
+    })
+    .then(res => {
+      const nonprofit = Object.assign({} , this.state.nonprofit, { supporters: this.state.nonprofit.supporters.filter(user => user.id !== res.data.id )});
+      this.setState({nonprofit});
+      const user = Object.assign({} , this.state.user, { supporters: this.state.user.supporters.filter(user => user.id !== res.data.id )});
+      this.setState({user});
+    })
+    .catch(err => console.log(err));
   }
 
   render() {
+
     if (!this.state.nonprofit) return null;
     const supporter = this.state.nonprofit.supporters.find(user => user.id === Auth.getPayload().userId) ? true : false;
 
@@ -61,74 +69,75 @@ class NonprofitsShow extends React.Component {
 
       <div>
         <BackButton />
-
         <Col>
           <h1>{this.state.nonprofit.name}</h1>
 
-      <Row className="show-rows">
-          <div style={{backgroundImage: `url(${this.state.nonprofit.imageSRC})`}} className="picture"></div>
+          <Row className="show-rows">
+            <div style={{backgroundImage: `url(${this.state.nonprofit.imageSRC})`}} className="show-picture"></div>
+          </Row>
+          <Row className="show-rows">
+            <Col xs={12} md={8} mdOffset={2}>
 
-</Row>
-<Row className="show-rows">
-  <Col xs={12} md={8} mdOffset={2}>
-
-          <h2>Who are we and what do we do?</h2>
-          <p>{this.state.nonprofit.description}</p>
-        </Col>
-        </Row>
-<Row className="show-rows">
-          <h2>What skills are we currently seeking?</h2>
-          {this.state.nonprofit.skills.map(skill => <h4 key={skill.id}>{skill.name}</h4>)}
-        </Row>
-        <Row className="show-rows">
-          <h2>Our supporters (grid tile - add box link 2 profile)</h2>
+              <h2>Who are we and what do we do?</h2>
+              <p>{this.state.nonprofit.description}</p>
+            </Col>
+          </Row>
+          <Row className="show-rows">
+            <h2>What skills are we currently seeking?</h2>
+            {this.state.nonprofit.skills.map(skill => <h4 key={skill.id}>{skill.name}</h4>)}
+          </Row>
+          <Row className="show-rows">
+            <h2>Our supporters (grid tile - add box link 2 profile)</h2>
             {this.state.nonprofit.supporters.map(supporter => <h4 key={supporter.id}>{supporter.firstName} {supporter.lastName}<div style={{backgroundImage: `url(${supporter.imageSRC})`}} className="picture supporter"></div></h4>)}
 
-          {!Auth.isAuthenticated() && <Link to={'/login'} className="standard-button">Login to support {this.state.nonprofit.name}</Link>}
-          {!supporter &&  Auth.isAuthenticated() && <button className="main-button" onClick={this.nonprofitsSupport} aria-hidden="true">
-            Support {this.state.nonprofit.name}
-          </button>}
-          {supporter &&  Auth.isAuthenticated() && <button className="main-button" onClick={this.nonprofitsUnsupport} aria-hidden="true">
-            Unsupport {this.state.nonprofit.name}
-          </button>}
-        </Row>
-        <Row className="show-rows">
-          <h2>Get in touch</h2>
-          <Col xs={6} md={4}>
-          <h3>Website</h3>
-          <a href={this.state.nonprofit.website}>{this.state.nonprofit.website}</a>
-        </Col>
-          <Col xs={6} md={4}>
-          <h3>Registered charity</h3>
-          <h4>{this.state.nonprofit.registration}</h4>
-        </Col>
+            {!Auth.isAuthenticated() && <Link to={'/login'} className="btn button">Login to support {this.state.nonprofit.name}</Link>}
+            {!supporter &&  Auth.isAuthenticated() && <button className="btn button" onClick={this.nonprofitsSupport} aria-hidden="true">
+              Support {this.state.nonprofit.name}
+            </button>}
+            {supporter &&  Auth.isAuthenticated() && <button className="btn button" onClick={this.nonprofitsUnsupport} aria-hidden="true">
+              Unsupport {this.state.nonprofit.name}
+            </button>}
+          </Row>
+          <Row className="show-rows">
+            <h2>Get in touch</h2>
+            <Col xs={6} md={4}>
+              <h3>Website</h3>
+              <Website/>
+              <a href={this.state.nonprofit.website}>{this.state.nonprofit.website}</a>
+            </Col>
+            <Col xs={6} md={4}>
+              <h3>Registered charity</h3>
+              <h4>{this.state.nonprofit.registration}</h4>
+            </Col>
 
-          <Col xs={6} md={4}>
-            <h3>Email</h3>
-            <h4>{this.state.nonprofit.email}</h4>
-          </Col>
-        </Row>
-        <Row className="show-rows">
+            <Col xs={6} md={4}>
+              <h3>Email</h3>
+              <h4>{this.state.nonprofit.email}</h4>
+            </Col>
+          </Row>
+          <Row className="show-rows">
             <Col xs={12} md={8} mdOffset={2}>
-            <h3>Address</h3>
-            <h4>{this.state.nonprofit.address}</h4>
-          {this.state.nonprofit.location && <GoogleMap center={this.state.nonprofit.location} />}
-        </Col>
+              <h3>Address</h3>
+              <Sign />
 
-</Row>
-          {Auth.isAuthenticated() && <Link to={`/nonprofits/${this.state.nonprofit.id}/edit`} className="standard-button">
-            <i className="fa fa-pencil" aria-hidden="true"></i>Edit
-          </Link>}
-          {' '}
-          {Auth.isAuthenticated() && <button className="main-button" onClick={this.deleteNonprofit}>
-            <i className="fa fa-trash" aria-hidden="true"></i>Delete
-          </button>}
+              <h4>{this.state.nonprofit.address}</h4>
+              {this.state.nonprofit.location && <GoogleMap center={this.state.nonprofit.location} />}
+            </Col>
 
-    </Col>
+          </Row>
+          {Auth.isAuthenticated() && <Link to={`/nonprofits/${this.state.nonprofit.id}/edit`} className="btn button">
+          <i className="fa fa-pencil" aria-hidden="true"></i>Edit
+        </Link>}
+        {' '}
+        {Auth.isAuthenticated() && <button className="btn button" onClick={this.deleteNonprofit}>
+          <i className="fa fa-trash" aria-hidden="true"></i>Delete
+        </button>}
 
-      </div>
-    );
-  }
+      </Col>
+
+    </div>
+  );
+}
 }
 
 export default NonprofitsShow;

@@ -22,14 +22,14 @@ class UsersIndex extends React.Component {
     };
 
     Promise.props(promises)
-    .then(data => {
-      const skillList = data.skills.map(skill => {
-        return { label: skill.name, value: skill.id, id: skill.id };
-      });
+      .then(data => {
+        const skillList = data.skills.map(skill => {
+          return { label: skill.name, value: skill.id, id: skill.id };
+        });
 
-      this.setState({ skills: skillList, users: data.users });
-    })
-    .catch(err => this.setState({ errors: err.response.data.errors }));
+        this.setState({ skills: skillList, users: data.users });
+      })
+      .catch(err => console.log(err));
   }
 
   handleSelectChange = (value) => {
@@ -48,10 +48,10 @@ class UsersIndex extends React.Component {
 
   render() {
     const users = this.runFilter();
-
     return (
       <Row>
         <div className="container">
+          
           <Col>
             <MultiSelect
               value={this.state.value}
@@ -59,6 +59,7 @@ class UsersIndex extends React.Component {
               handleSelectChange={this.handleSelectChange}
             />
             {users.map(user => {
+              console.log(user);
               return(
                 <div key={user.id} className="col-md-4 col-sm-6 col-xs-12">
                   <div className="bob">
@@ -66,7 +67,9 @@ class UsersIndex extends React.Component {
 
                     <h3>{user.firstName} {user.lastName}</h3>
 
-                    <div className="scrollskill">{user.skills.map(skill => <p key={skill.skill.id}>{skill.skill.name}</p>)}</div>
+                    <div className="scrollskill">
+                      {user.skills.map(skill => <p key={skill.skill.id}>{skill.skill.name}</p>)}
+                    </div>
                     <Link to={`/users/${user.id}`} className="bob-button btn buton">View Profile</Link>
                   </div>
                 </div>

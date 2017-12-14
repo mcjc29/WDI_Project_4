@@ -40,7 +40,9 @@ class UsersShow extends React.Component {
   }
 
   render() {
+    console.log(this.state.user);
     if (!this.state.user) return null;
+
     // const { userId } = Auth.getPayload();
     // const isCurrentUser = userId === this.state.user.id;
     return (
@@ -49,10 +51,13 @@ class UsersShow extends React.Component {
           <img src={this.state.user.image} className="img-responsive" />
         </div>
         <div className="col-md-6">
-          <h3>{this.state.user.userName}</h3>
-          <h3>{this.state.user.firstName}</h3>
-          <h4>{this.state.user.lastName}</h4>
-          <h4>{this.state.user.description}</h4>
+          <h1>{this.state.user.firstName}{this.state.user.lastName}</h1>
+          <h3>aka {this.state.user.username}</h3>
+          <h2>Who am I and what do I do?</h2>
+          <p>{this.state.user.description}</p>
+          <h2>I currently support (grid tile - add box link 2 profile)</h2>
+          {this.state.user.nonprofits.map(nonprofit => <h4 key={nonprofit.id}>{nonprofit.firstName} {nonprofit.lastName}<div style={{backgroundImage: `url(${nonprofit.imageSRC})`}} className="picture supporter"></div></h4>)}
+
           <a href={this.state.user.linkedIn}>{this.state.user.linkedIn}</a>
 
           {this.state.user.skills.map(skill => {
@@ -74,14 +79,13 @@ class UsersShow extends React.Component {
           {this.state.user.nonprofits.map(nonprofit => <h4 key={nonprofit.id}>{nonprofit.name}</h4>)}
 
           <BackButton />
-          {!Auth.isAuthenticated() && <Link to={'/login'} className="standard-button">Login to rate this volunteer</Link>}
+          {!Auth.isAuthenticated() && <Link to={'/login'} className="btn button">Login to rate this volunteer</Link>}
           {Auth.isAuthenticated() && Auth.getPayload() === this.props.match.params.id &&
             <div>
-              <Link to={`/users/${this.state.user.id}/edit`} className="standard-button">
+              <Link to={`/users/${this.state.user.id}/edit`} className="btn button">
                 <i className="fa fa-pencil" aria-hidden="true"></i>Edit
               </Link>
-              <span>{' '}</span>
-              <button className="main-button" onClick={this.deleteUser}>
+              <button className="btn button" onClick={this.deleteUser}>
                 <i className="fa fa-trash" aria-hidden="true"></i>Delete
               </button>
             </div>

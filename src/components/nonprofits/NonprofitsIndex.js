@@ -63,6 +63,20 @@ class NonprofitsIndex extends React.Component {
             {nonprofits.map(nonprofit => {
               return(
                 <div key={nonprofit.id} className="col-md-4 col-sm-6 col-xs-12">
+                  <Link to={`/nonprofits/${nonprofit.id}`}><div style={{backgroundImage: `url(${nonprofit.imageSRC})`}} className="picture bob"></div></Link>
+                </div>
+              );
+            })}
+          </Col>
+          {/* <Col>
+            <MultiSelect
+              value={this.state.value}
+              options={this.state.skills}
+              handleSelectChange={this.handleSelectChange}
+            />
+            {nonprofits.map(nonprofit => {
+              return(
+                <div key={nonprofit.id} className="col-md-4 col-sm-6 col-xs-12">
                   <div className="bob">
                     <div style={{backgroundImage: `url(${nonprofit.imageSRC})`}} className="picture"></div>
                     <h3 className="name-center" >{nonprofit.name}</h3>
@@ -75,8 +89,7 @@ class NonprofitsIndex extends React.Component {
                 </div>
               );
             })}
-          </Col>
-
+          </Col> */}
           <div className="page-banner col-md-12">
             {Auth.isAuthenticated() && <Link to="/nonprofits/new" className="button main-button">
               <i className="fa fa-plus" aria-hidden="true"></i>Add Nonprofit
