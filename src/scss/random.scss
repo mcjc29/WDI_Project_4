@@ -1,0 +1,27 @@
+.register {
+  width: 400px;
+}
+main {
+  min-height: 75vh;
+
+}
+
+img {
+    height: 300px;
+}
+
+.image-tile {
+  margin-bottom: 30px;
+  position: relative;
+
+  img {
+    width: 100%;
+    border-radius: 2px;
+    padding: 4px;
+    background: #fafafa;
+  }
+}
+
+.icon {
+  width: 30px;
+}

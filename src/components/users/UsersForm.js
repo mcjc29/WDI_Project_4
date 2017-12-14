@@ -13,7 +13,7 @@ function UsersForm({ handleSubmit, handleChange, user, handleSelectChange, remov
       <div className="page-banner col-md-12">
         <BackButton history={history} />
       </div>
-      <form onSubmit={handleSubmit} className="col-md-6">
+      <form className="_form" onSubmit={handleSubmit} className="col-md-6">
         <FormGroup>
           <label htmlFor="name">Name</label>
           <input

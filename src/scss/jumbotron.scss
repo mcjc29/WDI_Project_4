@@ -1,9 +1,14 @@
 
 .jumbotron {
-  padding-top: 6rem;
-  padding-bottom: 6rem;
+  padding-top: 10rem !important;
+  padding-bottom: 10rem !important;
   margin-bottom: 0;
-  background-color: #868e96;
+  background: url(https://images.unsplash.com/photo-1459183885421-5cc683b8dbba?auto=format&fit=crop&w=1950&q=80&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  color: white !important;
 }
 
 .jumbotron p:last-child {
@@ -11,7 +16,23 @@
 }
 
 .jumbotron-heading {
+  padding: 0;
   font-weight: 300;
+  color: white !important;
+
+  span.logo {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1em !important;
+    color: white !important;
+    span {
+      color: #fed800;
+      font-weight: 900;
+    }
+  }
+}
+
+.jumbotron p {
+  font-weight: 400 !important;
 }
 
 .jumbotron .container {
@@ -19,5 +40,24 @@
 }
 
 .jumbotron .btn {
-  margin: 10px;
+  font-size: 18px;
+  margin: 5px;
+  background: black;
+  text-decoration: none !important;
+  color: white !important;
+  span {
+    font-weight: 900;
+    font-family: 'Raleway', sans-serif;
+    &.blue {
+      color: #307ce1;
+      font-size: 20px;
+    }
+    &.lightBlue {
+      color: #7ccaed;
+      font-size: 20px;
+    }
+  }
+  &:hover {
+    color: white !important;
+  }
 }

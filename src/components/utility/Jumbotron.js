@@ -7,11 +7,10 @@ const Jumbotron = () => {
 
     <section className="jumbotron text-center">
       <div className="container homejumbo ">
-        <h1 className="jumbotron-heading">GAT SKILLZ?</h1>
-        <p className="lead text-muted">GAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZ</p>
-        <Link to="/nonprofits" className="btn">Search by opportunity </Link>
-        <Link to="/users" className="btn">Search by volunteer </Link>
-
+        <h1 className="jumbotron-heading">Are you <span className="logo">Charit<span>Able</span></span>?</h1>
+        <p className="lead">Something....</p>
+        <Link to="/nonprofits" className="btn">Search by <span className="blue">Opportunity</span></Link>
+        <Link to="/users" className="btn">Search by <span className="lightBlue">Volunteer</span></Link>
       </div>
     </section>
   );

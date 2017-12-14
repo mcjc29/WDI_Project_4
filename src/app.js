@@ -10,11 +10,10 @@ import NavMain from './components/utility/NavMain';
 import Routes from './components/utility/Routes';
 // import SearchBar from './components/utility/SearchBar';
 import Jumbotron from './components/utility/Jumbotron';
-import SearchBar from './components/utility/SearchBar';
+// import SearchBar from './components/utility/SearchBar';
 import Footer from './components/utility/Footer';
-
-import NonprofitsIndex from './components/nonprofits/NonprofitsIndex';
-import UsersIndex from './components/users/UsersIndex';
+// import NonprofitsIndex from './components/nonprofits/NonprofitsIndex';
+// import UsersIndex from './components/users/UsersIndex';
 
 class App extends React.Component {
 
@@ -25,18 +24,12 @@ class App extends React.Component {
           <header>
             <NavMain />
           </header>
-          {/* <div className="container"> */}
-            {/* <SearchBar NonprofitsIndex={NonprofitsIndex} UsersIndex={UsersIndex}/> */}
-            <main>
-
-              <Jumbotron />
-              {/* <SearchBar NonprofitsIndex={NonprofitsIndex} UsersIndex={UsersIndex}/> */}
-              <Routes />
-            </main>
-            <Footer />
-
-          </div>
-        {/* </div> */}
+          <main>
+            <Jumbotron />
+            <Routes />
+          </main>
+          <Footer />
+        </div>
       </Router>
     );
   }

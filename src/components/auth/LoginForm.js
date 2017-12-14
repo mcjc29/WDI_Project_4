@@ -8,7 +8,8 @@ const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
   return (
     <Row>
       <Col xs={6} md={4} mdOffset={4}>
-        <Form onSubmit={handleSubmit}>
+        <Form className="_form" onSubmit={handleSubmit}>
+          <h2>Login</h2>
           <FormGroup>
             <input
               type="text"
@@ -36,7 +37,7 @@ const LoginForm = ({ handleChange, handleSubmit, user, errors }) => {
           {/* <Button disabled={formInvalid}>Login</Button> */}
           <button className="btn" disabled={formInvalid}>Login</button>
 
-          <Link to={'/register'} className="standard-button">Don't have an account? <br/> Click here to register. </Link>
+          <Link to={'/register'} className="standard-button">Don't have an account?</Link>
         </Form>
       </Col>
     </Row>

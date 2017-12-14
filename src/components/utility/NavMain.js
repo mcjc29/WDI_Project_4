@@ -14,20 +14,13 @@ const NavMain = ({history}) => {
   }
 
   return(
-    <Navbar inverse collapseOnSelect>
+    <Navbar className="_nav" collapseOnSelect>
       <Nav>
         <LinkContainer to="/">
-          <NavItem className="nav-link">Home</NavItem>
+          <NavItem className="nav-link logo">Charit<span>Able</span></NavItem>
         </LinkContainer>
       </Nav>
       <Nav pullRight>
-        { (Auth.isAuthenticated() || !Auth.isAuthenticated()) && <LinkContainer to="/nonprofits">
-          <NavItem className="nav-link">Charities</NavItem>
-        </LinkContainer>}
-
-        { (Auth.isAuthenticated() || !Auth.isAuthenticated()) && <LinkContainer to="/users">
-          <NavItem className="nav-link">Volunteers</NavItem>
-        </LinkContainer>}
         { Auth.isAuthenticated() && <LinkContainer exact to="/nonprofits/new">
           <NavItem href="#">Create Charity</NavItem>
         </LinkContainer>}

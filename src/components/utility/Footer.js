@@ -8,7 +8,8 @@ const Footer = () => {
         <p className="float-right">
           <a href="#">Back to top</a>
         </p>
-        <p>GAT SKILLZ? &copy; SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZGAT SKILLZ!</p>
+        <p>&copy; <span className="logo">Charity<span>Able</span></span></p>
+        <hr />
         <p>Skillz? <a href="/">Visit the homepage</a></p>
       </div>
     </footer>
