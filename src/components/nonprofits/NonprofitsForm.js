@@ -12,6 +12,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
   const formInvalid = Object.keys(errors).some(key => errors[key]);
 
   return (
+    <div className="container">
     <Row onSubmit={handleSubmit}>
       <div className="page-banner col-md-12">
         <BackButton history={history} />
@@ -130,6 +131,7 @@ function NonprofitsForm({ handleSubmit, handleChange, handleSelectChange, nonpro
         </div>
       </Col>
     </Row>
+  </div>
   );
 }
 

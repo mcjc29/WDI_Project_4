@@ -91,9 +91,9 @@ class NonprofitsIndex extends React.Component {
               );
             })}
           </Col> */}
-          <div className="page-banner col-md-12">
-            {Auth.isAuthenticated() && <Link to="/nonprofits/new" className="button main-button">
-              <i className="fa fa-plus" aria-hidden="true"></i>Add Nonprofit
+          <div className="picture bob col-md-4 col-sm-6 col-xs-12">
+            {Auth.isAuthenticated() && <Link to="/nonprofits/new">
+              <i className="fa fa-plus fa-5x addnew" aria-hidden="true"></i>
             </Link>}
           </div>
         </div>
