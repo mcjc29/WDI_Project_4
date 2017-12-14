@@ -84,7 +84,7 @@ class NonprofitsShow extends React.Component {
           </Row>
           <Row className="show-rows">
             <h2>What skills are we currently seeking?</h2>
-            {this.state.nonprofit.skills.map(skill => <h4 key={skill.id}>{skill.name}</h4>)}
+            {this.state.nonprofit.skills.map(skill => <Col key={skill.id} xs={6} md={4}><h4 >{skill.name}</h4></Col>)}
           </Row>
           <Row className="show-rows">
             <h2>Our supporters (grid tile - add box link 2 profile)</h2>
@@ -116,11 +116,13 @@ class NonprofitsShow extends React.Component {
             </Col>
           </Row>
           <Row className="show-rows">
-            <Col xs={12} md={8} mdOffset={2}>
+            <Col xs={6} md={4} mdOffset={2}>
               <h3>Address</h3>
               <Sign />
-
               <h4>{this.state.nonprofit.address}</h4>
+            </Col>
+              <Col xs={6} md={4} >
+
               {this.state.nonprofit.location && <GoogleMap center={this.state.nonprofit.location} />}
             </Col>
 

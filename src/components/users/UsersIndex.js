@@ -22,14 +22,14 @@ class UsersIndex extends React.Component {
     };
 
     Promise.props(promises)
-      .then(data => {
-        const skillList = data.skills.map(skill => {
-          return { label: skill.name, value: skill.id, id: skill.id };
-        });
+    .then(data => {
+      const skillList = data.skills.map(skill => {
+        return { label: skill.name, value: skill.id, id: skill.id };
+      });
 
-        this.setState({ skills: skillList, users: data.users });
-      })
-      .catch(err => console.log(err));
+      this.setState({ skills: skillList, users: data.users });
+    })
+    .catch(err => console.log(err));
   }
 
   handleSelectChange = (value) => {
@@ -51,27 +51,17 @@ class UsersIndex extends React.Component {
     return (
       <Row>
         <div className="container">
-          
           <Col>
+            <h3>View skilled professionals ready to volunteer</h3>
             <MultiSelect
               value={this.state.value}
               options={this.state.skills}
               handleSelectChange={this.handleSelectChange}
             />
             {users.map(user => {
-              console.log(user);
               return(
                 <div key={user.id} className="col-md-4 col-sm-6 col-xs-12">
-                  <div className="bob">
-                    <div style={{backgroundImage: `url(${user.imageSRC})`}} className="picture"></div>
-
-                    <h3>{user.firstName} {user.lastName}</h3>
-
-                    <div className="scrollskill">
-                      {user.skills.map(skill => <p key={skill.skill.id}>{skill.skill.name}</p>)}
-                    </div>
-                    <Link to={`/users/${user.id}`} className="bob-button btn buton">View Profile</Link>
-                  </div>
+                  <Link to={`/users/${user.id}`}><div style={{backgroundImage: `url(${user.imageSRC})`}} className="picture bob"></div></Link>
                 </div>
               );
             })}

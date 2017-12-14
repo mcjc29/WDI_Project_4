@@ -6,11 +6,24 @@
 @import 'button';
 @import 'forms';
 @import 'show';
+// @import 'debugjanis';
 
-* {
-
+// .parallax {
+//     /* The image used */
+//     background-image: url('../assets/images/abigail-keenan-27292.jpg');
+//
+//     /* Set a specific height */
+//     height: 500px;
+//
+//     /* Create the parallax scrolling effect */
+//     background-attachment: fixed;
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+// }
+.register {
+  width: 400px;
 }
-
 main {
   min-height: 75vh;
 

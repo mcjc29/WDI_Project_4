@@ -25,7 +25,7 @@ class App extends React.Component {
           <header>
             <NavMain />
           </header>
-          <div className="container">
+          {/* <div className="container"> */}
             {/* <SearchBar NonprofitsIndex={NonprofitsIndex} UsersIndex={UsersIndex}/> */}
             <main>
 
@@ -36,7 +36,7 @@ class App extends React.Component {
             <Footer />
 
           </div>
-        </div>
+        {/* </div> */}
       </Router>
     );
   }

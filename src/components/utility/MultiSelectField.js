@@ -1,7 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 
-const MultiSelect = ({options, handleSelectChange, removeSelected, value}) => {
+const MultiSelect = ({options, handleSelectChange, removeSelected, value, message}) => {
 
   return (
     <Select
@@ -12,6 +12,7 @@ const MultiSelect = ({options, handleSelectChange, removeSelected, value}) => {
       value={value}
       multi
       matchPos="start"
+      placeholder=" -- Select a skill -- "
     />
   );
 };

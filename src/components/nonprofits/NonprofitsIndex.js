@@ -55,6 +55,7 @@ class NonprofitsIndex extends React.Component {
         <div className="container">
 
           <Col>
+            <h3>View inspiring ways to make a difference</h3>
             <MultiSelect
               value={this.state.value}
               options={this.state.skills}

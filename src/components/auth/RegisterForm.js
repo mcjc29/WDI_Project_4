@@ -7,6 +7,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, sk
   const formInvalid = Object.keys(errors).some(key => errors[key]);
 
   return (
+    <div className="container">
     <form onSubmit={handleSubmit}>
       <div className="form-group">
         <input
@@ -119,6 +120,7 @@ const RegisterForm = ({ handleChange, handleSubmit, user, handleSelectChange, sk
 
       <button className="btn" disabled={formInvalid}>Login</button>
     </form>
+  </div>
   );
 };
 
