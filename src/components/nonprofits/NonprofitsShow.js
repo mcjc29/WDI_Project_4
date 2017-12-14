@@ -5,6 +5,7 @@ import Axios    from 'axios';
 import Auth       from '../../lib/Auth';
 import BackButton from '../utility/BackButton';
 import GoogleMap from '../utility/GoogleMap';
+import { FormGroup, FormControl, Form, Row, Col, ControlLabel, Button, Label } from 'react-bootstrap';
 
 class NonprofitsShow extends React.Component {
   state = {
@@ -57,22 +58,64 @@ class NonprofitsShow extends React.Component {
     const supporter = this.state.nonprofit.supporters.find(user => user.id === Auth.getPayload().userId) ? true : false;
 
     return (
-      <div className="row">
-        <div className="image-tile col-md-6">
-          <img src={this.state.nonprofit.imageSRC} className="img-responsive" />
-        </div>
-        <div className="col-md-6">
-          <h3>{this.state.nonprofit.name}</h3>
-          <h4>{this.state.nonprofit.description}</h4>
-          <h4>{this.state.nonprofit.registration}</h4>
-          <a href={this.state.nonprofit.website}>{this.state.nonprofit.website}</a>
-          {this.state.nonprofit.skills.map(skill => <h4 key={skill.id}>{skill.name}</h4>)}
-          <div>Supporters of {this.state.nonprofit.name}
-            {this.state.nonprofit.supporters.map(supporter => <h4 key={supporter.id}>{supporter.firstName} {supporter.lastName}<img src={supporter.image} className="img-responsive" /></h4>)}
-          </div>
-          <BackButton />
-          {!Auth.isAuthenticated() && <Link to={'/login'} className="standard-button">Login to support {this.state.nonprofit.name}</Link>}
 
+      <div>
+        <BackButton />
+
+        <Col>
+          <h1>{this.state.nonprofit.name}</h1>
+
+      <Row className="show-rows">
+          <div style={{backgroundImage: `url(${this.state.nonprofit.imageSRC})`}} className="picture"></div>
+
+</Row>
+<Row className="show-rows">
+  <Col xs={12} md={8} mdOffset={2}>
+
+          <h2>Who are we and what do we do?</h2>
+          <p>{this.state.nonprofit.description}</p>
+        </Col>
+        </Row>
+<Row className="show-rows">
+          <h2>What skills are we currently seeking?</h2>
+          {this.state.nonprofit.skills.map(skill => <h4 key={skill.id}>{skill.name}</h4>)}
+        </Row>
+        <Row className="show-rows">
+          <h2>Our supporters (grid tile - add box link 2 profile)</h2>
+            {this.state.nonprofit.supporters.map(supporter => <h4 key={supporter.id}>{supporter.firstName} {supporter.lastName}<div style={{backgroundImage: `url(${supporter.imageSRC})`}} className="picture supporter"></div></h4>)}
+
+          {!Auth.isAuthenticated() && <Link to={'/login'} className="standard-button">Login to support {this.state.nonprofit.name}</Link>}
+          {!supporter &&  Auth.isAuthenticated() && <button className="main-button" onClick={this.nonprofitsSupport} aria-hidden="true">
+            Support {this.state.nonprofit.name}
+          </button>}
+          {supporter &&  Auth.isAuthenticated() && <button className="main-button" onClick={this.nonprofitsUnsupport} aria-hidden="true">
+            Unsupport {this.state.nonprofit.name}
+          </button>}
+        </Row>
+        <Row className="show-rows">
+          <h2>Get in touch</h2>
+          <Col xs={6} md={4}>
+          <h3>Website</h3>
+          <a href={this.state.nonprofit.website}>{this.state.nonprofit.website}</a>
+        </Col>
+          <Col xs={6} md={4}>
+          <h3>Registered charity</h3>
+          <h4>{this.state.nonprofit.registration}</h4>
+        </Col>
+
+          <Col xs={6} md={4}>
+            <h3>Email</h3>
+            <h4>{this.state.nonprofit.email}</h4>
+          </Col>
+        </Row>
+        <Row className="show-rows">
+            <Col xs={12} md={8} mdOffset={2}>
+            <h3>Address</h3>
+            <h4>{this.state.nonprofit.address}</h4>
+          {this.state.nonprofit.location && <GoogleMap center={this.state.nonprofit.location} />}
+        </Col>
+
+</Row>
           {Auth.isAuthenticated() && <Link to={`/nonprofits/${this.state.nonprofit.id}/edit`} className="standard-button">
             <i className="fa fa-pencil" aria-hidden="true"></i>Edit
           </Link>}
@@ -80,15 +123,9 @@ class NonprofitsShow extends React.Component {
           {Auth.isAuthenticated() && <button className="main-button" onClick={this.deleteNonprofit}>
             <i className="fa fa-trash" aria-hidden="true"></i>Delete
           </button>}
-          {' '}
-          {!supporter &&  Auth.isAuthenticated() && <button className="main-button" onClick={this.nonprofitsSupport} aria-hidden="true">
-            Support {this.state.nonprofit.name}
-          </button>}
-          {supporter &&  Auth.isAuthenticated() && <button className="main-button" onClick={this.nonprofitsUnsupport} aria-hidden="true">
-            Unsupport {this.state.nonprofit.name}
-          </button>}
-          {this.state.nonprofit.location && <GoogleMap center={this.state.nonprofit.location} />}
-        </div>
+
+    </Col>
+
       </div>
     );
   }

@@ -65,7 +65,7 @@ class NonprofitsIndex extends React.Component {
                 <div key={nonprofit.id} className="col-md-4 col-sm-6 col-xs-12">
                   <div className="bob">
                     <div style={{backgroundImage: `url(${nonprofit.imageSRC})`}} className="picture"></div>
-                    <h3>{nonprofit.name}</h3>
+                    <h3 className="name-center" >{nonprofit.name}</h3>
 
                     {nonprofit.skills.map(skill => <p key={skill.id}>{skill.name}</p>)}
 
