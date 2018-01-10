@@ -10,7 +10,7 @@ There are few similar platforms and they tend to be sector or skill specific. I 
 This is a full-stack, RESTful Express app built using Node.js, MongoDB, React, SCSS and has JWT/bcrypt authentication. I enjoyed using React and found its component base very comprehensible.
 
 
-##### [Visit website](https:/sdqew/)
+##### [Visit website](https://charit-able.herokuapp.com/)
 
 ---
 <img src="https://i.imgur.com/y63ao7k.png" width="700">
