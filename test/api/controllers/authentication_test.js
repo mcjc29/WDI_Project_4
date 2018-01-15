@@ -75,7 +75,8 @@ describe('Authentications', function() {
             expect(res.body).to.be.a('object');
             expect(res.body.message).to.eq('Bad Request');
             expect(res.body.errors).to.eq(
-              'ValidationError: email: Path `email` (person@person.com) is not unique.'
+              'ValidationError: email: Error, expected `email` to be unique. Value: `person@person.com`'
+
             );
             done();
           });
@@ -98,7 +99,7 @@ describe('Authentications', function() {
           expect(res.status).to.eq(400);
           expect(res.body).to.be.a('object');
           expect(res.body.errors).to.eq(
-            'ValidationError: firstName: Path `firstName` is required.'
+            'ValidationError: firstName: This field is required.'
           );
           expect(res.body.message).to.eq('Bad Request');
           done();
@@ -120,7 +121,7 @@ describe('Authentications', function() {
           expect(res.status).to.eq(400);
           expect(res.body).to.be.a('object');
           expect(res.body.errors).to.eq(
-            'ValidationError: email: Path `email` is required.'
+            'ValidationError: email: This field is required.'
           );
           expect(res.body.message).to.eq('Bad Request');
           done();
@@ -142,7 +143,7 @@ describe('Authentications', function() {
           expect(res.status).to.eq(400);
           expect(res.body).to.be.a('object');
           expect(res.body.errors).to.eq(
-            'ValidationError: cohort: Path `address` is required.'
+            'ValidationError: address: Path `address` is required.'
           );
           expect(res.body.message).to.eq('Bad Request');
           done();
@@ -226,7 +227,7 @@ describe('Authentications', function() {
         .end((err, res) => {
           expect(res.status).to.eq(200);
           expect(res.body).to.be.a('object');
-          expect(res.body.message).to.eq('Welcome back person!');
+          expect(res.body.message).to.eq('Welcome back person');
           expect(res.body.token).to.be.a('string');
           done();
         });

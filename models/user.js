@@ -44,7 +44,7 @@ userSchema
 userSchema.pre('validate', function checkPassword(next) {
   if(this.isNew) {
     if(!this._passwordConfirmation || this._passwordConfirmation !== this.password) {
-      this.invalidate('passwordConfirmation', 'Passwords do not match');
+      return this.invalidate('passwordConfirmation', 'Passwords do not match.');
     }
   }
   next();
@@ -60,6 +60,7 @@ userSchema.pre('save', function hashPassword(next) {
 userSchema.methods.validatePassword = function validatePassword(password) {
   return bcrypt.compareSync(password, this.password);
 };
+
 
 userSchema
   .path('image')
