@@ -1,7 +1,7 @@
 import React from 'react';
 import Axios from 'axios';
 
-import RegisterForm from '../Auth/RegisterForm';
+import RegisterForm from '../auth/RegisterForm';
 import Auth from '../../lib/Auth';
 
 class UsersEdit extends React.Component {
