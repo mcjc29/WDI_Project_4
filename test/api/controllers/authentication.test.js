@@ -20,12 +20,11 @@ describe('Authentications', function() {
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
+          username: 'person',
           firstName: 'person',
           lastName: 'person',
-          image: 'person',
-          role: 'student',
-          cohort: 'WDI-30',
           email: 'person@person.com',
+          address: 'blah',
           password: 'password',
           passwordConfirmation: 'password'
         })
@@ -44,12 +43,11 @@ describe('Authentications', function() {
           .post('/api/register')
           .set('Accept', 'application/json')
           .send({
+            username: 'person',
             firstName: 'person',
             lastName: 'person',
-            image: 'person',
-            role: 'student',
-            cohort: 'WDI-30',
             email: 'person@person.com',
+            address: 'blah',
             password: 'password',
             passwordConfirmation: 'password'
           })
@@ -64,12 +62,11 @@ describe('Authentications', function() {
           .post('/api/register')
           .set('Accept', 'application/json')
           .send({
-            firstName: 'person2',
-            lastName: 'person2',
-            image: 'person2',
-            role: 'student',
-            cohort: 'WDI-30',
+            username: 'person1',
+            firstName: 'person1',
+            lastName: 'person1',
             email: 'person@person.com',
+            address: 'blah1',
             password: 'password1',
             passwordConfirmation: 'password1'
           })
@@ -90,10 +87,10 @@ describe('Authentications', function() {
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
+          username: 'person',
           lastName: 'person',
-          role: 'student',
-          cohort: 'WDI-30',
           email: 'person@person.com',
+          address: 'blah',
           password: 'password',
           passwordConfirmation: 'password'
         })
@@ -112,10 +109,10 @@ describe('Authentications', function() {
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
+          username: 'person',
           firstName: 'person',
           lastName: 'person',
-          role: 'student',
-          cohort: 'WDI-30',
+          address: 'blah',
           password: 'password',
           passwordConfirmation: 'password'
         })
@@ -129,15 +126,15 @@ describe('Authentications', function() {
           done();
         });
     });
-    it('should not register a user without a cohort', function(done) {
+    it('should not register a user without an address', function(done) {
       api
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
+          username: 'person',
           firstName: 'person',
           lastName: 'person',
           email: 'person@person.com',
-          role: 'student',
           password: 'password',
           passwordConfirmation: 'password'
         })
@@ -145,7 +142,7 @@ describe('Authentications', function() {
           expect(res.status).to.eq(400);
           expect(res.body).to.be.a('object');
           expect(res.body.errors).to.eq(
-            'ValidationError: cohort: Path `cohort` is required.'
+            'ValidationError: cohort: Path `address` is required.'
           );
           expect(res.body.message).to.eq('Bad Request');
           done();
@@ -156,18 +153,18 @@ describe('Authentications', function() {
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
+          username: 'person',
           firstName: 'person',
           lastName: 'person',
           email: 'person@person.com',
-          role: 'student',
-          cohort: 'WDI-30',
+          address: 'blah',
           passwordConfirmation: 'password'
         })
         .end((err, res) => {
           expect(res.status).to.eq(400);
           expect(res.body).to.be.a('object');
           expect(res.body.errors).to.eq(
-            'ValidationError: passwordHash: Path `passwordHash` is required.'
+            'ValidationError: password: Path `password` is required.'
           );
           expect(res.body.message).to.eq('Bad Request');
           done();
@@ -180,11 +177,11 @@ describe('Authentications', function() {
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
+          username: 'person',
           firstName: 'person',
           lastName: 'person',
           email: 'person@person.com',
-          role: 'student',
-          cohort: 'WDI-30',
+          address: 'blah',
           password: 'password'
         })
         .end((err, res) => {
@@ -205,12 +202,11 @@ describe('Authentications', function() {
         .post('/api/register')
         .set('Accept', 'application/json')
         .send({
+          username: 'person',
           firstName: 'person',
           lastName: 'person',
-          image: 'person',
-          role: 'student',
-          cohort: 'WDI-30',
           email: 'person@person.com',
+          address: 'blah',
           password: 'password',
           passwordConfirmation: 'password'
         })
