@@ -219,7 +219,7 @@ Skill.create([
               lat: 51.523199,
               lng: -0.1721860000000106
             },
-            skills: [skills[68], skills[17], skills[69], skills[37], skills[27], skills[84]],
+            skills: [skills[68], skills[17], skills[69], skills[37], skills[27], skills[80]],
             supporters: [users[0], users[1], users[2], users[4]]
           } , {
             name: 'Migrants Resource Center',
@@ -249,7 +249,7 @@ Skill.create([
               lat: 51.523199,
               lng: -0.1721860000000106
             },
-            skills: [skills[68], skills[77], skills[69], skills[76], skills[57], skills[82]],
+            skills: [skills[68], skills[77], skills[69], skills[76], skills[57], skills[81]],
             supporters: [users[0], users[1], users[2], users[4]]
           }, {
             name: 'Evidence Action',
@@ -279,7 +279,7 @@ Skill.create([
               lat: 51.523199,
               lng: -0.1721860000000106
             },
-            skills: [skills[77], skills[27], skills[84], skills[44], skills[33], skills[67]],
+            skills: [skills[77], skills[27], skills[74], skills[44], skills[33], skills[67]],
             supporters: [users[0], users[1], users[2], users[4]]
           }
         ]);

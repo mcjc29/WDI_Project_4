@@ -1,7 +1,7 @@
 /* globals api, expect, describe, beforeEach, afterEach, it */
 require('../helper');
 
-const User = require('../../models/user');
+const User = require('../../../models/user');
 
 describe('Authentications', function() {
   beforeEach(done => {
@@ -31,7 +31,7 @@ describe('Authentications', function() {
         .end((err, res) => {
           expect(res.status).to.eq(200);
           expect(res.body).to.be.a('object');
-          expect(res.body.message).to.eq('Welcome person!');
+          expect(res.body.message).to.eq('Welcome person');
           expect(res.body.token).to.be.a('string');
           done();
         });
