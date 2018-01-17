@@ -63,6 +63,16 @@ class NonprofitsShow extends React.Component {
     if (!this.state.nonprofit) return null;
 
 
+    const supporterIds=[];
+    for (var i = 0; i < this.state.nonprofit.supporters.length; i++) {
+      supporterIds.push(this.state.nonprofit.supporters[i].id);
+    }
+
+
+    // const supporter = supporterIds.includes(Auth.getPayload().userId);
+
+
+
     return (
       <div className="container">
         <Row>
@@ -89,10 +99,11 @@ class NonprofitsShow extends React.Component {
 
               {!Auth.isAuthenticated() && <Link to={'/login'} className="btn button">Login to support {this.state.nonprofit.name}</Link>}
 
-              {Auth.isAuthenticated() && this.state.nonprofit.supporters.find(user => user.id === Auth.getPayload().userId) &&   <button className="btn button" onClick={this.nonprofitsSupport} aria-hidden="true">
+              {Auth.isAuthenticated() && !supporterIds.includes(Auth.getPayload().userId) &&   <button className="btn button" onClick={this.nonprofitsSupport} aria-hidden="true">
                 Support {this.state.nonprofit.name}
               </button>}
-              {Auth.isAuthenticated() && this.state.nonprofit.supporters.find(user => user.id === !Auth.getPayload().userId) &&   <button className="btn button" onClick={this.nonprofitsUnsupport} aria-hidden="true">
+
+              {Auth.isAuthenticated() && supporterIds.includes(Auth.getPayload().userId) &&   <button className="btn button" onClick={this.nonprofitsUnsupport} aria-hidden="true">
                 Unsupport {this.state.nonprofit.name}
               </button>}
             </Row>
