@@ -61,7 +61,7 @@ class NonprofitsShow extends React.Component {
 
   render() {
     if (!this.state.nonprofit) return null;
-    const supporter = this.state.nonprofit.supporters.find(user => user.id === Auth.getPayload().userId) ? true : false;
+
 
     return (
       <div className="container">
@@ -84,16 +84,15 @@ class NonprofitsShow extends React.Component {
             <Row className="show-rows">
               <h2>Our supporters</h2>
               {this.state.nonprofit.supporters.map(supporter =>
-
                 <Col key={supporter.id} xs={2} md={2}><div style={{backgroundImage: `url(${supporter.imageSRC})`}} className="picture supporter"></div></Col>)
               }
 
-
               {!Auth.isAuthenticated() && <Link to={'/login'} className="btn button">Login to support {this.state.nonprofit.name}</Link>}
-              {Auth.isAuthenticated() && !supporter &&  <button className="btn button" onClick={this.nonprofitsSupport} aria-hidden="true">
+
+              {Auth.isAuthenticated() && this.state.nonprofit.supporters.find(user => user.id === Auth.getPayload().userId) &&   <button className="btn button" onClick={this.nonprofitsSupport} aria-hidden="true">
                 Support {this.state.nonprofit.name}
               </button>}
-              {Auth.isAuthenticated() && supporter &&   <button className="btn button" onClick={this.nonprofitsUnsupport} aria-hidden="true">
+              {Auth.isAuthenticated() && this.state.nonprofit.supporters.find(user => user.id === !Auth.getPayload().userId) &&   <button className="btn button" onClick={this.nonprofitsUnsupport} aria-hidden="true">
                 Unsupport {this.state.nonprofit.name}
               </button>}
             </Row>
